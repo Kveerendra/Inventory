@@ -15,4 +15,11 @@ export class ProductsService {
     return this.http.get<Product[]>(environment.url + '/showproducts');
 
   }
+
+  
+  public login(): Observable<Product[]> {
+    return this.http.get<Product[]>(environment.url + '/showproducts');
+
+  }
+
 }
