@@ -21,6 +21,8 @@ export class LoginService {
   logout(): boolean {
     this.window.sessionStorage.setItem('username', null);
     this.window.sessionStorage.setItem('userrole', null);
+    this.window.sessionStorage.clear();
+    this.isAuthenticated();
     return true;
   }
   constructor(
@@ -44,21 +46,12 @@ export class LoginService {
   }
 
   isAuthenticated(): boolean {
-    // console.error(this.session.get('username'));
     const res = this.window.sessionStorage.getItem('username');
     if (res == null || res === undefined) {
       this.authenticated = false;
     } else {
       this.authenticated = true;
     }
-return  this.authenticated;
-    /* if (
-      this.window.sessionStorage.get('username').then === undefined ||
-      this.window.sessionStorage.get('username') == null
-    ) {
-      return false;
-    } else {
-      return true;
-    } */
+    return this.authenticated;
   }
 }

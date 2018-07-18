@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { setTheme } from 'ngx-bootstrap/utils';
 import { LoginService } from './services/login.service';
 import { User } from './models/user';
@@ -19,5 +19,6 @@ export class AppComponent {
   }
   signOut() {
   console.error('SignOut');
+  this.loginService.logout();
   }
 }

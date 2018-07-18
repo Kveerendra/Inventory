@@ -27,7 +27,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'error', component: ErrorComponent },
-  { path: 'signOut', component: SignOutComponent , canActivate: [IsAuthenticatedService]}
+  { path: 'signOut', component: SignOutComponent }
 ];
 
 @NgModule({
