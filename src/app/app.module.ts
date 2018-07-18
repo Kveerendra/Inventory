@@ -24,11 +24,22 @@ const appRoutes: Routes = [
     component: ProductsComponent,
     canActivate: [IsAuthenticatedService]
   },
-  { path: '', component: LoginComponent},
-  { path: 'login', component: LoginComponent,
-  canActivate: [LoginRedirectService] },
-  { path: 'register', component: RegisterComponent,
-  canActivate: [LoginRedirectService] },
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
+    canActivate: [LoginRedirectService]
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [LoginRedirectService]
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    canActivate: [LoginRedirectService]
+  },
   { path: 'error', component: ErrorComponent },
   { path: 'signOut', component: SignOutComponent }
 ];
@@ -56,7 +67,11 @@ const appRoutes: Routes = [
   ],
   exports: [],
 
-  providers: [{ provide: 'Window',  useValue: window }, LoginRedirectService, IsAuthenticatedService],
+  providers: [
+    { provide: 'Window', useValue: window },
+    LoginRedirectService,
+    IsAuthenticatedService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

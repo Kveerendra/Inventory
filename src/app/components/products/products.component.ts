@@ -18,6 +18,7 @@ export class ProductsComponent implements OnInit {
     { headerName: 'Delivery Day', field: 'delivery_day' }
   ];
   rowData = [];
+  tab = 'All';
 
   constructor(private productService: ProductsService) {}
 

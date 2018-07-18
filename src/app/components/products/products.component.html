@@ -1,6 +1,12 @@
 <div class="row ">
-  <div class="col-12">
-      <div class="col-1 float-right">&nbsp;</div>
+  <div class="col-6 container">
+    <ul class="nav nav-pills">
+      <li class="nav-item"><span role="tab" data-toggle="tab" [ngClass]="tab=='All'?'active':'text-primary bg-light'" (click)="tab='All'" class="nav-link">All Products</span></li>
+      <li class="nav-item"><span role="tab" data-toggle="tab" [ngClass]="tab=='My'?'active':'text-primary bg-light'" (click)="tab='My'" class="nav-link">My Products</span></li>
+    </ul>
+  </div>
+  <div class="col-6">
+    <div class="col-1 float-right">&nbsp;</div>
     <button type="button" class="btn btn-sm btn-success float-right">Add Products</button>
     <div class="col-1 float-right">&nbsp;</div>
     <button type="button" class="btn btn-sm btn-success float-right">Add to Cart</button>
