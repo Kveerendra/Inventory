@@ -13,15 +13,29 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorComponent } from './components/error/error.component';
+import { IsAuthenticatedService } from './services/is-authenticated.service';
+import { RegisterComponent } from './components/register/register.component';
 
-const appRoutes: Routes = [{ path: 'products', component: ProductsComponent },
-                           { path: 'login', component: LoginComponent },
-                           { path: 'error', component: ErrorComponent }
-                          ];
-
+const appRoutes: Routes = [
+  {
+    path: 'products',
+    component: ProductsComponent,
+    canActivate: [IsAuthenticatedService]
+  },
+  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'error', component: ErrorComponent }
+];
 
 @NgModule({
-  declarations: [AppComponent, ProductsComponent, LoginComponent, ErrorComponent],
+  declarations: [
+    AppComponent,
+    ProductsComponent,
+    LoginComponent,
+    ErrorComponent,
+    RegisterComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

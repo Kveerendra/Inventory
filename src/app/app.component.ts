@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { setTheme } from 'ngx-bootstrap/utils';
+import { LoginService } from './services/login.service';
+import { User } from './models/user';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,10 +9,14 @@ import { setTheme } from 'ngx-bootstrap/utils';
 })
 export class AppComponent {
   title = 'app';
-  constructor() {
+  user: User;
+  constructor(private loginService: LoginService) {
     setTheme('bs4');
   }
-
+  isAuthenticated(): boolean {
+    console.log(this.loginService.isAuthenticated());
+    return this.loginService.isAuthenticated();
+  }
   signOut() {
   console.error('SignOut');
   }
