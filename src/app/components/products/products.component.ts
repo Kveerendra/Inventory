@@ -10,12 +10,12 @@ import { Product } from '../../models/product';
 })
 export class ProductsComponent implements OnInit {
   columnDefs = [
-    { headerName: 'product_id', field: 'product_id' },
-    { headerName: 'product_name', field: 'product_name' },
-    { headerName: 'product_description', field: 'product_description' },
-    { headerName: 'price_per_qty', field: 'price_per_qty' },
-    { headerName: 'product_quantity', field: 'product_quantity' },
-    { headerName: 'delivery_day', field: 'delivery_day' }
+    { headerName: 'Product Id', field: 'product_id' },
+    { headerName: 'Product Name', field: 'product_name' },
+    { headerName: 'Product Description', field: 'product_description' },
+    { headerName: 'Price Per Qty', field: 'price_per_qty' },
+    { headerName: 'Product Quantity', field: 'product_quantity' },
+    { headerName: 'Delivery Day', field: 'delivery_day' }
   ];
   rowData = [];
 
