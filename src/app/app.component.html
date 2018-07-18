@@ -15,37 +15,37 @@
         <a class="navbar-link" routerLink="/products">Show Products</a></li> -->
 
         <li class="nav-item" *ngIf="isAuthenticated()">
-            <a class="nav-link" href="" routerLink="/products" (click)="signOut()">
+            <a class="nav-link" href="" routerLink="/products"  >
                 Show Products</a>
           </li>
         <li class="nav-item" *ngIf="isAuthenticated()">
-            <a class="nav-link" href="" (click)="signOut()">
+            <a class="nav-link" href=""  >
               Add Products</a>
           </li>
       <li class="nav-item" *ngIf="isAuthenticated()">
-          <a class="nav-link" href="" (click)="signOut()">
+          <a class="nav-link" href=""  >
             Search Products</a>
         </li>
       <li class="nav-item" *ngIf="isAuthenticated()">
-          <a class="nav-link" href="" (click)="signOut()">
+          <a class="nav-link" href=""  >
             Order Status</a>
         </li>
         </ul>
         <ul class="navbar-nav ml-auto">
       <li class="nav-item" *ngIf="isAuthenticated()">
-        <a class="nav-link" href="" (click)="signOut()">
-          username</a>
+        <a class="nav-link" href="#">
+          {{user.name}}</a>
       </li>
       <li class="nav-item" *ngIf="isAuthenticated()">
         <a class="nav-link"  routerLink="/signOut" href="" (click)="signOut()">
           <span></span>Sign Out</a>
       </li>
       <li class="nav-item" *ngIf="!isAuthenticated()">
-        <a class="nav-link" href="" (click)="signOut()">
+        <a class="nav-link" href=""  >
           <span></span>Register</a>
       </li>
       <li class="nav-item ml-auto" *ngIf="!isAuthenticated()">
-        <a class="nav-link" href="" (click)="signOut()">
+        <a class="nav-link" href=""  >
           <span></span>Sign In</a>
       </li>
     </ul>

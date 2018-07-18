@@ -16,6 +16,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { IsAuthenticatedService } from './services/is-authenticated.service';
 import { RegisterComponent } from './components/register/register.component';
 import { SignOutComponent } from './components/sign-out/sign-out.component';
+import { LoginRedirectService } from './services/login-redirect.service';
 
 const appRoutes: Routes = [
   {
@@ -23,9 +24,11 @@ const appRoutes: Routes = [
     component: ProductsComponent,
     canActivate: [IsAuthenticatedService]
   },
-  { path: '', component: LoginComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: '', component: LoginComponent},
+  { path: 'login', component: LoginComponent,
+  canActivate: [LoginRedirectService] },
+  { path: 'register', component: RegisterComponent,
+  canActivate: [LoginRedirectService] },
   { path: 'error', component: ErrorComponent },
   { path: 'signOut', component: SignOutComponent }
 ];
@@ -53,7 +56,7 @@ const appRoutes: Routes = [
   ],
   exports: [],
 
-  providers: [{ provide: 'Window',  useValue: window }],
+  providers: [{ provide: 'Window',  useValue: window }, LoginRedirectService, IsAuthenticatedService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

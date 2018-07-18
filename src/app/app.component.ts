@@ -11,14 +11,13 @@ export class AppComponent {
   title = 'app';
   user: User;
   constructor(private loginService: LoginService) {
+    this.user = loginService.getUser();
     setTheme('bs4');
   }
   isAuthenticated(): boolean {
-    console.log(this.loginService.authenticated);
     return this.loginService.authenticated;
   }
   signOut() {
-  console.error('SignOut');
-  this.loginService.logout();
+    this.loginService.logout();
   }
 }

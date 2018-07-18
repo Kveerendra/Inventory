@@ -8,7 +8,16 @@ import { HttpClient } from '../../../node_modules/@angular/common/http';
 })
 export class LoginService {
   authenticated: boolean;
+  getUser(): User {
+    return new User(
+      this.window.sessionStorage.getItem('username'),
+      this.window.sessionStorage.getItem('username')
+    );
+  }
 
+  navigateToProducts(): any {
+    this.router.navigateByUrl('/products');
+  }
   navigateToLogin(): any {
     this.router.navigateByUrl('/login');
   }
@@ -32,19 +41,9 @@ export class LoginService {
   ) {
     this.authenticated = false;
   }
-
-  getLogin() {
-    return true;
-  }
-
   register() {
     return true;
   }
-
-  getRole() {
-    return 'buyer'; // or supplier
-  }
-
   isAuthenticated(): boolean {
     const res = this.window.sessionStorage.getItem('username');
     if (res == null || res === undefined) {
