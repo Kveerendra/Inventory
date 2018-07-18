@@ -14,8 +14,8 @@ export class AppComponent {
     setTheme('bs4');
   }
   isAuthenticated(): boolean {
-    console.log(this.loginService.isAuthenticated());
-    return this.loginService.isAuthenticated();
+    console.log(this.loginService.authenticated);
+    return this.loginService.authenticated;
   }
   signOut() {
   console.error('SignOut');

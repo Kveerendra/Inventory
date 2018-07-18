@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { Headers } from '@angular/http';
 import { Router } from '@angular/router';
+import { User } from '../../models/user';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -9,8 +11,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  constructor(private http: Http, private router: Router) {}
-
+  constructor(
+    private http: Http,
+    private router: Router,
+    private loginService: LoginService
+  ) {
+    this.userInfo = new User();
+  }
+  userInfo: User;
   userName = '';
   password = '';
   headers = new Headers();
@@ -22,13 +30,14 @@ export class LoginComponent implements OnInit {
   }
   login() {
     // debugger;
-    this.userDetails = {
-      username: this.userName,
-      password: this.password
-    };
+
     this.headers.append('Content-type', 'application/json');
     this.headers.append('Access-Control-Allow-Origin', '*');
-    this.http
+    this.router.navigateByUrl('/products');
+    this.userInfo.role = this.userName;
+    this.userInfo.name = this.userName;
+    this.loginService.login(this.userInfo);
+    /* this.http
       .post('http://localhost:5002/login', this.userDetails)
       .subscribe((response: any) => {
         console.log(response);
@@ -39,6 +48,6 @@ export class LoginComponent implements OnInit {
         } else {
           this.router.navigateByUrl('/error');
         }
-      });
+      }); */
   }
 }

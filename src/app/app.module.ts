@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorComponent } from './components/error/error.component';
 import { IsAuthenticatedService } from './services/is-authenticated.service';
 import { RegisterComponent } from './components/register/register.component';
+import { SignOutComponent } from './components/sign-out/sign-out.component';
 
 const appRoutes: Routes = [
   {
@@ -25,7 +26,8 @@ const appRoutes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'error', component: ErrorComponent }
+  { path: 'error', component: ErrorComponent },
+  { path: 'signOut', component: SignOutComponent , canActivate: [IsAuthenticatedService]}
 ];
 
 @NgModule({
@@ -34,7 +36,8 @@ const appRoutes: Routes = [
     ProductsComponent,
     LoginComponent,
     ErrorComponent,
-    RegisterComponent
+    RegisterComponent,
+    SignOutComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,7 @@ const appRoutes: Routes = [
   ],
   exports: [],
 
-  providers: [],
+  providers: [{ provide: 'Window',  useValue: window }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
