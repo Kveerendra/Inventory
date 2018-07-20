@@ -1,34 +1,33 @@
-
 <div class="table-responsive" style="border: solid #C0C0C0; margin-top: 50px; margin-left: 400px; width: 500px; height: 200px;">
   <table style="margin-top:50px;margin-left:50px;">
     <tr>
       <td style="width: 100px;">
-          <label>
-              UserName:
-            </label>
+        <label>
+          UserName:
+        </label>
       </td>
       <td style="    width: 350px;">
-          <input style="width:300px;" type="text" [(ngModel)]="userName">
+        <input style="width:300px;" type="text" [(ngModel)]="userName">
       </td>
     </tr>
     <tr>
-        <td style="width: 100px;">
-            <label>
-                Password:
-              </label>
-        </td>
-        <td style="    width: 350px;">
-            <input type="password" style="width:300px;"  [(ngModel)]="password">
-        </td>
+      <td style="width: 100px;">
+        <label>
+          Password:
+        </label>
+      </td>
+      <td style="    width: 350px;">
+        <input type="password" style="width:300px;" [(ngModel)]="password">
+      </td>
     </tr>
-  <tr style="height:70px">
-    <td style="width:80px">
-        <button  style="width:100px"class="btn btn-primary"  (click)="login()">Login</button>
-    </td>
-    <td style="width: 350px;">
-      <a style="margin-left:240px" href="#" routerLink="/register">Sign Up</a>
-    </td>
-  </tr>
+    <tr style="height:70px">
+      <td style="width:80px">
+        <button style="width:100px" class="btn btn-primary" (click)="login()">Login</button>
+      </td>
+      <td style="width: 350px;">
+        <a style="margin-left:240px" href="#" routerLink="/register">Sign Up</a>
+      </td>
+    </tr>
 
   </table>
 

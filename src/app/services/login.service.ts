@@ -1,17 +1,28 @@
 import { Injectable, Inject } from '@angular/core';
 import { User } from '../models/user';
 import { Router } from '../../../node_modules/@angular/router';
-import { HttpClient } from '../../../node_modules/@angular/common/http';
+
+import { Headers, Http } from '@angular/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
   authenticated: boolean;
+  private headers: Headers = new Headers({
+    'Content-Type': 'application/x-www-form-urlencoded'
+  });
+
   getUser(): User {
     return new User(
       this.window.sessionStorage.getItem('username'),
-      this.window.sessionStorage.getItem('username')
+      this.window.sessionStorage.getItem('username'),
+      '',
+      '',
+      '',
+      '',
+      '',
+      ''
     );
   }
 
@@ -21,8 +32,17 @@ export class LoginService {
   navigateToLogin(): any {
     this.router.navigateByUrl('/login');
   }
-  login(user: User): boolean {
-    this.window.sessionStorage.setItem('username', user.name);
+  login(user: User): any {
+    return this.http
+      .post('http://localhost:5002/login', user, { headers: this.headers })
+      .toPromise();
+    /* this.window.sessionStorage.setItem('username', user.name);
+    this.window.sessionStorage.setItem('userrole', user.role);
+    this.router.navigateByUrl('/products');
+    return true; */
+  }
+  store(user: User): boolean {
+    this.window.sessionStorage.setItem('username', user.username);
     this.window.sessionStorage.setItem('userrole', user.role);
     this.router.navigateByUrl('/products');
     return true;
@@ -36,13 +56,15 @@ export class LoginService {
   }
   constructor(
     private router: Router,
-    private http: HttpClient,
+    private http: Http,
     @Inject('Window') private window: Window
   ) {
     this.authenticated = false;
   }
-  register() {
-    return true;
+  register(user: User) {
+    return this.http
+    .post('http://localhost:5002/register', user, { headers: this.headers })
+    .toPromise();
   }
   isAuthenticated(): boolean {
     const res = this.window.sessionStorage.getItem('username');

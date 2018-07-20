@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private loginService: LoginService
   ) {
-    this.userInfo = new User();
+    this.userInfo = new User('', '', '', '', '', '', '', '');
   }
   userInfo: User;
   userName = '';
@@ -35,8 +35,10 @@ export class LoginComponent implements OnInit {
     this.headers.append('Access-Control-Allow-Origin', '*');
     this.router.navigateByUrl('/products');
     this.userInfo.role = this.userName;
-    this.userInfo.name = this.userName;
-    this.loginService.login(this.userInfo);
+    this.userInfo.username = this.userName;
+    this.loginService.login(this.userInfo).then(user => {
+      this.loginService.store(user);
+    });
     /* this.http
       .post('http://localhost:5002/login', this.userDetails)
       .subscribe((response: any) => {

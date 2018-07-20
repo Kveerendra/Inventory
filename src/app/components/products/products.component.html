@@ -1,15 +1,19 @@
 <div class="row ">
-  <div class="col-6 container">
-    <ul class="nav nav-pills">
+    <tabset #staticTabs class="col-6">
+        <tab heading="All Products"></tab>
+        <tab heading="My Products"></tab>
+      </tabset>
+  <!-- <div class="col-6 container">
+    <ul class="nav nav-xs nav-pills" *ngIf="user.role!=='buyer'">
       <li class="nav-item"><span role="tab" data-toggle="tab" [ngClass]="tab=='All'?'active':'text-primary bg-light'" (click)="tab='All'" class="nav-link">All Products</span></li>
       <li class="nav-item"><span role="tab" data-toggle="tab" [ngClass]="tab=='My'?'active':'text-primary bg-light'" (click)="tab='My'" class="nav-link">My Products</span></li>
     </ul>
-  </div>
+  </div> -->
   <div class="col-6">
-    <div class="col-1 float-right">&nbsp;</div>
-    <button type="button" class="btn btn-sm btn-success float-right">Add Products</button>
-    <div class="col-1 float-right">&nbsp;</div>
-    <button type="button" class="btn btn-sm btn-success float-right">Add to Cart</button>
+    <div class="col-2 float-right">&nbsp;</div>
+    <button type="button" class="btn btn-xs btn-success float-right" (click)="openModal(template)" *ngIf="user.role!=='buyer'">Add Products</button>
+    <div class="col-2 float-right">&nbsp;</div>
+    <button type="button" class="btn btn-xs btn-success float-right" *ngIf="myTab()">Add to Cart</button>
   </div>
 </div>
 <div class="row justify-content-md-center">
@@ -17,3 +21,18 @@
     [gridAutoHeight]="false" [alwaysShowStatusBar]="true" [enableSorting]="true" [enableFilter]="true" [enableColResize]="true">
   </ag-grid-angular>
 </div>
+
+<ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Add Product</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-xs btn-success" (click)="addProduct()">Add Product</button>
+    </div>
+  </ng-template>

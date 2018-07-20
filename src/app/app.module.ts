@@ -17,7 +17,8 @@ import { IsAuthenticatedService } from './services/is-authenticated.service';
 import { RegisterComponent } from './components/register/register.component';
 import { SignOutComponent } from './components/sign-out/sign-out.component';
 import { LoginRedirectService } from './services/login-redirect.service';
-
+import { ModalModule } from 'ngx-bootstrap';
+import { TabsModule } from 'ngx-bootstrap';
 const appRoutes: Routes = [
   {
     path: 'products',
@@ -63,7 +64,9 @@ const appRoutes: Routes = [
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     ),
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([]),
+    ModalModule.forRoot(),
+    TabsModule.forRoot()
   ],
   exports: [],
 
