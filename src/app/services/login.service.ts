@@ -34,7 +34,7 @@ export class LoginService {
   }
   login(user: User): any {
     return this.http
-      .post('http://localhost:5002/login', user, { headers: this.headers })
+      .post('http://localhost:5002/login', JSON.stringify(user), { headers: this.headers })
       .toPromise();
     /* this.window.sessionStorage.setItem('username', user.name);
     this.window.sessionStorage.setItem('userrole', user.role);

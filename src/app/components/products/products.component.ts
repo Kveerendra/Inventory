@@ -7,11 +7,12 @@ import { LoginService } from '../../services/login.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { TabsetComponent } from 'ngx-bootstrap';
+import { EditProductComponent } from '../edit-product/edit-product.component';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit {
   user: User;
@@ -19,9 +20,10 @@ export class ProductsComponent implements OnInit {
     { headerName: 'Product Id', field: 'product_id' },
     { headerName: 'Product Name', field: 'product_name' },
     { headerName: 'Product Description', field: 'product_description' },
-    { headerName: 'Price Per Qty', field: 'price_per_qty' },
-    { headerName: 'Product Quantity', field: 'product_quantity' },
-    { headerName: 'Delivery Day', field: 'delivery_day' }
+    { headerName: 'Price/Qty', field: 'price_per_qty' },
+    { headerName: 'Available Qty', field: 'product_quantity' },
+    { headerName: 'Delivery Time', field: 'delivery_day' },
+    {headerName: 'Action', cellRenderer: EditProductComponent}
   ];
   rowData = [];
   tab = 'All';
@@ -35,11 +37,11 @@ export class ProductsComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
   ngOnInit() {
-    this.user = this.loginService.getUser();
-    this.productService.getProducts().forEach(
-      x => {
-        this.rowData = x;
-      });
+    this.productService.getProducts().subscribe(data => {
+
+        this.rowData = data;
+    });
+    console.log('#########' + this.rowData);
   }
   myTab() {
     return this.staticTabs.tabs[1].active !== true;

@@ -1,0 +1,29 @@
+{
+    "productList": [
+      {
+      "product_id": "101",
+      "product_name": "Shirts",
+      "product_description": "Blue Check shirts by Philip Luis Brand",
+      "price_per_qty":"1500",
+      "product_quantity": "1000",
+      "delivery_day": "31-July-2018"
+      },
+      {
+      "product_id": "102",
+      "product_name": "Texidos",
+      "product_description": "Fancy Texidos by Raymonds",
+      "price_per_qty":"10000",
+      "product_quantity": "500",
+      "delivery_day": "30-Aug-2018"
+      },
+      {
+      "product_id": "103",
+      "product_name": "Shoes",
+      "product_description": "By Hush Puppies",
+      "price_per_qty":"4000",
+      "product_quantity": "200",
+      "delivery_day": "30-Aug-2018"
+      }
+    ]
+  
+  }
