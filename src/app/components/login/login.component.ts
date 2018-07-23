@@ -5,6 +5,9 @@ import { Router } from '@angular/router';
 import { User } from '../../models/user';
 import { LoginService } from '../../services/login.service';
 
+import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {ErrorStateMatcher} from '@angular/material/core';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,14 +21,19 @@ export class LoginComponent implements OnInit {
   ) {
     this.userInfo = new User('', '', '', '', '', '', '', '');
   }
+
+  userName = new FormControl('', [Validators.required]);
+  password: string;
+  matcher = new MyErrorStateMatcher();
+  hide = true;
+
   userInfo: User;
-  userName = '';
-  password = '';
+ 
   headers = new Headers();
   userDetails = {};
 
   ngOnInit() {
-    this.userName = '';
+   
     this.password = '';
   }
   login() {
@@ -34,11 +42,11 @@ export class LoginComponent implements OnInit {
     this.headers.append('Content-type', 'application/json');
     this.headers.append('Access-Control-Allow-Origin', '*');
     this.router.navigateByUrl('/products');
-    this.userInfo.role = this.userName;
-    this.userInfo.username = this.userName;
-    this.loginService.login(this.userInfo).then(user => {
-      this.loginService.store(user);
-    });
+    // this.userInfo.role = this.userName;
+    // this.userInfo.username = this.userName;
+    // this.loginService.login(this.userInfo).then(user => {
+    //   this.loginService.store(user);
+    // });
     /* this.http
       .post('http://localhost:5002/login', this.userDetails)
       .subscribe((response: any) => {
@@ -53,3 +61,11 @@ export class LoginComponent implements OnInit {
       }); */
   }
 }
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+    isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+      const isSubmitted = form && form.submitted;
+      return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+    }
+  } 
+

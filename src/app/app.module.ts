@@ -21,6 +21,8 @@ import { SignOutComponent } from './components/sign-out/sign-out.component';
 import { LoginRedirectService } from './services/login-redirect.service';
 import { ModalModule } from 'ngx-bootstrap';
 import { TabsModule } from 'ngx-bootstrap';
+
+import  {  MatIconModule,  MatButtonModule,  MatCheckboxModule,  MatGridListModule,  MatInputModule , MatCardModule }  from  '@angular/material';
 const appRoutes: Routes = [
   {
     path: 'products',
@@ -45,7 +47,7 @@ const appRoutes: Routes = [
   },
   { path: 'error', component: ErrorComponent },
   { path: 'signOut', component: SignOutComponent },
-  { path: 'products', component: ProductsComponent}
+  { path: 'products', component: ProductsComponent }
 ];
 
 @NgModule({
@@ -71,11 +73,19 @@ const appRoutes: Routes = [
     ),
     AgGridModule.withComponents([]),
     ModalModule.forRoot(),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    MatIconModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatGridListModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    
+    MatCardModule
   ],
   exports: [EditProductComponent],
 
-  providers: [{ provide: 'Window',  useValue: window }, ProductsService, LoginRedirectService, IsAuthenticatedService],
+  providers: [{ provide: 'Window', useValue: window }, ProductsService, LoginRedirectService, IsAuthenticatedService],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
