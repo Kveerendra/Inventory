@@ -33,20 +33,26 @@ export class LoginComponent implements OnInit {
   userDetails = {};
 
   ngOnInit() {
-   
+    this.userInfo = new User();
     this.password = '';
   }
+
+  register()
+  {
+    this.router.navigateByUrl('/register');
+  }
+
   login() {
     // debugger;
 
     this.headers.append('Content-type', 'application/json');
     this.headers.append('Access-Control-Allow-Origin', '*');
     this.router.navigateByUrl('/products');
-    // this.userInfo.role = this.userName;
-    // this.userInfo.username = this.userName;
-    // this.loginService.login(this.userInfo).then(user => {
-    //   this.loginService.store(user);
-    // });
+    //this.userInfo.username = this.userName.value;
+    //this.userInfo.password = this.password;
+    this.loginService.login(this.userInfo).then(user => {
+      this.loginService.store(user);
+     });
     /* this.http
       .post('http://localhost:5002/login', this.userDetails)
       .subscribe((response: any) => {

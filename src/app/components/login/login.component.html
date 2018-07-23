@@ -10,7 +10,7 @@
           <td>
               
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Username" [formControl]="userName"  [errorStateMatcher]="matcher">
+              <input matInput placeholder="Username" name="username" id="username" [(ngModel)]="userInfo.username"  [errorStateMatcher]="matcher">
               <mat-icon matSuffix>lock</mat-icon>
 			  <mat-error *ngIf="userName.hasError('required')">User name is required</mat-error>
             </mat-form-field>
@@ -18,7 +18,7 @@
         </tr>
         <tr>
           <td><mat-form-field>
-            <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+            <input [(ngModel)]="userInfo.password"  name="password" id="password" matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
             <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
           </mat-form-field></td>
         </tr></table>
@@ -26,6 +26,6 @@
   </mat-card-content>
   <mat-card-actions>
     <button mat-raised-button (click)="login()" color="primary">Login</button>
-	<button mat-raised-button (click)="register()" color="warn">Sign Up</button>
+	<a routerLink = "/register" mat-raised-button  color="warn">Sign Up</a>
   </mat-card-actions>
 </mat-card>

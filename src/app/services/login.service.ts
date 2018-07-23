@@ -33,7 +33,8 @@ export class LoginService {
   navigateToLogin(): any {
     this.router.navigateByUrl('/login');
   }
-  _login(user: User): any {
+  login(user: User): any {
+    console.log(user);
     return this.http
       .post('http://localhost:5002/login', JSON.stringify(user), { headers: this.headers })
       .toPromise();
@@ -42,27 +43,27 @@ export class LoginService {
     this.router.navigateByUrl('/products');
     return true; */
   }
-  login(user: User): any
-  {
-    debugger;
-    this.headers.append("Content-type","application/json");
-    this.headers.append( "Access-Control-Allow-Origin","*");
-    this.http.post( 'http://localhost:5002/login',User)
-    .subscribe((response: any) => {
-      console.log(response)
-      if(response.json().error == null)
-      {
-        if(response.json().template == 'B')
-        {
-          this.router.navigateByUrl('/products');
-        }
-      }
-      else{
-        this.router.navigateByUrl('/error');
-      }
+  // login(user: User): any
+  // {
+  //   debugger;
+  //   this.headers.append("Content-type","application/json");
+  //   this.headers.append( "Access-Control-Allow-Origin","*");
+  //   this.http.post( 'http://localhost:5002/login',User)
+  //   .subscribe((response: any) => {
+  //     console.log(response)
+  //     if(response.json().error == null)
+  //     {
+  //       if(response.json().template == 'B')
+  //       {
+  //         this.router.navigateByUrl('/products');
+  //       }
+  //     }
+  //     else{
+  //       this.router.navigateByUrl('/error');
+  //     }
       
-    });
-  }
+  //   });
+  // }
   store(user: User): boolean {
     this.window.sessionStorage.setItem('username', user.username);
     this.window.sessionStorage.setItem('userrole', user.role);
