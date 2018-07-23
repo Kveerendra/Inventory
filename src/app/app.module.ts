@@ -80,7 +80,7 @@ const appRoutes: Routes = [
     MatGridListModule,
     MatInputModule,
     ReactiveFormsModule,
-    
+    MatRadioModule,
     MatCardModule
   ],
   exports: [EditProductComponent],
