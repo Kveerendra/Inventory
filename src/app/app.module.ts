@@ -22,7 +22,15 @@ import { LoginRedirectService } from './services/login-redirect.service';
 import { ModalModule } from 'ngx-bootstrap';
 import { TabsModule } from 'ngx-bootstrap';
 
-import  {  MatIconModule,  MatButtonModule,  MatCheckboxModule,  MatGridListModule,  MatInputModule , MatCardModule, MatRadioModule }  from  '@angular/material';
+import {
+  MatIconModule,
+  MatButtonModule,
+  MatCheckboxModule,
+  MatGridListModule,
+  MatInputModule,
+  MatCardModule,
+  MatRadioModule
+} from '@angular/material';
 const appRoutes: Routes = [
   {
     path: 'products',
@@ -80,12 +88,17 @@ const appRoutes: Routes = [
     MatGridListModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatRadioModule,
-    MatCardModule
+    MatCardModule,
+    MatRadioModule
   ],
   exports: [EditProductComponent],
 
-  providers: [{ provide: 'Window', useValue: window }, ProductsService, LoginRedirectService, IsAuthenticatedService],
+  providers: [
+    { provide: 'Window', useValue: window },
+    ProductsService,
+    LoginRedirectService,
+    IsAuthenticatedService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

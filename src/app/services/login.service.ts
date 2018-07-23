@@ -11,7 +11,7 @@ export class LoginService {
   authenticated: boolean;
   private headers: Headers = new Headers({
     'Content-Type': 'application/x-www-form-urlencoded',
-    'Access-Control-Allow-Origin':'*'
+    'Access-Control-Allow-Origin': '*'
   });
 
   getUser(): User {
@@ -38,9 +38,7 @@ export class LoginService {
     return this.http
       .post('http://localhost:5002/login', JSON.stringify(user), { headers: this.headers })
       .toPromise();
-   
   }
-  
   store(user: User): boolean {
     this.window.sessionStorage.setItem('username', user.username);
     this.window.sessionStorage.setItem('userrole', user.role);
