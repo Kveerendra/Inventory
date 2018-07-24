@@ -5,4 +5,5 @@ export interface Product {
   price_per_qty: String;
   product_quantity: String;
   delivery_day: String;
+  product_type: String;
 }

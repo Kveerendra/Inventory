@@ -11,7 +11,6 @@ import {RegisterDialogComponent} from '../dialog/register-dialog.component';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  user: User;
   form: FormGroup;
   private formSubmitAttempt: boolean; 
   version = VERSION;
@@ -19,9 +18,8 @@ export class RegisterComponent implements OnInit {
   constructor(private loginService: LoginService,private fb: FormBuilder, private dialog: MatDialog) {}
 
   ngOnInit() {
-    this.user = new User('', '', '', '', '', '', '', '');
-    this.form = this.fb.group({     // {5}
-      name: ['', Validators.compose([
+   this.form = this.fb.group({     // {5}
+    name: ['', Validators.compose([
 		Validators.required,
 		Validators.pattern('^(?=.*[a-z])(?=.*[A-Z]).{2,}$'),Validators.maxLength(20)])],
       pincode: ['', Validators.compose([

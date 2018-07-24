@@ -33,6 +33,7 @@ import {
   MatRadioModule,
   MatDialogModule
 } from '@angular/material';
+import { CreateproductComponent } from './components/createproduct/createproduct.component';
 const appRoutes: Routes = [
   {
     path: 'products',
@@ -57,7 +58,11 @@ const appRoutes: Routes = [
   },
   { path: 'error', component: ErrorComponent },
   { path: 'signOut', component: SignOutComponent },
-  { path: 'products', component: ProductsComponent }
+  { path: 'products', component: ProductsComponent },
+  {
+    path: 'createproduct',
+    component: CreateproductComponent
+  }
 ];
 
 @NgModule({
@@ -70,7 +75,8 @@ const appRoutes: Routes = [
     SignOutComponent,
     ErrorComponent,
     EditProductComponent,
-    RegisterDialogComponent
+    RegisterDialogComponent,
+    CreateproductComponent
   ],
   entryComponents : [RegisterDialogComponent],
   imports: [

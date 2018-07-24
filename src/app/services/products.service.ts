@@ -16,6 +16,11 @@ export class ProductsService {
 
   }
 
+  insertMasterData(product: Product): Observable<any> {
+    
+    return this.http.get('');
+
+   } 
   
   public login(): Observable<Product[]> {
     return this.http.get<Product[]>(environment.url + '/showproducts');
