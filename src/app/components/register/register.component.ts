@@ -17,8 +17,12 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.user = new User('', '', '', '', '', '', '', '');
     this.form = this.fb.group({     // {5}
-      name: ['', Validators.required],
-      pincode: ['', Validators.required],
+      name: ['', Validators.compose([
+		Validators.required,
+		Validators.pattern('^(?=.*[a-z])(?=.*[A-Z]).{2,}$'),Validators.maxLength(20)])],
+      pincode: ['', Validators.compose([
+        Validators.required,
+        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z]).{5,}$'),Validators.maxLength(5)])],
       location: ['', Validators.required],
       district: ['', Validators.required],
       partner: ['', Validators.required]
