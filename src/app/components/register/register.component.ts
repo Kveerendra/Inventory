@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
 		Validators.pattern('^(?=.*[a-z])(?=.*[A-Z]).{2,}$'),Validators.maxLength(20)])],
       pincode: ['', Validators.compose([
         Validators.required,
-        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z]).{5,}$'),Validators.maxLength(5)])],
+        Validators.pattern('^(?=.*[0-9]).{5,}$'),Validators.maxLength(5)])],
       location: ['', Validators.required],
       district: ['', Validators.required],
       partner: ['', Validators.required]
