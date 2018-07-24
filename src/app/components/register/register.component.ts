@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { LoginService } from '../../services/login.service';
 import { FormGroup, FormBuilder, Validators } from '../../../../node_modules/@angular/forms';
+import {VERSION, MatDialog, MatDialogRef} from '@angular/material';
+import {RegisterDialogComponent} from '../dialog/register-dialog.component';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +14,9 @@ export class RegisterComponent implements OnInit {
   user: User;
   form: FormGroup;
   private formSubmitAttempt: boolean; 
-  constructor(private loginService: LoginService,private fb: FormBuilder) {}
+  version = VERSION;
+  registerDialogRef: MatDialogRef<RegisterDialogComponent>;
+  constructor(private loginService: LoginService,private fb: FormBuilder, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.user = new User('', '', '', '', '', '', '', '');
@@ -38,11 +42,19 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     if (this.form.valid) {
       console.log(this.form.value); // {7}
+      debugger;
       this.loginService.register(this.form.value).then(res => {
-        console.log(res);
+        var data = res.json();
+        this.loginService.changeMessage("Your username: "+data.params[0] + " with password :"+data.params[1] ); 
+        this.registerDialogRef = this.dialog.open(RegisterDialogComponent);
       });
     }
     this.formSubmitAttempt = true;             // {8}
  
   }
+
+  onNoClick(): void {
+    this.registerDialogRef.close();
+  }
+
 }

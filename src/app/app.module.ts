@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorComponent } from './components/error/error.component';
 import { IsAuthenticatedService } from './services/is-authenticated.service';
 import { RegisterComponent } from './components/register/register.component';
+import {RegisterDialogComponent} from './components/dialog/register-dialog.component';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
 import { SignOutComponent } from './components/sign-out/sign-out.component';
 import { LoginRedirectService } from './services/login-redirect.service';
@@ -29,7 +30,8 @@ import {
   MatGridListModule,
   MatInputModule,
   MatCardModule,
-  MatRadioModule
+  MatRadioModule,
+  MatDialogModule
 } from '@angular/material';
 const appRoutes: Routes = [
   {
@@ -67,8 +69,10 @@ const appRoutes: Routes = [
     RegisterComponent,
     SignOutComponent,
     ErrorComponent,
-    EditProductComponent
+    EditProductComponent,
+    RegisterDialogComponent
   ],
+  entryComponents : [RegisterDialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -89,7 +93,8 @@ const appRoutes: Routes = [
     MatInputModule,
     ReactiveFormsModule,
     MatCardModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDialogModule
   ],
   exports: [EditProductComponent],
 

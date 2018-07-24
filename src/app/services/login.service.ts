@@ -1,6 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { User } from '../models/user';
 import { Router } from '../../../node_modules/@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 import { Headers, Http } from '@angular/http';
 
@@ -8,6 +9,8 @@ import { Headers, Http } from '@angular/http';
   providedIn: 'root'
 })
 export class LoginService {
+  private message = new BehaviorSubject('New User');
+  currentMessage = this.message.asObservable();
   authenticated: boolean;
   private headers: Headers = new Headers({
     'Content-Type': 'application/x-www-form-urlencoded',
@@ -59,10 +62,16 @@ export class LoginService {
   ) {
     this.authenticated = false;
   }
+
+  changeMessage(message: string) {
+    this.message.next(message)
+  }
+
   register(user: User) {
-    return this.http
+   return this.http
     .post('http://localhost:5002/register', user, { headers: this.headers })
     .toPromise();
+   // this.message.next('');
   }
   isAuthenticated(): boolean {
     const res = this.window.sessionStorage.getItem('username');
