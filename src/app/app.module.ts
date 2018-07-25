@@ -1,6 +1,6 @@
 import '../polyfills';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpModule, Http } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,9 +31,11 @@ import {
   MatInputModule,
   MatCardModule,
   MatRadioModule,
-  MatDialogModule
+  MatDialogModule,
+  MatSelectModule
 } from '@angular/material';
 import { CreateproductComponent } from './components/createproduct/createproduct.component';
+import { AddproductComponent } from './components/addproduct/addproduct.component';
 const appRoutes: Routes = [
   {
     path: 'products',
@@ -62,7 +64,8 @@ const appRoutes: Routes = [
   {
     path: 'createproduct',
     component: CreateproductComponent
-  }
+  },
+  { path: 'addproduct', component: AddproductComponent}
 ];
 
 @NgModule({
@@ -76,7 +79,8 @@ const appRoutes: Routes = [
     ErrorComponent,
     EditProductComponent,
     RegisterDialogComponent,
-    CreateproductComponent
+    CreateproductComponent,
+    AddproductComponent
   ],
   entryComponents : [RegisterDialogComponent],
   imports: [
@@ -100,10 +104,11 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     MatCardModule,
     MatRadioModule,
+    MatSelectModule,
     MatDialogModule
   ],
   exports: [EditProductComponent],
-
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     { provide: 'Window', useValue: window },
     ProductsService,

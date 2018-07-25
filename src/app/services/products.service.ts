@@ -12,7 +12,7 @@ export class ProductsService {
   constructor(private http: HttpClient) { }
 
   public getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(environment.url + '/showproducts');
+    return this.http.get<Product[]>('http://localhost:3000/productList');
 
   }
 
