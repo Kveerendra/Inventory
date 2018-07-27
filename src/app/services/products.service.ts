@@ -3,12 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product';
 import { environment } from '../../environments/environment';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
-
+  private product:Product;
+  
+  
   constructor(private http: HttpClient) { }
 
   public getProducts(): Observable<Product[]> {
@@ -17,14 +20,18 @@ export class ProductsService {
   }
 
   insertMasterData(product: Product): Observable<any> {
-    
     return this.http.get('');
-
    } 
   
   public login(): Observable<Product[]> {
     return this.http.get<Product[]>(environment.url + '/showproducts');
-
+  }
+  changeProduct(product: Product) {
+    this.product = product;
   }
 
+  getProduct()
+  {
+    return this.product;
+  }
 }

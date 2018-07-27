@@ -1,0 +1,15 @@
+<mat-card class="demo-panel">
+  <mat-card-content>
+    <mat-sidenav-container class="example-container">
+      <mat-sidenav #sidenav class="example-sidenav">
+        Side Nav Content goes here!
+      </mat-sidenav>
+      <div class="example-sidenav-content">
+        <button type="button" mat-button class="sidenav-icon" (click)="sidenav.open()"><mat-icon>menu</mat-icon></button>
+        <div class="container-fluid">
+            <router-outlet></router-outlet>
+          </div>
+      </div>
+    </mat-sidenav-container>
+  </mat-card-content>
+</mat-card>

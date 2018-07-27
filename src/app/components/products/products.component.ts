@@ -8,6 +8,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { TabsetComponent } from 'ngx-bootstrap';
 import { EditProductComponent } from '../edit-product/edit-product.component';
+import {MatPaginator, MatSort, MatTableDataSource,VERSION, MatDialog, MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-products',
@@ -16,37 +17,55 @@ import { EditProductComponent } from '../edit-product/edit-product.component';
 })
 export class ProductsComponent implements OnInit {
   user: User;
-  columnDefs = [
-    { headerName: 'Product Id', field: 'product_id' },
-    { headerName: 'Product Name', field: 'product_name' },
-    { headerName: 'Product Description', field: 'product_description' },
-    { headerName: 'Price/Qty', field: 'price_per_qty' },
-    { headerName: 'Available Qty', field: 'product_quantity' },
-    { headerName: 'Delivery Time', field: 'delivery_day' },
-    {headerName: 'Action', cellRenderer: EditProductComponent}
-  ];
-  rowData = [];
+  displayedColumns = ['product_id', 'product_name', 'product_description', 'price_per_qty', 'product_quantity', 'delivery_day','actions'];
+  dataSource: MatTableDataSource<Product>;
+  version = VERSION;
+  editProductDialogRef: MatDialogRef<EditProductComponent>;
   tab = 'All';
   modalRef: BsModalRef;
   product: Product;
   @ViewChild('staticTabs') staticTabs: TabsetComponent;
-  constructor(private productService: ProductsService, private loginService: LoginService, private modalService: BsModalService) {
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  constructor(private productService: ProductsService,private dialog: MatDialog, private loginService: LoginService, private modalService: BsModalService) {
+
     this.user = loginService.getUser();
+    this.productService.getProducts().subscribe(data => {
+      
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.sort = this.sort;
+      console.log("datasource is : "+ this.dataSource);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+  });
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
   ngOnInit() {
-    this.productService.getProducts().subscribe(data => {
-
-        this.rowData = data;
-    });
-    console.log('#########' + this.rowData);
+   
+  
+   
   }
   myTab() {
     return this.staticTabs.tabs[1].active !== true;
   }
   addProduct() {
     this.modalRef.hide();
+  }
+
+  
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
+
+  editItem(product: Product)
+  {
+    console.log("product details :" + product);
+    this.productService.changeProduct(product);
+    this.editProductDialogRef = this.dialog.open(EditProductComponent);
   }
 }

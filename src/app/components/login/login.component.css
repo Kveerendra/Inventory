@@ -9,3 +9,10 @@ mat-card {
 .full-width-input {
   width: 100%;
 }
+.login-header
+{
+  margin-bottom: 50px;
+  margin-left: 130px;
+  background-color: white;
+ 
+}

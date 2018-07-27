@@ -5,11 +5,9 @@ import { HttpModule, Http } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AgGridModule } from 'ag-grid-angular';
-
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductsService } from './services/products.service';
-
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -32,10 +30,16 @@ import {
   MatCardModule,
   MatRadioModule,
   MatDialogModule,
-  MatSelectModule
+  MatSelectModule,
+  MatSidenavModule,
+  MatPaginatorModule, 
+  MatSortModule,
+  MatTableModule,
+  MatToolbarModule
 } from '@angular/material';
 import { CreateproductComponent } from './components/createproduct/createproduct.component';
 import { AddproductComponent } from './components/addproduct/addproduct.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 const appRoutes: Routes = [
   {
     path: 'products',
@@ -80,9 +84,10 @@ const appRoutes: Routes = [
     EditProductComponent,
     RegisterDialogComponent,
     CreateproductComponent,
-    AddproductComponent
+    AddproductComponent,
+    SidenavComponent
   ],
-  entryComponents : [RegisterDialogComponent],
+  entryComponents : [RegisterDialogComponent,EditProductComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -105,7 +110,12 @@ const appRoutes: Routes = [
     MatCardModule,
     MatRadioModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSidenavModule,
+    MatPaginatorModule, 
+    MatSortModule,
+    MatTableModule,
+    MatToolbarModule
   ],
   exports: [EditProductComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],

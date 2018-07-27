@@ -1,39 +1,79 @@
-<div class="row ">
-    <tabset #staticTabs class="col-6">
-        <tab heading="All Products"></tab>
-        <tab heading="My Products"></tab>
-      </tabset>
-  <!-- <div class="col-6 container">
-    <ul class="nav nav-xs nav-pills" *ngIf="user.role!=='buyer'">
-      <li class="nav-item"><span role="tab" data-toggle="tab" [ngClass]="tab=='All'?'active':'text-primary bg-light'" (click)="tab='All'" class="nav-link">All Products</span></li>
-      <li class="nav-item"><span role="tab" data-toggle="tab" [ngClass]="tab=='My'?'active':'text-primary bg-light'" (click)="tab='My'" class="nav-link">My Products</span></li>
-    </ul>
-  </div> -->
-  <div class="col-6">
-    <div class="col-2 float-right">&nbsp;</div>
-    <button type="button" class="btn btn-xs btn-success float-right" (click)="openModal(template)" *ngIf="user.role!=='buyer'">Add Products</button>
-    <div class="col-2 float-right">&nbsp;</div>
-    <button type="button" class="btn btn-xs btn-success float-right" *ngIf="myTab()">Add to Cart</button>
+<div class="container mat-elevation-z8">
+
+  <div class="form">
+      <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
   </div>
+  <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <ng-container matColumnDef="product_id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Product Id</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.product_id}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="product_name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Product Name</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.product_name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="product_description">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Product Description</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.product_description}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="price_per_qty">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Price/Quantity</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.price_per_qty}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="product_quantity">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Availabl Quantity</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.product_quantity}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="delivery_day">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Delivery Time</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.delivery_day}}</mat-cell>
+    </ng-container>
+
+      <!-- actions -->
+      <!-- <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef>
+            <button mat-icon-button color="primary" (click)="addNew()">
+              <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+            </button>
+          </mat-header-cell>
+    
+          <mat-cell *matCellDef="let row; let i=index;">
+            <button mat-icon-button color="accent" (click)="startEdit(i)">
+              <mat-icon aria-label="Edit">edit</mat-icon>
+            </button>
+    
+            <button mat-icon-button color="accent" (click)="deleteItem(i)">
+              <mat-icon aria-label="Delete">delete</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container> -->
+
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              <!-- <button mat-button (click)="showDetails(row)">DETAILS</button> -->
+              <button mat-button (click)="editItem(row)"><mat-icon aria-label="Edit">edit</mat-icon></button>
+              <!-- <button mat-button (click)="deleteItem(row)">DELETE</button> -->
+            </mat-cell>
+          </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+
+  <div class="no-results" [style.display]="dataSource==null || dataSource.length == 0 ? '' : 'none'">
+      No results
+    </div>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </div>
-<div class="row justify-content-md-center">
-  <ag-grid-angular style="height:90vh;width:95vw;" [rowData]="rowData" [columnDefs]="columnDefs" class="ag-theme-material col-md-auto"
-    [gridAutoHeight]="false" [alwaysShowStatusBar]="true" [enableSorting]="true" [enableFilter]="true" [enableColResize]="true">
-  </ag-grid-angular>
-
-</div>
-
-<ng-template #template>
-    <div class="modal-header">
-      <h4 class="modal-title pull-left">Add Product</h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-xs btn-success" (click)="addProduct()">Add Product</button>
-    </div>
-  </ng-template>

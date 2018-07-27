@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductsService } from '../../services/products.service';
 import { FormGroup, FormBuilder, Validators } from '../../../../node_modules/@angular/forms';
-import {VERSION, MatDialog, MatDialogRef} from '@angular/material';
+
 
 @Component({
   selector: 'app-addproduct',
