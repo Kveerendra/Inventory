@@ -8,11 +8,11 @@ import { User } from './models/user';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'Dashboard';
   user: User;
   constructor(private loginService: LoginService) {
     this.user = loginService.getUser();
-    setTheme('bs4');
+    //setTheme('bs4');
   }
   isAuthenticated(): boolean {
     return this.loginService.authenticated;

@@ -1,0 +1,11 @@
+* :focus { outline: 0; }
+.toolbar-filler {
+    flex: 1 1 auto
+}
+.mat-nav-list a.active {
+    background: blue;
+}
+a { 
+text-decoration: none;
+color: black;
+}

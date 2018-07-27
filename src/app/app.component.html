@@ -1,61 +1,96 @@
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-  <a class="navbar-brand" href="" *ngIf="isAuthenticated()">Dashboard</a>
-  <a class="navbar-brand" href="" *ngIf="!isAuthenticated()">Inventory Management</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="navbarSupportedContent" aria-controls="navbarSupportedContent"
-    aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <ul *ngIf="isAuthenticated()" class="nav navbar-nav">
-
-  </ul>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav">
-      <!-- <li class="navbar-item">
-        <a class="navbar-link" routerLink="/products">Show Products</a></li> -->
-
-        <li class="nav-item" *ngIf="isAuthenticated()">
-            <a class="nav-link" href="" routerLink="/products"  >
-                Show Products</a>
-          </li>
-        <li class="nav-item" *ngIf="isAuthenticated()">
-            <a class="nav-link" href=""  >
-              Add Products</a>
-          </li>
-      <li class="nav-item" *ngIf="isAuthenticated()">
-          <a class="nav-link" href=""  >
-            Search Products</a>
-        </li>
-      <li class="nav-item" *ngIf="isAuthenticated()">
-          <a class="nav-link" href=""  >
-            Order Status</a>
-        </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-      <li class="nav-item" *ngIf="isAuthenticated()">
-        <a class="nav-link" href="#">
-          {{user.name}}</a>
-      </li>
-      <li class="nav-item" *ngIf="isAuthenticated()">
-        <a class="nav-link"  routerLink="/signOut" href="" (click)="signOut()">
-          <span></span>Sign Out</a>
-      </li>
-      <!-- <li class="nav-item" *ngIf="!isAuthenticated()">
-        <a class="nav-link" href=""  >
-          <span></span>Register</a>
-      </li>
-      <li class="nav-item ml-auto" *ngIf="!isAuthenticated()">
-        <a class="nav-link" href=""  >
-          <span></span>Sign In</a>
-      </li> -->
-    </ul>
-    <!--   <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form> -->
-  </div>
-</nav>
-<div class="container-fluid">
-  <app-sidenav></app-sidenav>
-</div>
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav mode="push" class="app-sidenav">
+    <mat-toolbar color="primary">
+      <!--future svg to go here-->
+      <span class="toolbar-filler"></span>
+      <button mat-icon-button *ngIf="isAuthenticated()" (click)="sidenav.toggle()" class="mat-icon-button sidenav-toggle-button"
+        [hidden]="!sidenav.opened">
+        <mat-icon aria-label="Menu" class="material-icons">close</mat-icon>
+      </button>
+    </mat-toolbar>
+    <!-- <mat-nav-list> -->
+    <!-- <a mat-list-item class="sidenav-link" [routerLink]="['/comp1']" (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>account_balance</mat-icon>
+        <span class="title" mat-line>comp1</span>
+        <span mat-line class="secondary">test</span>
+      </a> -->
+    <!-- <mat-nav-list-item>
+      
+    </mat-nav-list-item> -->
+    <mat-list>
+      <mat-list-item>
+        <div mat-line>
+          <button mat-button *ngIf="isAuthenticated()" routerLink="/products">
+            <mat-icon mat-list-icon>list_alt</mat-icon>Product Catlog</button>
+        </div>
+        <div mat-line>
+          <button mat-button *ngIf="isAuthenticated()" routerLink="/addproduct">
+            <mat-icon mat-list-icon>ballot</mat-icon>Add Products</button>
+        </div>
+        <div mat-line>
+          <button mat-button *ngIf="isAuthenticated()" routerLink="/createproduct">
+            <mat-icon mat-list-icon>add_to_queue</mat-icon>Create Product</button>
+        </div>
+        <div mat-line>
+          <button mat-button *ngIf="isAuthenticated()" [routerLink]="['./orders', 'all']">
+            <mat-icon mat-list-icon>list</mat-icon>My Order Status</button>
+        </div>
+        <div mat-line>
+          <button mat-button *ngIf="isAuthenticated()" [routerLink]="['./orders', 'pendingOrders']">
+            <mat-icon mat-list-icon>filter_list</mat-icon>My Pending Orders</button>
+        </div>
+        <div mat-line>
+          <button mat-button *ngIf="isAuthenticated()" [routerLink]="['./orders', 'deliveredOrders']">
+            <mat-icon mat-list-icon>view_list</mat-icon>Orders Completed</button>
+        </div>
+        <div mat-line>
+          <button mat-button *ngIf="isAuthenticated()" [routerLink]="['./orders', 'approval']">
+            <mat-icon mat-list-icon>assignment_turned_in</mat-icon>Orders Pending for Approval</button>
+        </div>
+        <div mat-line>
+          <button mat-button *ngIf="isAuthenticated()">
+            <mat-icon mat-list-icon>reorder</mat-icon>Out of Stock</button>
+        </div>
+        <div mat-line>
+          <button mat-button *ngIf="isAuthenticated()">
+            <mat-icon mat-list-icon>favorite</mat-icon>My Wishlist</button>
+        </div>
+        <div mat-line>
+          <button mat-button *ngIf="isAuthenticated()">
+            <mat-icon mat-list-icon>card_membership</mat-icon>Sub Contractor</button>
+        </div>
+        <div mat-line>
+          <button mat-button *ngIf="isAuthenticated()">
+            <mat-icon mat-list-icon>face</mat-icon>My SubContractors</button>
+        </div>
+        <div mat-line>
+          <button mat-button *ngIf="isAuthenticated()">
+            <mat-icon mat-list-icon>shopping_cart</mat-icon>Place Order</button>
+        </div>
+        <div mat-line>
+          <button mat-button *ngIf="isAuthenticated()" [routerLink]="['./orders', 'all']">
+            <mat-icon mat-list-icon>view_headline</mat-icon>Order Details</button>
+        </div>
+      </mat-list-item>
+    </mat-list>
+    <!-- </mat-nav-list> -->
+  </mat-sidenav>
+  <mat-toolbar id="appToolbar" color="primary">
+    <button mat-icon-button *ngIf="isAuthenticated()" (click)="sidenav.toggle()" class="mat-icon-button sidenav-toggle-button"
+      [hidden]="sidenav.opened">
+      <mat-icon aria-label="Menu" class="material-icons">menu</mat-icon>
+    </button>
+    <h1 class="component-title" *ngIf="isAuthenticated()">
+      <a class="title-link">{{title}}</a>
+    </h1>
+    <h1 class="component-title" *ngIf="!isAuthenticated()">
+      <a class="title-link">Inventory Management</a>
+    </h1>
+    <span class="toolbar-filler"></span>
+    <!--<button id="button-login" mat-button [routerLink]="['/signupin']" *ngIf="!(user | async)">Log In</button>-->
+    <button routerLink="/login" *ngIf="isAuthenticated()" (click)="signOut()" mat-button>
+      <mat-icon mat-list-icon>error_outline</mat-icon>
+    </button>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+</mat-sidenav-container>
