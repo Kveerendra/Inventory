@@ -41,6 +41,8 @@ import { CreateproductComponent } from './components/createproduct/createproduct
 import { AddproductComponent } from './components/addproduct/addproduct.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { OrdersComponent } from './components/orders/orders.component';
+
+import { SubContractorComponent } from './components/sub-contractor/sub-contractor.component';
 const appRoutes: Routes = [
   {
     path: 'products',
@@ -68,7 +70,8 @@ const appRoutes: Routes = [
   { path: 'products', component: ProductsComponent },
   {path: 'createproduct',component: CreateproductComponent},
   {path: 'orders/:flag',component: OrdersComponent},
-  { path: 'addproduct', component: AddproductComponent}
+  { path: 'addproduct', component: AddproductComponent},
+  {path:'mysubcontractors', component: SubContractorComponent }
 ];
 
 @NgModule({
@@ -85,7 +88,9 @@ const appRoutes: Routes = [
     CreateproductComponent,
     AddproductComponent,
     SidenavComponent,
-    OrdersComponent
+    OrdersComponent,
+  
+    SubContractorComponent
   ],
   entryComponents : [RegisterDialogComponent,EditProductComponent],
   imports: [
