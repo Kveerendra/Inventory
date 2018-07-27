@@ -4,6 +4,7 @@ import { LoginService } from '../../services/login.service';
 import { FormGroup, FormBuilder, Validators } from '../../../../node_modules/@angular/forms';
 import {VERSION, MatDialog, MatDialogRef} from '@angular/material';
 import {RegisterDialogComponent} from '../dialog/register-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,7 @@ export class RegisterComponent implements OnInit {
   private formSubmitAttempt: boolean; 
   version = VERSION;
   registerDialogRef: MatDialogRef<RegisterDialogComponent>;
-  constructor(private loginService: LoginService,private fb: FormBuilder, private dialog: MatDialog) {}
+  constructor(private router: Router, private loginService: LoginService,private fb: FormBuilder, private dialog: MatDialog) {}
 
   ngOnInit() {
    this.form = this.fb.group({     // {5}
@@ -53,6 +54,10 @@ export class RegisterComponent implements OnInit {
 
   onNoClick(): void {
     this.registerDialogRef.close();
+  }
+
+  redirectToLogin() {
+    this.router.navigateByUrl('/login');
   }
 
 }
