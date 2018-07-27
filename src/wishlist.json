@@ -1,0 +1,31 @@
+{
+    "wishList": [
+        {
+            "product_id": "101",
+            "product_name": "Shirts",
+            "product_type": "Clothings",
+            "price_per_qty": "1500",
+            "product_quantity": "10",
+            "status": "In Progress",
+            "wisher_id" : "W_XY01"
+        },
+        {
+            "product_id": "101",
+            "product_name": "Shirts",
+            "product_type": "Clothings",
+            "price_per_qty": "1500",
+            "product_quantity": "10",
+            "status": "In Progress",
+            "wisher_id" : "W_XY01"
+        },
+        {
+            "product_id": "101",
+            "product_name": "Shirts",
+            "product_type": "Clothings",
+            "price_per_qty": "1500",
+            "product_quantity": "10",
+            "status": "In Progress",
+            "wisher_id" : "W_XY01"
+        }
+    ]
+}

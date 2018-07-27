@@ -43,6 +43,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { OrdersComponent } from './components/orders/orders.component';
 
 import { SubContractorComponent } from './components/sub-contractor/sub-contractor.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 const appRoutes: Routes = [
   {
     path: 'products',
@@ -90,7 +91,9 @@ const appRoutes: Routes = [
     SidenavComponent,
     OrdersComponent,
   
-    SubContractorComponent
+    SubContractorComponent,
+  
+    WishlistComponent
   ],
   entryComponents : [RegisterDialogComponent,EditProductComponent],
   imports: [
