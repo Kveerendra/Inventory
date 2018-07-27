@@ -4,6 +4,7 @@
     <mat-form-field>
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
     </mat-form-field>
+    <label class="tableCaption">{{title}}</label>
   </div>
   <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
     <!--- Note that these columns can be defined in any order.

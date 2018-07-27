@@ -20,7 +20,7 @@ export class OrdersComponent implements OnInit {
   dataSource: MatTableDataSource<Order>;
   version = VERSION;
   order: Order;
-
+  title;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -33,6 +33,11 @@ export class OrdersComponent implements OnInit {
       params => {
         this.routeParam = params['flag'];
         this.refreshingData();
+      }
+    );
+    this.route.queryParams.subscribe(
+      params => {
+        this.title = params['tableTitle'];
       }
     );
   }

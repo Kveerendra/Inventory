@@ -21,7 +21,7 @@
       <mat-list-item>
         <div mat-line>
           <button mat-button *ngIf="isAuthenticated()" routerLink="/products">
-            <mat-icon mat-list-icon>list_alt</mat-icon>Product Catlog</button>
+            <mat-icon mat-list-icon>list_alt</mat-icon>Product Catalog</button>
         </div>
         <div mat-line>
           <button mat-button *ngIf="isAuthenticated()" routerLink="/addproduct">
@@ -32,19 +32,19 @@
             <mat-icon mat-list-icon>add_to_queue</mat-icon>Create Product</button>
         </div>
         <div mat-line>
-          <button mat-button *ngIf="isAuthenticated()" [routerLink]="['./orders', 'all']">
+          <button mat-button *ngIf="isAuthenticated()" [routerLink]="['./orders', 'all']" [skipLocationChange]="true" [queryParams]="{ tableTitle: 'My Order Status' }">
             <mat-icon mat-list-icon>list</mat-icon>My Order Status</button>
         </div>
         <div mat-line>
-          <button mat-button *ngIf="isAuthenticated()" [routerLink]="['./orders', 'pendingOrders']">
+          <button mat-button *ngIf="isAuthenticated()" [routerLink]="['./orders', 'pendingOrders']" [skipLocationChange]="true" [queryParams]="{ tableTitle: 'My Pending Orders' }">
             <mat-icon mat-list-icon>filter_list</mat-icon>My Pending Orders</button>
         </div>
         <div mat-line>
-          <button mat-button *ngIf="isAuthenticated()" [routerLink]="['./orders', 'deliveredOrders']">
+          <button mat-button *ngIf="isAuthenticated()" [routerLink]="['./orders', 'deliveredOrders']" [skipLocationChange]="true" [queryParams]="{ tableTitle: 'Orders Completed' }">
             <mat-icon mat-list-icon>view_list</mat-icon>Orders Completed</button>
         </div>
         <div mat-line>
-          <button mat-button *ngIf="isAuthenticated()" [routerLink]="['./orders', 'approval']">
+          <button mat-button *ngIf="isAuthenticated()" [routerLink]="['./orders', 'approval']" [skipLocationChange]="true" [queryParams]="{ tableTitle: 'Orders Pending for Approval' }">
             <mat-icon mat-list-icon>assignment_turned_in</mat-icon>Orders Pending for Approval</button>
         </div>
         <div mat-line>
@@ -68,7 +68,7 @@
             <mat-icon mat-list-icon>shopping_cart</mat-icon>Place Order</button>
         </div>
         <div mat-line>
-          <button mat-button *ngIf="isAuthenticated()" [routerLink]="['./orders', 'all']">
+          <button mat-button *ngIf="isAuthenticated()" [routerLink]="['./orders', 'all']" [skipLocationChange]="true" [queryParams]="{ tableTitle: 'Order Details' }">
             <mat-icon mat-list-icon>view_headline</mat-icon>Order Details</button>
         </div>
       </mat-list-item>

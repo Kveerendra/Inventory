@@ -11,3 +11,13 @@
       align-content: center;
       margin-top:50px;
   }
+  .mat-header-cell {
+    text-align: center;
+    color: slateblue;
+    font-weight:bold;   
+  }
+  .tableCaption{
+    font-weight: bold;
+    color: darkslateblue;
+    margin-left: 332px;
+  }
