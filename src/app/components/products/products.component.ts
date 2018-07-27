@@ -68,4 +68,6 @@ export class ProductsComponent implements OnInit {
     this.productService.changeProduct(product);
     this.editProductDialogRef = this.dialog.open(EditProductComponent);
   }
+
+ 
 }

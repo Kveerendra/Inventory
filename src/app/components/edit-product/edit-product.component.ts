@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { Product } from '../../models/product';
 import { FormGroup, FormBuilder, Validators } from '../../../../node_modules/@angular/forms';
+import { MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-edit-product',
@@ -13,9 +14,10 @@ export class EditProductComponent implements OnInit {
   product: Product;
   form: FormGroup;
   private formSubmitAttempt: boolean; 
-  constructor(private productService: ProductsService, private fb: FormBuilder){
+  constructor(private productService: ProductsService, private fb: FormBuilder, private dialogRef: MatDialogRef<EditProductComponent>){
     this.product = this.productService.getProduct();
-    console.log("Product JSON >>>>> "+ JSON.stringify(this.product));
+    console.log("Product JSON >>>>> "+ JSON.stringify(this.product) );
+    
   }
 
   ngOnInit() {
@@ -46,7 +48,11 @@ onSubmit() {
     console.log(this.form.value); // {7}
   }
   this.formSubmitAttempt = true;             // {8}
+  this.dialogRef.close();
+}
 
+onCancel(): void {
+  this.dialogRef.close();
 }
 
 }
