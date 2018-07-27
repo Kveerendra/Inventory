@@ -22,11 +22,11 @@ mat-card {
     margin: 15px 0;
   }
   ::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
-    background-color: rgb(66, 134, 244);
+    background-color: slateblue;
   }
   ::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
-    border-color: rgb(66, 134, 244);
+    border-color: slateblue;
   }
   ::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
-    background-color:rgba(66, 134, 244,.26);
+    background-color: slateblue;
   }
