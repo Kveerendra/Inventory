@@ -1,0 +1,23 @@
+.example-container {
+    height: 400px;
+    overflow: auto;
+  }
+  
+  table {
+    width: 100%;
+  }
+  .container
+  {
+      align-content: center;
+      margin-top:50px;
+  }
+
+  .approve-class
+  {
+    color: green;
+  }
+
+  .decline-class
+  {
+    color: red;
+  }

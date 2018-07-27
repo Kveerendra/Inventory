@@ -40,6 +40,7 @@ import {
 import { CreateproductComponent } from './components/createproduct/createproduct.component';
 import { AddproductComponent } from './components/addproduct/addproduct.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { OrdersComponent } from './components/orders/orders.component';
 const appRoutes: Routes = [
   {
     path: 'products',
@@ -65,11 +66,9 @@ const appRoutes: Routes = [
   { path: 'error', component: ErrorComponent },
   { path: 'signOut', component: SignOutComponent },
   { path: 'products', component: ProductsComponent },
-  {
-    path: 'createproduct',
-    component: CreateproductComponent
-  },
-  { path: 'addproduct', component: AddproductComponent}
+  {path: 'createproduct',component: CreateproductComponent},
+  {path: 'orders/:flag',component: OrdersComponent},
+  { path: 'addproduct', component: CreateproductComponent}
 ];
 
 @NgModule({
@@ -85,7 +84,8 @@ const appRoutes: Routes = [
     RegisterDialogComponent,
     CreateproductComponent,
     AddproductComponent,
-    SidenavComponent
+    SidenavComponent,
+    OrdersComponent
   ],
   entryComponents : [RegisterDialogComponent,EditProductComponent],
   imports: [

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product';
 import { environment } from '../../environments/environment';
+import { Order } from '../models/Order';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -15,7 +16,14 @@ export class ProductsService {
   constructor(private http: HttpClient) { }
 
   public getProducts(): Observable<Product[]> {
+    //console.log("hello");
     return this.http.get<Product[]>('http://localhost:3000/productList');
+
+  }
+
+  public getOrders(): Observable<Order[]> {
+    //console.log("hello");
+    return this.http.get<Order[]>('http://localhost:3000/orderList');
 
   }
 
