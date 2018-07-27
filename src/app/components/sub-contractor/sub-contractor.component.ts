@@ -32,11 +32,7 @@ export class SubContractorComponent implements OnInit {
   });
   }
 
-  ngOnInit() {
-   
-  
-   
-  }
+  ngOnInit() {}
  
 
   

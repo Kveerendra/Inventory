@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment';
 import { Order } from '../models/Order';
 import { Subcontractor } from '../models/subcontractor';
 import { BehaviorSubject } from 'rxjs';
+import { Wishlist } from '../models/wishlist';
 
 @Injectable({
   providedIn: 'root'
@@ -18,18 +19,24 @@ export class ProductsService {
 
   public getProducts(): Observable<Product[]> {
     //console.log("hello");
-    return this.http.get<Product[]>('http://localhost:3000/productList');
+    return this.http.get<Product[]>(environment.clientUrl + '/productList');
 
   }
 
   public getOrders(): Observable<Order[]> {
     //console.log("hello");
-    return this.http.get<Order[]>('http://localhost:3000/orderList');
+    return this.http.get<Order[]>(environment.clientUrl + '/orderList');
 
   }
   public getSubContractors(): Observable<Subcontractor[]> {
     //console.log("hello");
-    return this.http.get<Order[]>('http://localhost:3000/subContractorList');
+    return this.http.get<Order[]>(environment.clientUrl + '/subContractorList');
+
+  }
+
+  public getWishList(): Observable<Wishlist[]> {
+    //console.log("hello");
+    return this.http.get<Wishlist[]>(environment.clientUrl + '/wishList');
 
   }
 
@@ -38,7 +45,7 @@ export class ProductsService {
    } 
   
   public login(): Observable<Product[]> {
-    return this.http.get<Product[]>(environment.url + '/showproducts');
+    return this.http.get<Product[]>(environment.serverUrl + '/showproducts');
   }
   changeProduct(product: Product) {
     this.product = product;

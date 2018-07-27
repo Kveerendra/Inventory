@@ -72,7 +72,8 @@ const appRoutes: Routes = [
   {path: 'createproduct',component: CreateproductComponent},
   {path: 'orders/:flag',component: OrdersComponent},
   { path: 'addproduct', component: AddproductComponent},
-  {path:'mysubcontractors', component: SubContractorComponent }
+  {path:'mysubcontractors', component: SubContractorComponent },
+  {path:'wishList', component: WishlistComponent }
 ];
 
 @NgModule({

@@ -43,7 +43,7 @@
             <mat-icon mat-list-icon>reorder</mat-icon>Out of Stock</button>
         </div>
         <div mat-line>
-          <button mat-button (click)="sidenav.toggle()" *ngIf="isAuthenticated()">
+          <button mat-button (click)="sidenav.toggle()" *ngIf="isAuthenticated()" routerLink="/wishList">
             <mat-icon mat-list-icon>favorite</mat-icon>My Wishlist</button>
         </div>
         <div mat-line>
