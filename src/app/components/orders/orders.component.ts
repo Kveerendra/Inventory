@@ -12,6 +12,7 @@ import { MatPaginator, MatSort, MatTableDataSource, VERSION, MatDialog, MatDialo
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.css']
 })
+
 export class OrdersComponent implements OnInit {
   user: User;
   routeParam;
@@ -22,19 +23,18 @@ export class OrdersComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+
   constructor(private route: ActivatedRoute, private productService: ProductsService, private dialog: MatDialog, private loginService: LoginService, private modalService: BsModalService) {
     this.dataSource = new MatTableDataSource();
   }
+
   ngOnInit() {
     this.route.params.subscribe(
       params => {
-
         this.routeParam = params['flag'];
         this.refreshingData();
       }
     );
-
-
   }
 
   refreshingData() {
@@ -55,13 +55,11 @@ export class OrdersComponent implements OnInit {
       default: statusFlag = 'all';
         break;
     }
-    debugger;
     this.user = this.loginService.getUser();
     var filteredData;
     this.productService.getOrders().subscribe(data => {
       if (statusFlag != 'all') {
         filteredData = data.filter(function (el) {
-
           return (el.status.toLowerCase() === statusFlag); // Changed this so a home would match
         });
       }
@@ -70,7 +68,6 @@ export class OrdersComponent implements OnInit {
       }
       this.dataSource = filteredData;
       this.dataSource.sort = this.sort;
-      console.log("datasource is : " + this.dataSource);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
