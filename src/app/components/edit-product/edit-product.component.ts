@@ -15,6 +15,7 @@ export class EditProductComponent implements OnInit {
   private formSubmitAttempt: boolean; 
   constructor(private productService: ProductsService, private fb: FormBuilder){
     this.product = this.productService.getProduct();
+    console.log("Product JSON >>>>> "+ JSON.stringify(this.product));
   }
 
   ngOnInit() {
@@ -47,6 +48,5 @@ onSubmit() {
   this.formSubmitAttempt = true;             // {8}
 
 }
-    
 
 }
