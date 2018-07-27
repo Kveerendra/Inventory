@@ -12,6 +12,10 @@
     align-items: left;
     justify-content: left;
 }
+a {
+    text-decoration: none !important;
+    background-color: none !important;
+}
 
 .example-sidenav
 {
@@ -24,8 +28,4 @@
 .sidenav-icon
 {
     padding-bottom: 500px;
-}
-.container-fluid
-{
-    
 }
