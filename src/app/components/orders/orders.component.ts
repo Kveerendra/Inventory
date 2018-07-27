@@ -66,7 +66,7 @@ export class OrdersComponent implements OnInit {
       else {
         filteredData = data;
       }
-      this.dataSource = filteredData;
+      this.dataSource = new MatTableDataSource(filteredData);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
