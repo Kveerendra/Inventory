@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Product } from '../models/product';
 import { environment } from '../../environments/environment';
 import { Order } from '../models/Order';
+import { Subcontractor } from '../models/subcontractor';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -24,6 +25,11 @@ export class ProductsService {
   public getOrders(): Observable<Order[]> {
     //console.log("hello");
     return this.http.get<Order[]>('http://localhost:3000/orderList');
+
+  }
+  public getSubContractors(): Observable<Subcontractor[]> {
+    //console.log("hello");
+    return this.http.get<Order[]>('http://localhost:3000/subContractorList');
 
   }
 

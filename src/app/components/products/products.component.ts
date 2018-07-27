@@ -1,6 +1,5 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
-import { Observable } from 'rxjs';
 import { Product } from '../../models/product';
 import { User } from '../../models/user';
 import { LoginService } from '../../services/login.service';
