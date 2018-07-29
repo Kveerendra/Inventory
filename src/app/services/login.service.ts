@@ -37,7 +37,7 @@ export class LoginService {
     this.router.navigateByUrl('/login');
   }
   login(user: User): any {
-    console.log(user);
+   // console.log(user);
     return this.http
       .post('http://localhost:5002/login', JSON.stringify(user), { headers: this.headers })
       .toPromise();

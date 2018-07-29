@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
 }
   onSubmit() {
     if (this.form.valid) {
-      console.log(this.form.value); // {7}
+     // console.log(this.form.value); // {7}
       debugger;
       this.loginService.register(this.form.value).then(res => {
         var data = res.json();

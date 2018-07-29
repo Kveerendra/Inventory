@@ -16,7 +16,7 @@ export class EditProductComponent implements OnInit {
   private formSubmitAttempt: boolean; 
   constructor(private productService: ProductsService, private fb: FormBuilder, private dialogRef: MatDialogRef<EditProductComponent>){
     this.product = this.productService.getProduct();
-    console.log("Product JSON >>>>> "+ JSON.stringify(this.product) );
+    //console.log("Product JSON >>>>> "+ JSON.stringify(this.product) );
     
   }
 
@@ -45,7 +45,7 @@ export class EditProductComponent implements OnInit {
 
 onSubmit() {
   if (this.form.valid) {
-    console.log(this.form.value); // {7}
+    //(this.form.value); // {7}
   }
   this.formSubmitAttempt = true;             // {8}
   this.dialogRef.close();
