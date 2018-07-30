@@ -35,7 +35,9 @@ import {
   MatPaginatorModule,
   MatSortModule,
   MatTableModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatTooltipModule,
+  MatSnackBarModule
 } from '@angular/material';
 import { CreateproductComponent } from './components/createproduct/createproduct.component';
 import { AddproductComponent } from './components/addproduct/addproduct.component';
@@ -44,6 +46,7 @@ import { OrdersComponent } from './components/orders/orders.component';
 
 import { SubContractorComponent } from './components/sub-contractor/sub-contractor.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { PlaceorderComponent } from './components/placeorder/placeorder.component';
 const appRoutes: Routes = [
   {
     path: 'products',
@@ -75,7 +78,8 @@ const appRoutes: Routes = [
   { path: 'orders/:flag', component: OrdersComponent, canActivate: [IsAuthenticatedService] },
   { path: 'addproduct', component: AddproductComponent, canActivate: [IsAuthenticatedService] },
   { path: 'mysubcontractors', component: SubContractorComponent, canActivate: [IsAuthenticatedService] },
-  { path: 'wishList', component: WishlistComponent, canActivate: [IsAuthenticatedService] }
+  { path: 'wishList', component: WishlistComponent, canActivate: [IsAuthenticatedService] },
+  { path: 'placeorder', component: PlaceorderComponent, canActivate: [IsAuthenticatedService] }
 ];
 
 @NgModule({
@@ -96,9 +100,11 @@ const appRoutes: Routes = [
 
     SubContractorComponent,
 
-    WishlistComponent
+    WishlistComponent,
+
+    PlaceorderComponent
   ],
-  entryComponents: [RegisterDialogComponent, EditProductComponent],
+  entryComponents: [RegisterDialogComponent, EditProductComponent, PlaceorderComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -126,9 +132,10 @@ const appRoutes: Routes = [
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTooltipModule
   ],
-  exports: [EditProductComponent],
+  exports: [EditProductComponent,MatSnackBarModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     { provide: 'Window', useValue: window },

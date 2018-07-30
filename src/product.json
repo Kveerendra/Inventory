@@ -7,7 +7,10 @@
       "price_per_qty":"1500",
       "product_quantity": "1000",
       "delivery_day": "31-July-2018",
-      "product_type": "Clothings"
+      "product_type": "Clothings",
+      "quantity_ordered":"",
+      "place_order_flag":false,
+      "wish_list_flag":false
       },
       {
       "product_id": "102",
@@ -16,7 +19,10 @@
       "price_per_qty":"10000",
       "product_quantity": "500",
       "delivery_day": "30-Aug-2018",
-      "product_type": "Clothings"
+      "product_type": "Clothings",
+      "quantity_ordered":"",
+      "place_order_flag":false,
+      "wish_list_flag":false
       },
       {
       "product_id": "103",
@@ -25,7 +31,10 @@
       "price_per_qty":"4000",
       "product_quantity": "200",
       "delivery_day": "30-Aug-2018",
-      "product_type": "Clothings"
+      "product_type": "Clothings",
+      "quantity_ordered":"",
+      "place_order_flag":false,
+      "wish_list_flag":false
       },
       {
       "product_id": "103",
@@ -34,7 +43,10 @@
       "price_per_qty":"4000",
       "product_quantity": "200",
       "delivery_day": "30-Aug-2018",
-      "product_type": "Clothings"
+      "product_type": "Clothings",
+      "quantity_ordered":"",
+      "place_order_flag":false,
+      "wish_list_flag":false
       },
       {
       "product_id": "103",
@@ -43,7 +55,10 @@
       "price_per_qty":"4000",
       "product_quantity": "200",
       "delivery_day": "30-Aug-2018",
-      "product_type": "Clothings"
+      "product_type": "Clothings",
+      "quantity_ordered":"",
+      "place_order_flag":false,
+      "wish_list_flag":false
       },
       {
       "product_id": "103",
@@ -52,7 +67,10 @@
       "price_per_qty":"4000",
       "product_quantity": "200",
       "delivery_day": "30-Aug-2018",
-      "product_type": "Clothings"
+      "product_type": "Clothings",
+      "quantity_ordered":"",
+      "place_order_flag":false,
+      "wish_list_flag":false
       },
       {
       "product_id": "103",
@@ -61,7 +79,10 @@
       "price_per_qty":"4000",
       "product_quantity": "200",
       "delivery_day": "30-Aug-2018",
-      "product_type": "Clothings"
+      "product_type": "Clothings",
+      "quantity_ordered":"",
+      "place_order_flag":false,
+      "wish_list_flag":false
       },
       {
       "product_id": "103",
@@ -70,7 +91,10 @@
       "price_per_qty":"4000",
       "product_quantity": "200",
       "delivery_day": "30-Aug-2018",
-      "product_type": "Clothings"
+      "product_type": "Clothings",
+      "quantity_ordered":"",
+      "place_order_flag":false,
+      "wish_list_flag":false
       },
       {
       "product_id": "103",
@@ -79,7 +103,10 @@
       "price_per_qty":"4000",
       "product_quantity": "200",
       "delivery_day": "30-Aug-2018",
-      "product_type": "Clothings"
+      "product_type": "Clothings",
+      "quantity_ordered":"",
+      "place_order_flag":false,
+      "wish_list_flag":false
       },
       {
       "product_id": "103",
@@ -88,7 +115,10 @@
       "price_per_qty":"4000",
       "product_quantity": "200",
       "delivery_day": "30-Aug-2018",
-      "product_type": "Clothings"
+      "product_type": "Clothings",
+      "quantity_ordered":"",
+      "place_order_flag":false,
+      "wish_list_flag":false
       },
       {
       "product_id": "103",
@@ -97,7 +127,10 @@
       "price_per_qty":"4000",
       "product_quantity": "200",
       "delivery_day": "30-Aug-2018",
-      "product_type": "Clothings"
+      "product_type": "Clothings",
+      "quantity_ordered":"",
+      "place_order_flag":false,
+      "wish_list_flag":false
       },
       {
       "product_id": "101",
@@ -106,7 +139,10 @@
       "price_per_qty":"1500",
       "product_quantity": "1000",
       "delivery_day": "31-July-2018",
-      "product_type": "Clothings"
+      "product_type": "Clothings",
+      "quantity_ordered":"",
+      "place_order_flag":false,
+      "wish_list_flag":false
       },
       {
       "product_id": "101",
@@ -115,7 +151,10 @@
       "price_per_qty":"1500",
       "product_quantity": "1000",
       "delivery_day": "31-July-2018",
-      "product_type": "Clothings"
+      "product_type": "Clothings",
+      "quantity_ordered":"",
+      "place_order_flag":false,
+      "wish_list_flag":false
       },
       {
       "product_id": "101",
@@ -124,7 +163,10 @@
       "price_per_qty":"1500",
       "product_quantity": "1000",
       "delivery_day": "31-July-2018",
-      "product_type": "Clothings"
+      "product_type": "Clothings",
+      "quantity_ordered":"",
+      "place_order_flag":false,
+      "wish_list_flag":false
       },
       {
       "product_id": "101",
@@ -133,7 +175,10 @@
       "price_per_qty":"1500",
       "product_quantity": "1000",
       "delivery_day": "31-July-2018",
-      "product_type": "Clothings"
+      "product_type": "Clothings",
+      "quantity_ordered":"",
+      "place_order_flag":false,
+      "wish_list_flag":false
       },
       {
       "product_id": "101",
@@ -142,7 +187,10 @@
       "price_per_qty":"1500",
       "product_quantity": "1000",
       "delivery_day": "31-July-2018",
-      "product_type": "Clothings"
+      "product_type": "Clothings",
+      "quantity_ordered":"",
+      "place_order_flag":false,
+      "wish_list_flag":false
       },
       {
       "product_id": "101",
@@ -151,7 +199,10 @@
       "price_per_qty":"1500",
       "product_quantity": "1000",
       "delivery_day": "31-July-2018",
-      "product_type": "Clothings"
+      "product_type": "Clothings",
+      "quantity_ordered":"",
+      "place_order_flag":false,
+      "wish_list_flag":false
       }
     ]
   

@@ -30,7 +30,13 @@ export class ProductsService {
   }
   public getSubContractors(): Observable<Subcontractor[]> {
     //console.log("hello");
-    return this.http.get<Order[]>(environment.clientUrl + '/subContractorList');
+    return this.http.get<Subcontractor[]>(environment.clientUrl + '/subContractorList');
+
+  }
+
+  public getProductListForOrder(): Observable<Product[]> {
+    //console.log("hello");
+    return this.http.get<Product[]>(environment.clientUrl + '/productList');
 
   }
 
@@ -55,4 +61,9 @@ export class ProductsService {
   {
     return this.product;
   }
+
+  placeOrder(product: Product){
+    //return this.http.get('');
+    
+   } 
 }
