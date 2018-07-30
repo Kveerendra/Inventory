@@ -35,17 +35,9 @@ export class LoginService {
   navigateToLogin(): any {
     this.router.navigateByUrl('/login');
   }
-<<<<<<< HEAD
   login(user: any): Observable<any> {
     console.log(user);
     return this.http.post('http://localhost:5002/login', JSON.stringify(user));
-=======
-  login(user: User): any {
-   // console.log(user);
-    return this.http
-      .post('http://localhost:5002/login', JSON.stringify(user), { headers: this.headers })
-      .toPromise();
->>>>>>> 548f4b52ee2c81795e1b80c6089d1b12ccde2a0e
   }
   store(user: User): boolean {
     console.log(user);
