@@ -28,7 +28,7 @@ export class CreateproductComponent implements OnInit {
 }
   onSubmit() {
     if (this.form.valid) {
-      console.log(this.form.value); // {7}
+      //console.log(this.form.value); // {7}
       this.productsService.insertMasterData(this.form.value).subscribe();
     }
     this.formSubmitAttempt = true;             // {8}

@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
     if (this.form.valid) {
       this.loginService.login(this.form.value).subscribe(data => {
         if (data['error']) {
-          console.log(data['error']);
+          // console.log(data['error']);
         } else {
           const user: User = data;
           this.loginService.store(user);

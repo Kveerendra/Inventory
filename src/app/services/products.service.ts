@@ -33,7 +33,10 @@ export class ProductsService {
     // console.log("hello");
     return this.http.get<Order[]>(environment.clientUrl + '/subContractorList');
   }
-
+  public getProductListForOrder(): Observable<Product[]> {
+    // console.log("hello");
+    return this.http.get<Product[]>(environment.clientUrl + '/productList');
+  }
   public getWishList(): Observable<Wishlist[]> {
     // console.log("hello");
     return this.http.get<Wishlist[]>(environment.clientUrl + '/wishList');
@@ -67,4 +70,8 @@ export class ProductsService {
   getProductTypesList(): any {
     return this.http.get<Product[]>(environment.serverUrl + '/productList', { headers: this.headers});
   }
+  placeOrder(product: Product) {
+    // return this.http.get('');
+
+   }
 }

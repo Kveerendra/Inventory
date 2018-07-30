@@ -23,7 +23,8 @@ export class EditProductComponent implements OnInit {
     private dialogRef: MatDialogRef<EditProductComponent>
   ) {
     this.product = this.productService.getProduct();
-    console.log('Product JSON >>>>> ' + JSON.stringify(this.product));
+    // console.log("Product JSON >>>>> "+ JSON.stringify(this.product) );
+
   }
 
   ngOnInit() {

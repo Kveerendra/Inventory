@@ -55,7 +55,7 @@
             <mat-icon mat-list-icon>face</mat-icon>My SubContractors</button>
         </div>
         <div mat-line>
-          <button mat-button (click)="sidenav.toggle()" *ngIf="isAuthenticated()">
+          <button mat-button (click)="sidenav.toggle()" *ngIf="isAuthenticated()"  routerLink="/placeorder"  >
             <mat-icon mat-list-icon>shopping_cart</mat-icon>Place Order</button>
         </div>
         <div mat-line>

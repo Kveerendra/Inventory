@@ -24,7 +24,7 @@ export class WishlistComponent implements OnInit {
       
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
-      console.log("datasource is : "+ this.dataSource);
+     // console.log("datasource is : "+ this.dataSource);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
   });

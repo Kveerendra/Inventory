@@ -1,0 +1,97 @@
+<div class="container mat-elevation-z8">
+
+  <div class="form">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+    <label class="tableCaption">PLACE ORDER</label>
+  </div>
+  <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <ng-container matColumnDef="product_id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Product Id</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.product_id}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="product_name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Product Name</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.product_name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="product_type">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Product Type</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.product_type}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="product_description">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Description</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.product_description}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="price_per_qty">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.price_per_qty}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="product_quantity">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Available Quantity</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.product_quantity}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="order_date">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Order Date</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.order_date}}</mat-cell>
+    </ng-container>
+
+    <!-- actions -->
+    <ng-container matColumnDef="quantity_ordered">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Ordered Quantity</mat-header-cell>
+
+      <mat-cell *matCellDef="let row">
+        <input matInput class="custom-input" (keyup)="invokeAction($event.target.value,row)" type="number" [(ngModel)]="row.quantity_ordered">
+      </mat-cell>
+    </ng-container>
+
+
+    <!-- actions -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>
+        Actions
+      </mat-header-cell>
+
+      <mat-cell *matCellDef="let row; let i=index;">
+
+        <div matTooltip="Place Order"  matTooltipPosition='above'>
+          <button *ngIf="row.place_order_flag" mat-icon-button color="warn" (click)="placeOrder(row)">
+            <mat-icon aria-label="Edit">add_shopping_cart</mat-icon>
+          </button>
+          <button *ngIf="!row.place_order_flag" matTooltip="Place Order" mat-icon-button color="accent"  disabled="true">
+            <mat-icon aria-label="Edit">add_shopping_cart</mat-icon>
+          </button>
+        </div>
+
+        <div matTooltip="Wish List" matTooltipPosition='above'>
+          <button *ngIf="row.wish_list_flag" mat-icon-button color="warn" (click)="addToWishList(row)">
+            <mat-icon aria-label="Delete">favorite</mat-icon>
+          </button>
+          <button *ngIf="!row.wish_list_flag" mat-icon-button color="accent" disabled="true">
+            <mat-icon aria-label="Delete">favorite</mat-icon>
+          </button>
+        </div>
+
+      </mat-cell>
+    </ng-container>
+
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+
+  <div class="no-results" [style.display]="dataSource==null || dataSource.length == 0 ? '' : 'none'">
+    No results
+  </div>
+  <mat-paginator [pageSizeOptions]="[10, 15, 25, 100]"></mat-paginator>
+</div>

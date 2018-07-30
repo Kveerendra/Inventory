@@ -52,7 +52,7 @@ export class AddproductComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      let product: Product = new Product();
+      const product: Product = new Product();
       const data = this.form.get('product_name').value;
       for (const p in this.productList) {
         if (this.productList[p]['product_id'] === data) {
