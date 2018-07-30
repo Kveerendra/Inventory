@@ -9,8 +9,8 @@ import { ProductsService } from '../../services/products.service';
 })
 export class CreateproductComponent implements OnInit {
   form: FormGroup;
-  private formSubmitAttempt: boolean; 
-  constructor(private fb: FormBuilder,private productsService: ProductsService) { }
+  private formSubmitAttempt: boolean;
+  constructor(private fb: FormBuilder, private productsService: ProductsService) { }
 
   ngOnInit() {
     this.form = this.fb.group({     // {5}
@@ -32,7 +32,7 @@ export class CreateproductComponent implements OnInit {
       this.productsService.insertMasterData(this.form.value).subscribe();
     }
     this.formSubmitAttempt = true;             // {8}
- 
+
   }
 
 }

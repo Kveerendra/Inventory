@@ -7,16 +7,31 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { TabsetComponent } from 'ngx-bootstrap';
 import { EditProductComponent } from '../edit-product/edit-product.component';
-import {MatPaginator, MatSort, MatTableDataSource,VERSION, MatDialog, MatDialogRef} from '@angular/material';
+import {
+  MatPaginator,
+  MatSort,
+  MatTableDataSource,
+  VERSION,
+  MatDialog,
+  MatDialogRef
+} from '@angular/material';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css'],
+  styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
   user: User;
-  displayedColumns = ['product_id', 'product_name', 'product_description', 'price_per_qty', 'product_quantity', 'delivery_day','actions'];
+  displayedColumns = [
+    'product_id',
+    'product_name',
+    'product_description',
+    'price_per_qty',
+    'product_quantity',
+    'delivery_day',
+    'actions'
+  ];
   dataSource: MatTableDataSource<Product>;
   version = VERSION;
   editProductDialogRef: MatDialogRef<EditProductComponent>;
@@ -27,26 +42,25 @@ export class ProductsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private productService: ProductsService,private dialog: MatDialog, private loginService: LoginService, private modalService: BsModalService) {
-
+  constructor(
+    private productService: ProductsService,
+    private dialog: MatDialog,
+    private loginService: LoginService,
+    private modalService: BsModalService
+  ) {
     this.user = loginService.getUser();
     this.productService.getProducts().subscribe(data => {
-      
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
-      console.log("datasource is : "+ this.dataSource);
+      console.log('datasource is : ' + this.dataSource);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-  });
+    });
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
-  ngOnInit() {
-   
-  
-   
-  }
+  ngOnInit() {}
   myTab() {
     return this.staticTabs.tabs[1].active !== true;
   }
@@ -54,19 +68,15 @@ export class ProductsComponent implements OnInit {
     this.modalRef.hide();
   }
 
-  
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
 
-  editItem(product: Product)
-  {
-    console.log("product details :" + product);
+  editItem(product: Product) {
+    console.log('product details :' + product);
     this.productService.changeProduct(product);
     this.editProductDialogRef = this.dialog.open(EditProductComponent);
   }
-
- 
 }

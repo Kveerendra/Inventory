@@ -12,7 +12,7 @@ export class AppComponent {
   user: User;
   constructor(private loginService: LoginService) {
     this.user = loginService.getUser();
-    //setTheme('bs4');
+    // setTheme('bs4');
   }
   isAuthenticated(): boolean {
     return this.loginService.authenticated;
@@ -20,4 +20,6 @@ export class AppComponent {
   signOut() {
     this.loginService.logout();
   }
+
+
 }

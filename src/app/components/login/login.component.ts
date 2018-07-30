@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, Headers } from '@angular/http';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { User } from '../../models/user';
+import { HttpClient } from '../../../../node_modules/@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   private formSubmitAttempt: boolean; // {2}
   hide = true;
   constructor(
-    private http: Http,
+    private http: HttpClient,
     private router: Router,
     private fb: FormBuilder,
     private loginService: LoginService
@@ -44,11 +45,12 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.form.valid) {
-      this.loginService.login(this.form.value).then(data => {
+      this.loginService.login(this.form.value).subscribe(data => {
         if (data['error']) {
           console.log(data['error']);
         } else {
-          this.loginService.store(data);
+          const user: User = data;
+          this.loginService.store(user);
           this.router.navigateByUrl('/products');
         }
       });

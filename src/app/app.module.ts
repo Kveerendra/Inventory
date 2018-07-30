@@ -1,6 +1,6 @@
 import '../polyfills';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpModule, Http } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,7 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorComponent } from './components/error/error.component';
 import { IsAuthenticatedService } from './services/is-authenticated.service';
 import { RegisterComponent } from './components/register/register.component';
-import {RegisterDialogComponent} from './components/dialog/register-dialog.component';
+import { RegisterDialogComponent } from './components/dialog/register-dialog.component';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
 import { SignOutComponent } from './components/sign-out/sign-out.component';
 import { LoginRedirectService } from './services/login-redirect.service';
@@ -32,7 +32,7 @@ import {
   MatDialogModule,
   MatSelectModule,
   MatSidenavModule,
-  MatPaginatorModule, 
+  MatPaginatorModule,
   MatSortModule,
   MatTableModule,
   MatToolbarModule
@@ -68,12 +68,16 @@ const appRoutes: Routes = [
   },
   { path: 'error', component: ErrorComponent },
   { path: 'signOut', component: SignOutComponent },
-  { path: 'products', component: ProductsComponent },
-  {path: 'createproduct',component: CreateproductComponent},
-  {path: 'orders/:flag',component: OrdersComponent},
-  { path: 'addproduct', component: AddproductComponent},
-  {path:'mysubcontractors', component: SubContractorComponent },
-  {path:'wishList', component: WishlistComponent }
+  { path: 'createproduct', component: CreateproductComponent ,
+  canActivate: [IsAuthenticatedService]},
+  { path: 'orders/:flag', component: OrdersComponent ,
+  canActivate: [IsAuthenticatedService]},
+  { path: 'addproduct', component: AddproductComponent ,
+  canActivate: [IsAuthenticatedService]},
+  { path: 'mysubcontractors', component: SubContractorComponent ,
+  canActivate: [IsAuthenticatedService]},
+  { path: 'wishList', component: WishlistComponent ,
+  canActivate: [IsAuthenticatedService]}
 ];
 
 @NgModule({
@@ -91,12 +95,12 @@ const appRoutes: Routes = [
     AddproductComponent,
     SidenavComponent,
     OrdersComponent,
-  
+
     SubContractorComponent,
-  
+
     WishlistComponent
   ],
-  entryComponents : [RegisterDialogComponent,EditProductComponent],
+  entryComponents: [RegisterDialogComponent, EditProductComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -121,13 +125,13 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatDialogModule,
     MatSidenavModule,
-    MatPaginatorModule, 
+    MatPaginatorModule,
     MatSortModule,
     MatTableModule,
     MatToolbarModule
   ],
   exports: [EditProductComponent],
-  schemas:[CUSTOM_ELEMENTS_SCHEMA],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     { provide: 'Window', useValue: window },
     ProductsService,
