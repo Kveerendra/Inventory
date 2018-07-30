@@ -77,7 +77,11 @@ export class PlaceorderComponent implements OnInit {
   }
 
   addToWishList(prodObj : Product){
-
+    var tempdetails = prodObj.quantity_ordered;
+    prodObj.quantity_ordered = "";
+    prodObj.wish_list_flag = false;
+    var message = "Order for "+prodObj.product_name + " (Qty : "+ tempdetails + ") added to wishlist successfully."
+    this.openSnackBar(message,"close");
   }
 
   openSnackBar(message: string, action: string) {
