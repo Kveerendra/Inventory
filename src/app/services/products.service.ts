@@ -27,7 +27,23 @@ export class ProductsService {
   }
   public getOrders(): Observable<Order[]> {
     // console.log("hello");
-    return this.http.get<Order[]>(environment.clientUrl + '/orderList');
+    return this.http.post<Order[]>(environment.serverUrl + '/showOrderDetails',
+    JSON.stringify({username: this.loginService.getUser().username}),
+    { headers: this.headers });
+  }
+
+  public getOrdersForApproval(): Observable<Order[]> {
+    // console.log("hello");
+    return this.http.post<Order[]>(environment.serverUrl + '/getOrderData',
+    JSON.stringify({username: this.loginService.getUser().username}),
+    { headers: this.headers });
+  }
+
+  public getOutOfStock(): Observable<Order[]> {
+    // console.log("hello");
+    return this.http.post<Order[]>(environment.serverUrl + '/stock',
+    JSON.stringify({username: this.loginService.getUser().username}),
+    { headers: this.headers });
   }
   public getSubContractors(): Observable<Subcontractor[]> {
     // console.log("hello");

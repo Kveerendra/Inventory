@@ -95,7 +95,13 @@ const appRoutes: Routes = [
     path: 'wishList',
     component: WishlistComponent,
     canActivate: [IsAuthenticatedService]
+  },
+  {
+    path: 'placeorder',
+    component: PlaceorderComponent,
+    canActivate: [IsAuthenticatedService]
   }
+
 ];
 
 @NgModule({
