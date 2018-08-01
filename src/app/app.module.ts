@@ -108,6 +108,7 @@ const appRoutes: Routes = [
     component: OutOfStockComponent,
     canActivate: [IsAuthenticatedService]
   }
+
 ];
 
 @NgModule({
