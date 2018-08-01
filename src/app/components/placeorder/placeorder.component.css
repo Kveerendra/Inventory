@@ -26,3 +26,6 @@
       border: 1px gray solid;
       width: 95px;
     }
+    ::ng-deep snack-bar-container.snack-bar-color {
+      background: green;
+    }

@@ -9,3 +9,14 @@ mat-card {
   .full-width-input {
     width: 100%;
   }
+  /* ::ng-deep .snack-bar-container .snack-bar-color .mat-simple-snackbar-action{
+    background-color: #00ff7f;
+    color: orange;
+  } */
+  ::ng-deep snack-bar-container.snack-bar-color {
+    background: green;
+  }
+  
+  /* ::ng-deep .snack-bar-color .mat-simple-snackbar {
+    color: fuchsia;
+  } */
