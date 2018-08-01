@@ -5,6 +5,7 @@ import { LoginService } from '../../services/login.service';
 import { ProductsService } from '../../services/products.service';
 import {MatPaginator, MatSort, MatTableDataSource,VERSION, MatDialog} from '@angular/material';
 import {MatSnackBar} from '@angular/material';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-placeorder',
@@ -12,7 +13,8 @@ import {MatSnackBar} from '@angular/material';
   styleUrls: ['./placeorder.component.css']
 })
 export class PlaceorderComponent implements OnInit {
-  
+
+  title;
   user: User;
   displayedColumns = ['product_id', 'product_name', 'product_type', 'product_description', 'price_per_qty', 'product_quantity','quantity_ordered', 'actions' ];
   dataSource: MatTableDataSource<Product>;
@@ -21,8 +23,14 @@ export class PlaceorderComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(public snackBar: MatSnackBar,  private productService: ProductsService,private dialog: MatDialog, private loginService: LoginService) {
-
+  constructor(private route: ActivatedRoute,public snackBar: MatSnackBar,  private productService: ProductsService,private dialog: MatDialog, private loginService: LoginService) {
+    
+    this.route.queryParams.subscribe(
+      params => {
+        this.title = params['tableTitle'];
+      }
+    );
+   
     this.user = loginService.getUser();
     this.productService.getProductListForOrder().subscribe(data => {
       
@@ -34,7 +42,11 @@ export class PlaceorderComponent implements OnInit {
   });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+    
+
+  }
  
 
   
@@ -66,6 +78,7 @@ export class PlaceorderComponent implements OnInit {
   }
 
   placeOrder(prodObj : Product){
+    debugger;
     prodObj.product_quantity = String(+prodObj.product_quantity - +prodObj.quantity_ordered );
     //this.productService.placeOrder(prodObj).subscribe(data => {});
     var tempdetails = prodObj.quantity_ordered;

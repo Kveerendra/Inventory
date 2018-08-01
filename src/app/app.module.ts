@@ -47,6 +47,8 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { SubContractorComponent } from './components/sub-contractor/sub-contractor.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { PlaceorderComponent } from './components/placeorder/placeorder.component';
+import { OutOfStockComponent } from './components/out-of-stock/out-of-stock.component';
+import { OutOfStockDialogComponent } from './components/out-of-stock-dialog/out-of-stock-dialog.component';
 const appRoutes: Routes = [
   {
     path: 'products',
@@ -95,6 +97,16 @@ const appRoutes: Routes = [
     path: 'wishList',
     component: WishlistComponent,
     canActivate: [IsAuthenticatedService]
+  },
+  {
+    path: 'placeorder',
+    component: PlaceorderComponent,
+    canActivate: [IsAuthenticatedService]
+  },
+  {
+    path: 'outofstock',
+    component: OutOfStockComponent,
+    canActivate: [IsAuthenticatedService]
   }
 ];
 
@@ -118,12 +130,17 @@ const appRoutes: Routes = [
 
     WishlistComponent,
 
-    PlaceorderComponent
+    PlaceorderComponent,
+
+    OutOfStockComponent,
+
+    OutOfStockDialogComponent
   ],
   entryComponents: [
     RegisterDialogComponent,
     EditProductComponent,
-    PlaceorderComponent
+    PlaceorderComponent,
+    OutOfStockDialogComponent
   ],
   imports: [
     BrowserModule,
