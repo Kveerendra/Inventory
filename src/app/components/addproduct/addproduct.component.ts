@@ -7,6 +7,7 @@ import {
   Validators
 } from '../../../../node_modules/@angular/forms';
 import { Router } from '../../../../node_modules/@angular/router';
+import { MatSnackBar } from '../../../../node_modules/@angular/material';
 
 @Component({
   selector: 'app-addproduct',
@@ -21,7 +22,7 @@ export class AddproductComponent implements OnInit {
   constructor(
     private productService: ProductsService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router, public snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -70,7 +71,9 @@ export class AddproductComponent implements OnInit {
       this.productService.addProduct(product).subscribe(res => {
         this.router.navigateByUrl('/products');
       });
-      console.log(JSON.stringify(this.form.value)); // {7}
+     // console.log(JSON.stringify(this.form.value)); // {7}
+     var message = "Product added successfully."
+      this.openSnackBar(message, "close");
     }
     this.formSubmitAttempt = true; // {8}
   }
@@ -86,7 +89,6 @@ export class AddproductComponent implements OnInit {
         this.form.controls['product_type'].setValue(this.productList[p].product_type);
       }
     } */
-    console.log(pid);
     for (const p in this.productList) {
       if (this.productList[p]['product_id'] === pid) {
         this.form.controls['product_description'].setValue(
@@ -97,5 +99,11 @@ export class AddproductComponent implements OnInit {
         );
       }
     }
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000
+    });
   }
 }
