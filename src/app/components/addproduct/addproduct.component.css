@@ -9,3 +9,6 @@ mat-card {
   .full-width-input {
     width: 100%;
   }
+  ::ng-deep snack-bar-container.snack-bar-color {
+    background: green;
+  }

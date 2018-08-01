@@ -55,7 +55,7 @@ export class EditProductComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      console.log(this.form.value); // {7}
+    //  console.log(this.form.value); // {7}
     }
     this.formSubmitAttempt = true; // {8}
     this.dialogRef.close();

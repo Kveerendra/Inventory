@@ -38,7 +38,7 @@ export class AddproductComponent implements OnInit {
     this.form.controls['product_description'].disable();
     this.form.controls['product_type'].disable();
     this.productService.getProductTypesList().subscribe(data => {
-      console.log(data);
+     // console.log(data);
       this.productList = data;
     });
   }
@@ -73,7 +73,7 @@ export class AddproductComponent implements OnInit {
       });
      // console.log(JSON.stringify(this.form.value)); // {7}
      var message = "Product added successfully."
-      this.openSnackBar(message, "close");
+      this.openSnackBar(message, "X");
     }
     this.formSubmitAttempt = true; // {8}
   }
@@ -103,6 +103,7 @@ export class AddproductComponent implements OnInit {
 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
+      panelClass: ['snack-bar-color'],
       duration: 2000
     });
   }

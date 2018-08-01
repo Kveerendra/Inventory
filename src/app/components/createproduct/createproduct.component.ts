@@ -31,13 +31,14 @@ export class CreateproductComponent implements OnInit {
     if (this.form.valid) {
       this.productsService.insertMasterData(this.form.value).subscribe();
       var message = "Product created successfully."
-      this.openSnackBar(message, "close");
+      this.openSnackBar(message, "X");
     }
     this.formSubmitAttempt = true;             // {8}
   }
 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
+      panelClass: ['snack-bar-color'],
       duration: 2000
     });
   }

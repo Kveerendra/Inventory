@@ -36,13 +36,13 @@ export class LoginService {
     this.router.navigateByUrl('/login');
   }
   login(user: any): Observable<any> {
-    console.log(user);
+    //console.log(user);
     return this.http.post('http://localhost:5002/login', JSON.stringify(user));
   }
   store(user: User): boolean {
-    console.log(user);
-    console.error(user['username']);
-    console.error(user['role']);
+    // console.log(user);
+    // console.error(user['username']);
+    // console.error(user['role']);
     this.window.sessionStorage.setItem('username', '' + user.username);
     this.window.sessionStorage.setItem('userrole', '' + user.role);
     this.router.navigateByUrl('/products');
@@ -73,7 +73,7 @@ export class LoginService {
   }
   isAuthenticated(): boolean {
     const res = this.window.sessionStorage.getItem('username');
-    console.log(res);
+    //console.log(res);
     if (res == null || res === undefined) {
       this.authenticated = false;
     } else {

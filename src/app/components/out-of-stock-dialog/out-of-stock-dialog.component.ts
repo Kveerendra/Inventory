@@ -25,7 +25,7 @@ export class OutOfStockDialogComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   constructor(private dialogRef: MatDialogRef<OutOfStockDialogComponent>,@Inject(MAT_DIALOG_DATA) data) {
-      console.log(JSON.stringify(data));
+    //  console.log(JSON.stringify(data));
          this.subContractList = data.list;
          this.dataSource = new MatTableDataSource(this.subContractList);
          this.dataSource.sort = this.sort;
@@ -43,7 +43,7 @@ export class OutOfStockDialogComponent implements OnInit {
 
 placeOrder(subcontractor)
 {
-  console.log(JSON.stringify(subcontractor));
+ // console.log(JSON.stringify(subcontractor));
   //call service to place order
   this.dialogRef.close("orderedPlaced");
 }
@@ -51,7 +51,7 @@ placeOrder(subcontractor)
 
 invokeAction(qty: string, subcontractor: Subcontractor)
 {
-  console.log("invokeActiom"+JSON.stringify(subcontractor));
+ // console.log("invokeActiom"+JSON.stringify(subcontractor));
 }
 
 }
