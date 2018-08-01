@@ -10,7 +10,8 @@
       "product_type": "Clothings",
       "quantity_ordered":"",
       "place_order_flag":false,
-      "wish_list_flag":false
+      "wish_list_flag":false,
+      "sub_contractors":[]
       },
       {
       "product_id": "102",
@@ -22,7 +23,8 @@
       "product_type": "Clothings",
       "quantity_ordered":"",
       "place_order_flag":false,
-      "wish_list_flag":false
+      "wish_list_flag":false,
+      "sub_contractors":[]
       },
       {
       "product_id": "103",
@@ -34,7 +36,8 @@
       "product_type": "Clothings",
       "quantity_ordered":"",
       "place_order_flag":false,
-      "wish_list_flag":false
+      "wish_list_flag":false,
+      "sub_contractors":[]
       },
       {
       "product_id": "103",
@@ -46,7 +49,8 @@
       "product_type": "Clothings",
       "quantity_ordered":"",
       "place_order_flag":false,
-      "wish_list_flag":false
+      "wish_list_flag":false,
+      "sub_contractors":[]
       },
       {
       "product_id": "103",
@@ -58,7 +62,8 @@
       "product_type": "Clothings",
       "quantity_ordered":"",
       "place_order_flag":false,
-      "wish_list_flag":false
+      "wish_list_flag":false,
+      "sub_contractors":[]
       },
       {
       "product_id": "103",
@@ -70,7 +75,8 @@
       "product_type": "Clothings",
       "quantity_ordered":"",
       "place_order_flag":false,
-      "wish_list_flag":false
+      "wish_list_flag":false,
+      "sub_contractors":[]
       },
       {
       "product_id": "103",
@@ -82,7 +88,8 @@
       "product_type": "Clothings",
       "quantity_ordered":"",
       "place_order_flag":false,
-      "wish_list_flag":false
+      "wish_list_flag":false,
+      "sub_contractors":[]
       },
       {
       "product_id": "103",
@@ -94,7 +101,8 @@
       "product_type": "Clothings",
       "quantity_ordered":"",
       "place_order_flag":false,
-      "wish_list_flag":false
+      "wish_list_flag":false,
+      "sub_contractors":[]
       },
       {
       "product_id": "103",
@@ -106,7 +114,8 @@
       "product_type": "Clothings",
       "quantity_ordered":"",
       "place_order_flag":false,
-      "wish_list_flag":false
+      "wish_list_flag":false,
+      "sub_contractors":[]
       },
       {
       "product_id": "103",
@@ -118,7 +127,8 @@
       "product_type": "Clothings",
       "quantity_ordered":"",
       "place_order_flag":false,
-      "wish_list_flag":false
+      "wish_list_flag":false,
+      "sub_contractors":[]
       },
       {
       "product_id": "103",
@@ -130,7 +140,8 @@
       "product_type": "Clothings",
       "quantity_ordered":"",
       "place_order_flag":false,
-      "wish_list_flag":false
+      "wish_list_flag":false,
+      "sub_contractors":[]
       },
       {
       "product_id": "101",
@@ -142,7 +153,8 @@
       "product_type": "Clothings",
       "quantity_ordered":"",
       "place_order_flag":false,
-      "wish_list_flag":false
+      "wish_list_flag":false,
+      "sub_contractors":[]
       },
       {
       "product_id": "101",
@@ -154,7 +166,8 @@
       "product_type": "Clothings",
       "quantity_ordered":"",
       "place_order_flag":false,
-      "wish_list_flag":false
+      "wish_list_flag":false,
+      "sub_contractors":[]
       },
       {
       "product_id": "101",
@@ -166,7 +179,8 @@
       "product_type": "Clothings",
       "quantity_ordered":"",
       "place_order_flag":false,
-      "wish_list_flag":false
+      "wish_list_flag":false,
+      "sub_contractors":[]
       },
       {
       "product_id": "101",
@@ -178,7 +192,8 @@
       "product_type": "Clothings",
       "quantity_ordered":"",
       "place_order_flag":false,
-      "wish_list_flag":false
+      "wish_list_flag":false,
+      "sub_contractors":[]
       },
       {
       "product_id": "101",
@@ -190,7 +205,8 @@
       "product_type": "Clothings",
       "quantity_ordered":"",
       "place_order_flag":false,
-      "wish_list_flag":false
+      "wish_list_flag":false,
+      "sub_contractors":[]
       },
       {
       "product_id": "101",
@@ -202,7 +218,8 @@
       "product_type": "Clothings",
       "quantity_ordered":"",
       "place_order_flag":false,
-      "wish_list_flag":false
+      "wish_list_flag":false,
+      "sub_contractors":[]
       }
     ]
   

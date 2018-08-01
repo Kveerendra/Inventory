@@ -1,4 +1,5 @@
 import { FormGroup } from '../../../node_modules/@angular/forms';
+import { Subcontractor } from './subcontractor';
 
 export class Product {
 
@@ -13,4 +14,5 @@ export class Product {
   place_order_flag: boolean;
   wish_list_flag: boolean;
   product_delivery: String;
+  sub_contractors : Subcontractor[];
 }

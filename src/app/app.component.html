@@ -39,7 +39,7 @@
             <mat-icon mat-list-icon>assignment_turned_in</mat-icon>Orders Pending for Approval</button>
         </div> -->
         <div mat-line>
-          <button mat-button (click)="sidenav.toggle()" *ngIf="isAuthenticated()">
+          <button mat-button (click)="sidenav.toggle()" *ngIf="isAuthenticated()" routerLink="/outofstock">
             <mat-icon mat-list-icon>reorder</mat-icon>Out of Stock</button>
         </div>
         <div mat-line>
@@ -55,7 +55,7 @@
             <mat-icon mat-list-icon>face</mat-icon>My SubContractors</button>
         </div>
         <div mat-line>
-          <button mat-button (click)="sidenav.toggle()" *ngIf="isAuthenticated()"  routerLink="/placeorder"  >
+          <button mat-button (click)="sidenav.toggle()" *ngIf="isAuthenticated()"  routerLink="/placeorder" [skipLocationChange]="true" [queryParams]="{ tableTitle: 'Place Order' }" >
             <mat-icon mat-list-icon>shopping_cart</mat-icon>Place Order</button>
         </div>
         <!-- <div mat-line>
