@@ -1,6 +1,7 @@
 import { Component, OnInit , Inject,ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef, MatPaginator,MatSort,MatTableDataSource,VERSION,} from "@angular/material";
 import { Subcontractor } from '../../models/subcontractor';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-out-of-stock-dialog',
@@ -8,7 +9,7 @@ import { Subcontractor } from '../../models/subcontractor';
   styleUrls: ['./out-of-stock-dialog.component.css']
 })
 export class OutOfStockDialogComponent implements OnInit {
-
+  form: FormGroup; 
   subContractList : Subcontractor[];
   displayedColumns = [
     'product_id',
@@ -38,6 +39,19 @@ export class OutOfStockDialogComponent implements OnInit {
 
   close() {
     this.dialogRef.close();
+}
+
+placeOrder(subcontractor)
+{
+  console.log(JSON.stringify(subcontractor));
+  //call service to place order
+  this.dialogRef.close("orderedPlaced");
+}
+
+
+invokeAction(qty: string, subcontractor: Subcontractor)
+{
+  console.log("invokeActiom"+JSON.stringify(subcontractor));
 }
 
 }
