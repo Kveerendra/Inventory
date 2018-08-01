@@ -126,15 +126,10 @@ const appRoutes: Routes = [
     AddproductComponent,
     SidenavComponent,
     OrdersComponent,
-
     SubContractorComponent,
-
     WishlistComponent,
-
     PlaceorderComponent,
-
     OutOfStockComponent,
-
     OutOfStockDialogComponent
   ],
   entryComponents: [

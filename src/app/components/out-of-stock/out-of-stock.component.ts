@@ -14,9 +14,11 @@ import {
   VERSION,
   MatDialog,
   MatDialogConfig,
-  MatDialogRef
+  MatDialogRef,
+  MatSnackBar
 } from '@angular/material';
 import { OutOfStockDialogComponent } from '../out-of-stock-dialog/out-of-stock-dialog.component';
+import { Subcontractor } from '../../models/subcontractor';
 
 @Component({
   selector: 'app-out-of-stock',
@@ -38,12 +40,13 @@ export class OutOfStockComponent implements OnInit {
   version = VERSION;
   modalRef: BsModalRef;
   product: Product;
-
+  dialogRef;
   @ViewChild('staticTabs') staticTabs: TabsetComponent;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
+    public snackBar: MatSnackBar,
     private productService: ProductsService,
     private dialog: MatDialog,
     private loginService: LoginService,
@@ -82,15 +85,39 @@ export class OutOfStockComponent implements OnInit {
         list :  subContractorList
     };
 
-    this.dialog.open(OutOfStockDialogComponent, dialogConfig);
+     this.dialogRef =  this.dialog.open(OutOfStockDialogComponent, dialogConfig);
+
+     this.dialogRef.afterClosed().subscribe(
+      data => {
+        
+        console.log("testing"+data);
+        if(data === "orderedPlaced")
+          this.openSnackBar("Product ordered successfully.", "close"); } );
+
+
+     
 
     });
-
-   
     //dialogConfig.data = prodObj.sub_contractors;
-   
+  
+      
+      
+ 
 
    
 }
+
+ 
+public openSnackBar(message: string, action: string) {
+  this.snackBar.open(message, action, {
+  duration: 2000
+  });
+  } 
+
+
+  invokeAction(qty: string, subcontractor: Subcontractor)
+  {
+    console.log("invokeActiom"+JSON.stringify(subcontractor));
+  }
 
 }

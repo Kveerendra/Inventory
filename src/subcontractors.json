@@ -5,10 +5,10 @@
             "product_id": "101",
             "product_name": "Shirts",
             "price_per_qty": "1500",
-            "quantity_ordered": "10",
+            "quantity_ordered": "",
             "order_date": "31-July-2018",
             "status": "Declined",
-            "available_quantity": ""
+            "available_quantity": "500"
         }
     ]
 }
