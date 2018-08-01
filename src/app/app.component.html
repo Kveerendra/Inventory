@@ -26,7 +26,7 @@
           <button mat-button (click)="sidenav.toggle()" *ngIf="isAuthenticated()" [routerLink]="['./orders', 'all']" [skipLocationChange]="true" [queryParams]="{ tableTitle: 'My Order Status' }">
             <mat-icon mat-list-icon>list</mat-icon>My Order Status</button>
         </div>
-        <div mat-line>
+        <!-- <div mat-line>
           <button mat-button (click)="sidenav.toggle()" *ngIf="isAuthenticated()" [routerLink]="['./orders', 'pendingOrders']" [skipLocationChange]="true" [queryParams]="{ tableTitle: 'My Pending Orders' }">
             <mat-icon mat-list-icon>filter_list</mat-icon>My Pending Orders</button>
         </div>
@@ -37,7 +37,7 @@
         <div mat-line>
           <button mat-button (click)="sidenav.toggle()" *ngIf="isAuthenticated()" [routerLink]="['./orders', 'approval']" [skipLocationChange]="true" [queryParams]="{ tableTitle: 'Orders Pending for Approval' }">
             <mat-icon mat-list-icon>assignment_turned_in</mat-icon>Orders Pending for Approval</button>
-        </div>
+        </div> -->
         <div mat-line>
           <button mat-button (click)="sidenav.toggle()" *ngIf="isAuthenticated()" routerLink="/outofstock">
             <mat-icon mat-list-icon>reorder</mat-icon>Out of Stock</button>
@@ -46,10 +46,10 @@
           <button mat-button (click)="sidenav.toggle()" *ngIf="isAuthenticated()" routerLink="/wishList">
             <mat-icon mat-list-icon>favorite</mat-icon>My Wishlist</button>
         </div>
-        <div mat-line>
-          <button mat-button (click)="sidenav.toggle()" *ngIf="isAuthenticated()" routerLink="/placeorder" [skipLocationChange]="true" [queryParams]="{ tableTitle: 'Sub Contract' }">
-            <mat-icon mat-list-icon>card_membership</mat-icon>Sub Contract</button>
-        </div>
+        <!-- <div mat-line>
+          <button mat-button (click)="sidenav.toggle()" *ngIf="isAuthenticated()">
+            <mat-icon mat-list-icon>card_membership</mat-icon>Sub Contractor</button>
+        </div> -->
         <div mat-line>
           <button mat-button (click)="sidenav.toggle()" *ngIf="isAuthenticated()" routerLink="/mysubcontractors">
             <mat-icon mat-list-icon>face</mat-icon>My SubContractors</button>
@@ -58,10 +58,10 @@
           <button mat-button (click)="sidenav.toggle()" *ngIf="isAuthenticated()"  routerLink="/placeorder" [skipLocationChange]="true" [queryParams]="{ tableTitle: 'Place Order' }" >
             <mat-icon mat-list-icon>shopping_cart</mat-icon>Place Order</button>
         </div>
-        <div mat-line>
+        <!-- <div mat-line>
           <button mat-button (click)="sidenav.toggle()" *ngIf="isAuthenticated()" [routerLink]="['./orders', 'all']" [skipLocationChange]="true" [queryParams]="{ tableTitle: 'Order Details' }">
             <mat-icon mat-list-icon>view_headline</mat-icon>Order Details</button>
-        </div>
+        </div> -->
       </mat-list-item>
     </mat-list>
   </mat-sidenav>
