@@ -16,6 +16,9 @@
           <mat-error *ngIf="isFieldInvalid('name')">
             Please inform your name
           </mat-error>
+          <mat-error *ngIf="userNameExists">
+              Please inform unique name
+            </mat-error>
         </mat-form-field>
         <mat-form-field class="full-width-input">
             <input matInput placeholder="Location" formControlName="location" required>

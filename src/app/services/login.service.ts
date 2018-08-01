@@ -67,7 +67,7 @@ export class LoginService {
     this.message.next(message);
   }
 
-  register(user: User) {
+  register(user: User) : any{
     return this.http
       .post<User>('http://localhost:5002/register', user);
   }

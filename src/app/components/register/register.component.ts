@@ -19,6 +19,8 @@ export class RegisterComponent implements OnInit {
   private formSubmitAttempt: boolean;
   version = VERSION;
   registerDialogRef: MatDialogRef<RegisterDialogComponent>;
+  userNameExists: boolean = false;
+
   constructor(
     private router: Router,
     private loginService: LoginService,
@@ -61,11 +63,19 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     if (this.form.valid) {
       console.log(this.form.value); // {7}
-      this.loginService.register(this.form.value).subscribe(user => {
-        this.loginService.changeMessage(
-          'Your username: ' + user.username + ' with password :' + user.password
-        );
-        this.registerDialogRef = this.dialog.open(RegisterDialogComponent);
+      this.loginService.register(this.form.value).subscribe(data => {
+        if(data['error'] == null)
+        {
+          this.loginService.changeMessage(
+            'Your username: ' + data['params'][0] + ' with password :' + data['params'][1] 
+          );
+          this.registerDialogRef = this.dialog.open(RegisterDialogComponent);
+        }
+        else
+        {
+          this.userNameExists = true;
+        }
+        
       });
     }
     this.formSubmitAttempt = true; // {8}
