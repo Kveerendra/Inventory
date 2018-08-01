@@ -58,7 +58,7 @@ export class PlaceorderComponent implements OnInit {
 
   invokeAction(qty: string, prod: Product)
   {
-    console.log("invokeActiom"+JSON.stringify(prod));
+    //console.log("invokeActiom"+JSON.stringify(prod));
     if(qty == null || qty === '')
     {
       prod.wish_list_flag = false;

@@ -55,7 +55,7 @@ export class OutOfStockComponent implements OnInit {
       this.productService.getProducts().subscribe(data => {
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.sort = this.sort;
-        console.log('datasource is : ' + this.dataSource);
+      //  console.log('datasource is : ' + this.dataSource);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       });
@@ -74,7 +74,7 @@ export class OutOfStockComponent implements OnInit {
     debugger;
     this.productService.getSubContractors().subscribe(data => {
       var subContractorList = data;
-      console.log("subContractorList -- >>"+data);
+     // console.log("subContractorList -- >>"+data);
        
       const dialogConfig = new MatDialogConfig();
   
@@ -90,9 +90,9 @@ export class OutOfStockComponent implements OnInit {
      this.dialogRef.afterClosed().subscribe(
       data => {
         
-        console.log("testing"+data);
+        //console.log("testing"+data);
         if(data === "orderedPlaced")
-          this.openSnackBar("Product ordered successfully.", "close"); } );
+          this.openSnackBar("Product ordered successfully.", "X"); } );
 
 
      
@@ -110,14 +110,9 @@ export class OutOfStockComponent implements OnInit {
  
 public openSnackBar(message: string, action: string) {
   this.snackBar.open(message, action, {
+    panelClass: ['snack-bar-color'],
   duration: 2000
   });
   } 
-
-
-  invokeAction(qty: string, subcontractor: Subcontractor)
-  {
-    console.log("invokeActiom"+JSON.stringify(subcontractor));
-  }
 
 }

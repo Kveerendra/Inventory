@@ -21,3 +21,6 @@
     color: darkslateblue;
     margin-left: 332px;
   }
+  ::ng-deep snack-bar-container.snack-bar-color {
+    background: green;
+  }

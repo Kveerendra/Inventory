@@ -60,7 +60,7 @@ export class RegisterComponent implements OnInit {
   }
   onSubmit() {
     if (this.form.valid) {
-      console.log(this.form.value); // {7}
+     // console.log(this.form.value); // {7}
       this.loginService.register(this.form.value).subscribe(user => {
         this.loginService.changeMessage(
           'Your username: ' + user.username + ' with password :' + user.password

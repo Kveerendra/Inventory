@@ -38,7 +38,7 @@ export class AddproductComponent implements OnInit {
     this.form.controls['product_description'].disable();
     this.form.controls['product_type'].disable();
     this.productService.getProductTypesList().subscribe(data => {
-      console.log(data);
+     // console.log(data);
       this.productList = data;
     });
   }
