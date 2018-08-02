@@ -47,7 +47,7 @@ export class ProductsService {
   }
   public getSubContractors(): Observable<Subcontractor[]> {
     // console.log("hello");
-    return this.http.get<Subcontractor[]>(environment.clientUrl1 + '/subContractorList');
+    return this.http.get<Subcontractor[]>(environment.clientUrl + '/subContractorList');
   }
   public getProductListForOrder(): Observable<Product[]> {
     // console.log("hello");

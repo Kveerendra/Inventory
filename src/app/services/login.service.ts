@@ -3,6 +3,7 @@ import { User } from '../models/user';
 import { Router } from '../../../node_modules/@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '../../../node_modules/@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -36,8 +37,8 @@ export class LoginService {
     this.router.navigateByUrl('/login');
   }
   login(user: any): Observable<any> {
-    //console.log(user);
-    return this.http.post('http://localhost:5002/login', JSON.stringify(user));
+    console.log(user);
+    return this.http.post(environment.serverUrl + '/login', JSON.stringify(user));
   }
   store(user: User): boolean {
     // console.log(user);
@@ -67,13 +68,12 @@ export class LoginService {
     this.message.next(message);
   }
 
-  register(user: User) : any{
-    return this.http
-      .post<User>('http://localhost:5002/register', user);
+  register(user: User): any {
+    return this.http.post<User>(environment.serverUrl + '/register', user);
   }
   isAuthenticated(): boolean {
     const res = this.window.sessionStorage.getItem('username');
-    //console.log(res);
+    // console.log(res);
     if (res == null || res === undefined) {
       this.authenticated = false;
     } else {
