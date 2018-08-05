@@ -3,7 +3,7 @@
     <mat-card-content>
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <mat-icon>assignment_ind</mat-icon><p>Sign Up</p>
-          
+
           <section class="example-section">
             <label>Business Partner Type:&nbsp;</label>
             <mat-radio-group class="example-radio-group" formControlName="partner">
@@ -41,7 +41,7 @@
               Please inform your pincode having 5 digits
             </mat-error>
           </mat-form-field>
-        <button mat-raised-button color="primary"><mat-icon>assignment_ind</mat-icon>&nbsp;&nbsp;Sign Up</button>&nbsp;&nbsp;
+        <button mat-raised-button color="primary" (click)="onSubmit()"><mat-icon>assignment_ind</mat-icon>&nbsp;&nbsp;Sign Up</button>&nbsp;&nbsp;
         <button mat-raised-button color="warn" (click)="redirectToLogin()"><mat-icon>keyboard_return</mat-icon>&nbsp;&nbsp;Back</button>
       </form>
     </mat-card-content>

@@ -49,12 +49,12 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header>Ordered Quantity</mat-header-cell>
 
       <mat-cell *matCellDef="let row">
-        <input matInput class="custom-input" (keyup)="invokeAction($event.target.value,row)" type="number" [(ngModel)]="row.quantity_ordered">
+        <input matInput class="custom-input" type="number" [(ngModel)]="row.quantity_ordered">
       </mat-cell>
     </ng-container>
 
 
-    <!-- actions -->
+    <!-- actions
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef>
         Actions
@@ -81,7 +81,7 @@
         </div>
 
       </mat-cell>
-    </ng-container>
+    </ng-container>-->
 
 
 

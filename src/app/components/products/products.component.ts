@@ -49,6 +49,10 @@ export class ProductsComponent implements OnInit {
     private modalService: BsModalService
   ) {
     this.user = loginService.getUser();
+    this.loadData();
+  }
+
+  loadData() {
     this.productService.getProducts().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
@@ -78,5 +82,23 @@ export class ProductsComponent implements OnInit {
    // console.log('product details :' + product);
     this.productService.changeProduct(product);
     this.editProductDialogRef = this.dialog.open(EditProductComponent);
+  }
+  addToItem(product: Product) {
+    // console.log('product details :' + product);
+     this.productService.addToCart(product,this.loadData);
+     //this.loadData();
+   }
+
+   removeFromCartItem(product: Product){
+    this.productService.removeFromCart(product);
+    this.loadData();
+   }
+   presentInCart(product: Product){
+     console.log(this.productService.presentInCart(product));
+    return this.productService.presentInCart(product);
+  }
+
+  ifSelfProduct(product: Product) {
+    return this.loginService.getUser().username === product.username;
   }
 }

@@ -14,5 +14,6 @@ export class Product {
   place_order_flag: boolean;
   wish_list_flag: boolean;
   product_delivery: String;
-  sub_contractors : Subcontractor[];
+  sub_contractors: Subcontractor[];
+  username: String;
 }

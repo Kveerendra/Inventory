@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
   private formSubmitAttempt: boolean;
   version = VERSION;
   registerDialogRef: MatDialogRef<RegisterDialogComponent>;
-  userNameExists: boolean = false;
+  userNameExists = false;
 
   constructor(
     private router: Router,
@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
         '',
         Validators.compose([
           Validators.required,
-          Validators.pattern('^(?=.*[a-z])(?=.*[A-Z]).{2,}$'),
+          Validators.pattern('^(?=.*[a-z])(?=.*[A-Za-z]).{2,}$'),
           Validators.maxLength(20)
         ])
       ],
@@ -51,6 +51,9 @@ export class RegisterComponent implements OnInit {
       district: ['', Validators.required],
       partner: ['', Validators.required]
     });
+    this.form.patchValue({
+      partner: 'B'
+    });
   }
 
   isFieldInvalid(field: string) {
@@ -62,20 +65,19 @@ export class RegisterComponent implements OnInit {
   }
   onSubmit() {
     if (this.form.valid) {
-     //console.log(this.form.value); // {7}
+      // console.log(this.form.value); // {7}
       this.loginService.register(this.form.value).subscribe(data => {
-        if(data['error'] == null)
-        {
+        if (data['error'] == null) {
           this.loginService.changeMessage(
-            'Your username: ' + data['params'][0] + ' with password :' + data['params'][1] 
+            'Your username: ' +
+              data['params'][0] +
+              ' with password :' +
+              data['params'][1]
           );
           this.registerDialogRef = this.dialog.open(RegisterDialogComponent);
-        }
-        else
-        {
+        } else {
           this.userNameExists = true;
         }
-        
       });
     }
     this.formSubmitAttempt = true; // {8}
