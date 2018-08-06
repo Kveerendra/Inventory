@@ -15,10 +15,13 @@ export class AppComponent {
     // setTheme('bs4');
   }
   isAuthenticated(): boolean {
-    return true;//this.loginService.authenticated;
+    return this.loginService.authenticated;
   }
   signOut() {
     this.loginService.logout();
+  }
+  isSupplier(): boolean {
+    return this.isAuthenticated() && this.loginService.isSeller();
   }
 
 

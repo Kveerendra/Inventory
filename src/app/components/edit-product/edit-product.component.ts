@@ -6,7 +6,8 @@ import {
   FormBuilder,
   Validators
 } from '../../../../node_modules/@angular/forms';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MatSnackBar } from '@angular/material';
+import { Router } from '../../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-edit-product',
@@ -20,11 +21,12 @@ export class EditProductComponent implements OnInit {
   constructor(
     private productService: ProductsService,
     private fb: FormBuilder,
-    private dialogRef: MatDialogRef<EditProductComponent>
+    private dialogRef: MatDialogRef<EditProductComponent>,
+    private router: Router,
+    public snackBar: MatSnackBar
   ) {
     this.product = this.productService.getProduct();
     // console.log("Product JSON >>>>> "+ JSON.stringify(this.product) );
-
   }
 
   ngOnInit() {
@@ -55,7 +57,21 @@ export class EditProductComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-    //  console.log(this.form.value); // {7}
+      const product: Product = new Product();
+      product.product_name = this.form.get('product_name').value;
+      product.product_type = this.form.get('product_type').value;
+      product.product_description = this.form.get('product_description').value;
+      product.product_price = this.form.get('product_price').value;
+
+      product.product_quantity = this.form.get('product_quantity').value;
+      product.product_delivery = this.form.get('product_delivery').value;
+      console.error(JSON.stringify(this.form.value));
+      this.productService.updateProduct(product).subscribe(res => {
+        this.router.navigateByUrl('/products');
+      });
+      // console.log(JSON.stringify(this.form.value)); // {7}
+      const message = 'Product updated successfully.';
+      this.openSnackBar(message, 'X');
     }
     this.formSubmitAttempt = true; // {8}
     this.dialogRef.close();
@@ -63,5 +79,11 @@ export class EditProductComponent implements OnInit {
 
   onCancel(): void {
     this.dialogRef.close();
+  }
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      panelClass: ['snack-bar-color'],
+      duration: 2000
+    });
   }
 }

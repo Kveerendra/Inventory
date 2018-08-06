@@ -52,7 +52,7 @@ export class PlaceorderComponent implements OnInit {
 
     this.dataSource = new MatTableDataSource(this.productService.getCart());
     this.dataSource.sort = this.sort;
-    //console.log("datasource is : "+ this.dataSource);
+    // console.log("datasource is : "+ this.dataSource);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     // });
@@ -71,7 +71,7 @@ export class PlaceorderComponent implements OnInit {
     if (qty == null || qty === '') {
       prod.wish_list_flag = false;
       prod.place_order_flag = false;
-    } else if (parseInt(qty) > +prod.product_quantity) {
+    } else if (parseInt(qty, 10) > +prod.product_quantity) {
       prod.wish_list_flag = true;
       prod.place_order_flag = false;
     } else {
@@ -83,23 +83,24 @@ export class PlaceorderComponent implements OnInit {
   }
   placeOrders() {
     this.productService.getCart().forEach(product => this.placeOrder(product));
-
   }
   placeOrder(prodObj: Product) {
+    console.log(prodObj);
     prodObj.product_quantity = String(
       +prodObj.product_quantity - +prodObj.quantity_ordered
     );
-    // this.productService.placeOrder(prodObj).subscribe(data => {});
-    const tempdetails = prodObj.quantity_ordered;
-    prodObj.quantity_ordered = '';
-    prodObj.place_order_flag = false;
-    const message =
-      'Order for ' +
-      prodObj.product_name +
-      ' (Qty : ' +
-      tempdetails +
-      ') placed successfully.';
+    this.productService.placeOrder(prodObj).subscribe(data => {
+      const tempdetails = prodObj.quantity_ordered;
+      prodObj.quantity_ordered = '';
+      prodObj.place_order_flag = false;
+      const message =
+        'Order for ' +
+        prodObj.product_name +
+        ' (Qty : ' +
+        tempdetails +
+        ') placed successfully.';
       this.openSnackBar(message, 'close');
+    });
   }
 
   addToWishList(prodObj: Product) {

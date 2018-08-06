@@ -56,7 +56,7 @@ export class ProductsComponent implements OnInit {
     this.productService.getProducts().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
-     // console.log('datasource is : ' + this.dataSource);
+      // console.log('datasource is : ' + this.dataSource);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
@@ -79,26 +79,32 @@ export class ProductsComponent implements OnInit {
   }
 
   editItem(product: Product) {
-   // console.log('product details :' + product);
+    // console.log('product details :' + product);
     this.productService.changeProduct(product);
     this.editProductDialogRef = this.dialog.open(EditProductComponent);
   }
   addToItem(product: Product) {
     // console.log('product details :' + product);
-     this.productService.addToCart(product,this.loadData);
-     //this.loadData();
-   }
+    this.productService.addToCart(product, this.loadData);
+    // this.loadData();
+  }
 
-   removeFromCartItem(product: Product){
+  removeFromCartItem(product: Product) {
     this.productService.removeFromCart(product);
     this.loadData();
-   }
-   presentInCart(product: Product){
-     console.log(this.productService.presentInCart(product));
+  }
+  presentInCart(product: Product) {
     return this.productService.presentInCart(product);
   }
 
   ifSelfProduct(product: Product) {
     return this.loginService.getUser().username === product.username;
+  }
+  getColor(product: Product) {
+    if (this.productService.presentInFavs(product)) {
+      return 'Ascent';
+    } else {
+      return 'White';
+    }
   }
 }

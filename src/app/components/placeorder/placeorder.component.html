@@ -5,6 +5,7 @@
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
     </mat-form-field>
     <label class="tableCaption">{{title}}</label>
+    <button mat-raised-button class="float-right" (click)="placeOrders()" color="primary">&nbsp;&nbsp;place order</button>
   </div>
   <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
     <!--- Note that these columns can be defined in any order.
@@ -90,7 +91,7 @@
 
   </mat-table>
 
-  <div class="no-results" [style.display]="dataSource==null || dataSource.length == 0 ? '' : 'none'">
+  <div class="no-results" [style.display]="dataSource==null || dataSource.data.length == 0 ? '' : 'none'">
     No results
   </div>
   <mat-paginator [pageSizeOptions]="[10, 15, 25, 100]"></mat-paginator>

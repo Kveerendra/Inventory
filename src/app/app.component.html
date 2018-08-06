@@ -51,8 +51,8 @@
             <mat-icon mat-list-icon>card_membership</mat-icon>Sub Contractor</button>
         </div> -->
         <div mat-line>
-          <button mat-button (click)="sidenav.toggle()" *ngIf="isAuthenticated()" routerLink="/mysubcontractors">
-            <mat-icon mat-list-icon>face</mat-icon>My SubContractors</button>
+          <button mat-button (click)="sidenav.toggle()" *ngIf="isSupplier()" routerLink="/mysubcontractors">
+            <mat-icon mat-list-icon>face</mat-icon>My Actions</button>
         </div>
         <div mat-line>
           <button mat-button (click)="sidenav.toggle()" *ngIf="isAuthenticated()"  routerLink="/placeorder" [skipLocationChange]="true" [queryParams]="{ tableTitle: 'Place Order' }" >

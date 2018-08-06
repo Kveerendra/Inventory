@@ -22,7 +22,8 @@ export class AddproductComponent implements OnInit {
   constructor(
     private productService: ProductsService,
     private fb: FormBuilder,
-    private router: Router, public snackBar: MatSnackBar
+    private router: Router,
+    public snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -38,7 +39,7 @@ export class AddproductComponent implements OnInit {
     this.form.controls['product_description'].disable();
     this.form.controls['product_type'].disable();
     this.productService.getProductTypesList().subscribe(data => {
-     // console.log(data);
+      // console.log(data);
       this.productList = data;
     });
   }
@@ -71,9 +72,9 @@ export class AddproductComponent implements OnInit {
       this.productService.addProduct(product).subscribe(res => {
         this.router.navigateByUrl('/products');
       });
-     // console.log(JSON.stringify(this.form.value)); // {7}
-     var message = "Product added successfully."
-      this.openSnackBar(message, "X");
+      // console.log(JSON.stringify(this.form.value)); // {7}
+      const message = 'Product added successfully.';
+      this.openSnackBar(message, 'X');
     }
     this.formSubmitAttempt = true; // {8}
   }
