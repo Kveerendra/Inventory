@@ -8,6 +8,9 @@ import { MatSnackBar } from '../../../../node_modules/@angular/material';
   templateUrl: './createproduct.component.html',
   styleUrls: ['./createproduct.component.css']
 })
+
+
+
 export class CreateproductComponent implements OnInit {
   form: FormGroup;
   private formSubmitAttempt: boolean;
@@ -32,8 +35,14 @@ export class CreateproductComponent implements OnInit {
       this.productsService.insertMasterData(this.form.value).subscribe();
       var message = "Product created successfully."
       this.openSnackBar(message, "X");
+      this.form.reset();
+      this.form.markAsUntouched();             // {8}
+     Object.keys(this.form.controls).forEach(key => {
+     this.form.controls[key].setErrors(null)
+     });
+      
     }
-    this.formSubmitAttempt = true;             // {8}
+    this.formSubmitAttempt = true;
   }
 
   openSnackBar(message: string, action: string) {
@@ -41,5 +50,6 @@ export class CreateproductComponent implements OnInit {
       panelClass: ['snack-bar-color'],
       duration: 2000
     });
+    
   }
 }
