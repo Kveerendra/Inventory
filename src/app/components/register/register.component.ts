@@ -8,6 +8,7 @@ import {
 import { VERSION, MatDialog, MatDialogRef } from '@angular/material';
 import { RegisterDialogComponent } from '../dialog/register-dialog.component';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '../../../../node_modules/@angular/material';
 
 @Component({
   selector: 'app-register',
@@ -25,7 +26,8 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private loginService: LoginService,
     private fb: FormBuilder,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    public snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -76,7 +78,8 @@ export class RegisterComponent implements OnInit {
           );
           this.registerDialogRef = this.dialog.open(RegisterDialogComponent);
         } else {
-          this.userNameExists = true;
+          //this.userNameExists = true;
+          this.openSnackBar(data['error'], "X");
         }
       });
     }
@@ -89,5 +92,12 @@ export class RegisterComponent implements OnInit {
 
   redirectToLogin() {
     this.router.navigateByUrl('/login');
+  }
+  
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      panelClass: ['snack-bar-color'],
+      duration: 2000
+    });
   }
 }

@@ -4,6 +4,7 @@ import { LoginService } from '../../services/login.service';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { User } from '../../models/user';
 import { HttpClient } from '../../../../node_modules/@angular/common/http';
+import { MatSnackBar } from '../../../../node_modules/@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     private fb: FormBuilder,
-    private loginService: LoginService
+    private loginService: LoginService,
+    public snackBar: MatSnackBar
   ) {}
 
   headers = new Headers();
@@ -47,7 +49,8 @@ export class LoginComponent implements OnInit {
     if (this.form.valid) {
       this.loginService.login(this.form.value).subscribe(data => {
         if (data['error']) {
-          // console.log(data['error']);
+          
+          this.openSnackBar(data['error'], "X");
         } else {
           const user: User = data;
           this.loginService.store(user);
@@ -55,5 +58,12 @@ export class LoginComponent implements OnInit {
         }
       });
     }
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      panelClass: ['snack-bar-color'],
+      duration: 2000
+    });
   }
 }

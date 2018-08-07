@@ -30,3 +30,7 @@ mat-card {
   ::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
     background-color: slateblue;
   }
+
+  ::ng-deep snack-bar-container.snack-bar-color {
+    background: red;
+  }

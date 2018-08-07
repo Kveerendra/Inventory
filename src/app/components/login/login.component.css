@@ -16,3 +16,6 @@ mat-card {
   background-color: white;
  
 }
+::ng-deep snack-bar-container.snack-bar-color {
+  background: red;
+}
