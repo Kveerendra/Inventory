@@ -14,6 +14,7 @@ import { LoginService } from './login.service';
 })
 export class ProductsService {
 
+
   private product: Product;
   private productCart: Product[];
   private favproductCart: Product[];
@@ -90,15 +91,27 @@ export class ProductsService {
       { headers: this.headers }
     );
   }
-  public getSubContractors(): Observable<Subcontractor[]> {
-    // console.log("hello");
-    return this.http.get<Subcontractor[]>(
-      environment.clientUrl + '/subContractorList'
+  public getSubContractors(): Observable<Product[]> {
+    return this.http.post<Product[]>(
+      environment.serverUrl + '/showOrderDetails',
+      JSON.stringify(this.loginService.getUser()),
+      {
+        headers: this.headers
+      }
+    );
+  }
+  public getmyORders(): Observable<Product[]> {
+    return this.http.post<Product[]>(
+      environment.serverUrl + '/showmyOrderDetails',
+      JSON.stringify(this.loginService.getUser()),
+      {
+        headers: this.headers
+      }
     );
   }
   public getProductListForOrder(): Observable<Product[]> {
     // console.log("hello");
-    return this.http.get<Product[]>(environment.clientUrl + '/productList');
+    return this.http.get<Product[]>(environment.serverUrl + '/stock');
   }
   public getWishList(): Observable<Wishlist[]> {
     // console.log("hello");
@@ -181,6 +194,18 @@ export class ProductsService {
       environment.serverUrl + '/updateProduct',
       JSON.stringify({ info: product, user: this.loginService.getUser() }),
       { headers: this.headers }
+    );
+  }
+  addToWishList(product: Product) {
+    // tslint:disable-next-line:prefer-const
+    let obj = product;
+    obj['username'] = this.loginService.getUser().username;
+    return this.http.post<Product[]>(
+      environment.serverUrl + '/addToWishList',
+      JSON.stringify({ info: obj }),
+      {
+        headers: this.headers
+      }
     );
   }
 }

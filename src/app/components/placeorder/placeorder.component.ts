@@ -1,10 +1,10 @@
-import { Component, OnInit, ViewChild , Inject} from '@angular/core';
-import{Product } from '../../models/product';
+import { Component, OnInit, ViewChild, Inject } from '@angular/core';
+import { Product } from '../../models/product';
 import { User } from '../../models/user';
 import { LoginService } from '../../services/login.service';
 import { ProductsService } from '../../services/products.service';
-import {MatPaginator, MatSort, MatTableDataSource,VERSION, MatDialog} from '@angular/material';
-import {MatSnackBar} from '@angular/material';
+import { MatPaginator, MatSort, MatTableDataSource, VERSION, MatDialog } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -16,60 +16,56 @@ export class PlaceorderComponent implements OnInit {
 
   title;
   user: User;
-  displayedColumns = ['product_id', 'product_name', 'product_type', 'product_description', 'price_per_qty', 'product_quantity','quantity_ordered', 'actions' ];
+  displayedColumns = ['product_id', 'product_name', 'product_type', 'product_description', 'price_per_qty', 'product_quantity', 'quantity_ordered', 'actions'];
   dataSource: MatTableDataSource<Product>;
   version = VERSION;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private route: ActivatedRoute,public snackBar: MatSnackBar,  private productService: ProductsService,private dialog: MatDialog, private loginService: LoginService) {
-    
+  constructor(private route: ActivatedRoute, public snackBar: MatSnackBar, private productService: ProductsService, private dialog: MatDialog, private loginService: LoginService) {
+
     this.route.queryParams.subscribe(
       params => {
         this.title = params['tableTitle'];
       }
     );
-   
+
     this.user = loginService.getUser();
-    this.productService.getProductListForOrder().subscribe(data => {
-      
-      this.dataSource = new MatTableDataSource(data);
+    this.productService.getProducts().subscribe(data => {
+
+
+      this.dataSource = new MatTableDataSource(data.filter(d =>{ return d.s_user_name !== this.loginService.getUser().username;}));
       this.dataSource.sort = this.sort;
-      //console.log("datasource is : "+ this.dataSource);
+      // console.log('datasource is : '+ this.dataSource);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-  });
+    });
   }
 
   ngOnInit() {
 
-    
+
 
   }
- 
 
-  
+
+
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
 
-  invokeAction(qty: string, prod: Product)
-  {
-    //console.log("invokeActiom"+JSON.stringify(prod));
-    if(qty == null || qty === '')
-    {
+  invokeAction(qty: string, prod: Product) {
+    // console.log('invokeActiom'+JSON.stringify(prod));
+    if (qty == null || qty === '') {
       prod.wish_list_flag = false;
       prod.place_order_flag = false;
-    }
-    else if(parseInt(qty) > +prod.product_quantity)
-    {
+    } else if (parseInt(qty, 10) > +prod.product_quantity) {
       prod.wish_list_flag = true;
       prod.place_order_flag = false;
-    }
-    else{
+    } else {
       prod.place_order_flag = true;
       prod.wish_list_flag = false;
     }
@@ -77,24 +73,25 @@ export class PlaceorderComponent implements OnInit {
     prod.quantity_ordered = qty;
   }
 
-  placeOrder(prodObj : Product){
+  placeOrder(prodObj: Product) {
     debugger;
-    prodObj.product_quantity = String(+prodObj.product_quantity - +prodObj.quantity_ordered );
-    //this.productService.placeOrder(prodObj).subscribe(data => {});
-    var tempdetails = prodObj.quantity_ordered;
-    prodObj.quantity_ordered = "";
+    prodObj.product_quantity = String(+prodObj.product_quantity - +prodObj.quantity_ordered);
+    this.productService.placeOrder(prodObj).subscribe(data => {
+    const tempdetails = prodObj.quantity_ordered;
+    prodObj.quantity_ordered = '';
     prodObj.place_order_flag = false;
-    var message = "Order for "+prodObj.product_name + " (Qty : "+ tempdetails + ") placed successfully."
-    this.openSnackBar(message,"close");
-
+    const message = 'Order for ' + prodObj.product_name + ' (Qty : ' + tempdetails + ') placed successfully.'
+    this.openSnackBar(message, 'close');
+  });
   }
 
-  addToWishList(prodObj : Product){
-    var tempdetails = prodObj.quantity_ordered;
-    prodObj.quantity_ordered = "";
+  addToWishList(prodObj: Product) {
+    const tempdetails = prodObj.quantity_ordered;
+    this.productService.addToWishList(prodObj);
+    prodObj.quantity_ordered = '';
     prodObj.wish_list_flag = false;
-    var message = "Order for "+prodObj.product_name + " (Qty : "+ tempdetails + ") added to wishlist successfully."
-    this.openSnackBar(message,"X");
+    const message = 'Order for ' + prodObj.product_name + ' (Qty : ' + tempdetails + ') added to wishlist successfully.'
+    this.openSnackBar(message, 'X');
   }
 
   openSnackBar(message: string, action: string) {

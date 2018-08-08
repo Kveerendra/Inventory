@@ -78,8 +78,8 @@ export class RegisterComponent implements OnInit {
           );
           this.registerDialogRef = this.dialog.open(RegisterDialogComponent);
         } else {
-          //this.userNameExists = true;
-          this.openSnackBar(data['error'], "X");
+          // this.userNameExists = true;
+          this.openSnackBar(data['error'], 'X');
         }
       });
     }
@@ -93,7 +93,7 @@ export class RegisterComponent implements OnInit {
   redirectToLogin() {
     this.router.navigateByUrl('/login');
   }
-  
+
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
       panelClass: ['snack-bar-color'],
