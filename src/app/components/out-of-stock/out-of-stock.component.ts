@@ -52,8 +52,10 @@ export class OutOfStockComponent implements OnInit {
     private loginService: LoginService,
     private modalService: BsModalService) {
       this.user = loginService.getUser();
-      this.productService.getProducts().subscribe(data => {
-        this.dataSource = new MatTableDataSource(data);
+      this.productService.getProducts().subscribe(data => {/*
+        let dd = [];
+        data.forEach(dat => {dat.product_quantity = "0"; dd.push(dat)}); */
+        this.dataSource = new MatTableDataSource(data.filter(product => product.product_quantity === '0'));
         this.dataSource.sort = this.sort;
       //  console.log('datasource is : ' + this.dataSource);
         this.dataSource.paginator = this.paginator;
@@ -70,14 +72,14 @@ export class OutOfStockComponent implements OnInit {
   }
 
   openDialog(prodObj : Product) {
-   
-    debugger;
+
+//    debugger;
     this.productService.getSubContractors().subscribe(data => {
       var subContractorList = data;
      // console.log("subContractorList -- >>"+data);
-       
+
       const dialogConfig = new MatDialogConfig();
-  
+
       dialogConfig.disableClose = true;
       dialogConfig.autoFocus = true;
 
@@ -89,30 +91,30 @@ export class OutOfStockComponent implements OnInit {
 
      this.dialogRef.afterClosed().subscribe(
       data => {
-        
+
         //console.log("testing"+data);
         if(data === "orderedPlaced")
           this.openSnackBar("Product ordered successfully.", "X"); } );
 
 
-     
+
 
     });
     //dialogConfig.data = prodObj.sub_contractors;
-  
-      
-      
- 
 
-   
+
+
+
+
+
 }
 
- 
+
 public openSnackBar(message: string, action: string) {
   this.snackBar.open(message, action, {
     panelClass: ['snack-bar-color'],
   duration: 2000
   });
-  } 
+  }
 
 }

@@ -15,11 +15,11 @@
             <mat-icon mat-list-icon>list_alt</mat-icon>Product Catalog</button>
         </div>
         <div mat-line>
-          <button mat-button (click)="sidenav.toggle()" *ngIf="isAuthenticated()" routerLink="/addproduct">
+          <button mat-button (click)="sidenav.toggle()" *ngIf="isSupplier()" routerLink="/addproduct">
             <mat-icon mat-list-icon>ballot</mat-icon>Add Products</button>
         </div>
         <div mat-line>
-          <button mat-button (click)="sidenav.toggle()" *ngIf="isAuthenticated()" routerLink="/createproduct">
+          <button mat-button (click)="sidenav.toggle()" *ngIf="isSupplier()" routerLink="/createproduct">
             <mat-icon mat-list-icon>add_to_queue</mat-icon>Create Product</button>
         </div>
         <div mat-line>
