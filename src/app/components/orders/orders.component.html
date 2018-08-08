@@ -68,12 +68,12 @@
       <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
       <mat-cell *matCellDef="let row">
         <!-- <button mat-button (click)="showDetails(row)">DETAILS</button> -->
-        <a (click)="approveOrder(row)">
+        <button mat-icon-button (click)="approveOrder(row)">
           <mat-icon class="approve-class">cloud_done</mat-icon>
-        </a> &nbsp;&nbsp;
-        <a (click)="declineOrder(row)">
+        </button> &nbsp;&nbsp;
+        <button mat-icon-button (click)="declineOrder(row)">
           <mat-icon class="decline-class">clear</mat-icon>
-        </a>
+        </button>
         <!-- <button mat-button (click)="deleteItem(row)">DELETE</button> -->
       </mat-cell>
     </ng-container>

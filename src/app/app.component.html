@@ -33,11 +33,11 @@
         <div mat-line>
           <button mat-button (click)="sidenav.toggle()" *ngIf="isAuthenticated()" [routerLink]="['./orders', 'deliveredOrders']" [skipLocationChange]="true" [queryParams]="{ tableTitle: 'Orders Completed' }">
             <mat-icon mat-list-icon>view_list</mat-icon>Orders Completed</button>
-        </div>
+        </div>-->
         <div mat-line>
           <button mat-button (click)="sidenav.toggle()" *ngIf="isAuthenticated()" [routerLink]="['./orders', 'approval']" [skipLocationChange]="true" [queryParams]="{ tableTitle: 'Orders Pending for Approval' }">
             <mat-icon mat-list-icon>assignment_turned_in</mat-icon>Orders Pending for Approval</button>
-        </div> -->
+        </div> 
         <div mat-line>
           <button mat-button (click)="sidenav.toggle()" *ngIf="isAuthenticated()" routerLink="/outofstock">
             <mat-icon mat-list-icon>reorder</mat-icon>Out of Stock</button>

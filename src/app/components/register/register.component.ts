@@ -76,7 +76,7 @@ export class RegisterComponent implements OnInit {
               ' with password :' +
               data['params'][1]
           );
-          this.registerDialogRef = this.dialog.open(RegisterDialogComponent);
+          this.registerDialogRef = this.dialog.open(RegisterDialogComponent, { disableClose: true });
         } else {
           //this.userNameExists = true;
           this.openSnackBar(data['error'], "X");

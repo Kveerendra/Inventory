@@ -75,12 +75,8 @@ export class ProductsService {
 
   public getOrdersForApproval(): Observable<Order[]> {
     // console.log("hello");
-    return this.http.post<Order[]>(
-      environment.serverUrl + '/getOrderData',
-      JSON.stringify({ username: this.loginService.getUser().username }),
-      { headers: this.headers }
-    );
-  }
+    return this.http.get<Order[]>( environment.clientUrl1 + '/orderList');
+    }
 
   public getOutOfStock(): Observable<Order[]> {
     // console.log("hello");

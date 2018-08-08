@@ -65,13 +65,11 @@ export class OrdersComponent implements OnInit {
         'actions'
       ];
       this.productService.getOrdersForApproval().subscribe(data => {
-        if (statusFlag !== 'all') {
-          filteredData = data.filter(function(el) {
-            return el.status.toLowerCase() === statusFlag; // Changed this so a home would match
-          });
-        } else {
           filteredData = data;
-        }
+          this.dataSource = new MatTableDataSource(filteredData);
+          this.dataSource.sort = this.sort;
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
       });
     } else {
       this.displayedColumns = [
