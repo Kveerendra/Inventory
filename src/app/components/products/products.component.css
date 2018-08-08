@@ -21,3 +21,4 @@ table {
   color: darkslateblue;
   margin-left: 332px;
 }
+button:focus {outline:0;}
