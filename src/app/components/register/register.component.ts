@@ -49,8 +49,8 @@ export class RegisterComponent implements OnInit {
           Validators.maxLength(5)
         ])
       ],
-      location: ['', Validators.required],
-      district: ['', Validators.required],
+      location: ['', Validators.compose([Validators.required, Validators.pattern('/^[A-Za-z]+$/')])],
+      district: ['', Validators.compose([Validators.required, Validators.pattern('/^[A-Za-z]+$/')])],
       partner: ['', Validators.required]
     });
     this.form.patchValue({
