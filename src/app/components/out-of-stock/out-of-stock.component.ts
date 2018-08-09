@@ -56,13 +56,11 @@ export class OutOfStockComponent implements OnInit {
     private modalService: BsModalService
   ) {
     this.user = loginService.getUser();
-    this.productService.getProducts().subscribe(data => {
+    this.productService.getMyOutOfStockProducts().subscribe(data => {
       /*
         let dd = [];
         data.forEach(dat => {dat.product_quantity = "0"; dd.push(dat)}); */
-      this.dataSource = new MatTableDataSource(
-        data.filter(product => product.product_quantity === 0)
-      );
+      this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
       //  console.log('datasource is : ' + this.dataSource);
       this.dataSource.paginator = this.paginator;
@@ -78,9 +76,9 @@ export class OutOfStockComponent implements OnInit {
   }
 
   openDialog(prodObj: Product) {
-    //    debugger;
-    this.productService.getSubContractors().subscribe(data => {
-      let subContractorList = data;
+    console.log(prodObj);
+    this.productService.getAvailableSubContractorsForProduct(prodObj).subscribe(data => {
+      const subContractorList = data;
       // console.log("subContractorList -- >>"+data);
 
       const dialogConfig = new MatDialogConfig();

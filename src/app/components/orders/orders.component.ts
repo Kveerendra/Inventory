@@ -26,8 +26,10 @@ export class OrdersComponent implements OnInit {
   dataSource: MatTableDataSource<Product>;
   version = VERSION;
   title;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator)
+  paginator: MatPaginator;
+  @ViewChild(MatSort)
+  sort: MatSort;
 
   constructor(
     private route: ActivatedRoute,
@@ -64,11 +66,11 @@ export class OrdersComponent implements OnInit {
         'actions'
       ];
       this.productService.getOrdersForApproval().subscribe(data => {
-          filteredData = data;
-          this.dataSource = new MatTableDataSource(filteredData);
-          this.dataSource.sort = this.sort;
-          this.dataSource.paginator = this.paginator;
-          this.dataSource.sort = this.sort;
+        filteredData = data;
+        this.dataSource = new MatTableDataSource(filteredData);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       });
     } else {
       this.displayedColumns = [
@@ -102,16 +104,17 @@ export class OrdersComponent implements OnInit {
             return el.status.toLowerCase() === statusFlag; // Changed this so a home would match
           });
         } else { */
-          filteredData = data;
-          this.dataSource = new MatTableDataSource(filteredData);
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-      //  }
+        data.forEach(d => {
+          d.delivery_stauts = this.getOrderStatusText(d.delivery_stauts);
+        });
+        filteredData = data;
+        this.dataSource = new MatTableDataSource(filteredData);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        //  }
       });
     }
-
-
   }
 
   applyFilter(filterValue: string) {
@@ -120,15 +123,15 @@ export class OrdersComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
   approveOrder(product: Product) {
-product.delivery_stauts = 'CO';
-this.productService.approveOrDeclineOrder(product).subscribe(data =>{
-  console.log('Order Approved');
-});
+    product.delivery_stauts = 'CO';
+    this.productService.approveOrDeclineOrder(product).subscribe(data => {
+      console.log('Order Approved');
+    });
   }
   declineOrder(product: Product) {
     product.delivery_stauts = 'DE';
 
-    this.productService.approveOrDeclineOrder(product).subscribe(data =>{
+    this.productService.approveOrDeclineOrder(product).subscribe(data => {
       console.log('Order Declined');
     });
   }
@@ -136,6 +139,10 @@ this.productService.approveOrDeclineOrder(product).subscribe(data =>{
     switch (statusCode) {
       case 'OG':
         return 'Pending';
+      case 'CO':
+        return 'Completed';
+      case 'DE':
+        return 'Rejected';
       default:
         return '-----';
     }
