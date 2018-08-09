@@ -146,7 +146,7 @@ export class OrdersComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
   approveOrder(product: Product) {
-    
+    product.delivery_stauts = 'CO';
     this.productService.approveOrDeclineOrder(product).subscribe(data => {
       console.log('Order Approved');
       product.status_flag = 'Completed';
@@ -155,7 +155,7 @@ export class OrdersComponent implements OnInit {
     });
   }
   declineOrder(product: Product) {
-    //product.delivery_stauts = 'DE';
+    product.delivery_stauts = 'DE';
 
     this.productService.approveOrDeclineOrder(product).subscribe(data => {
       console.log('Order Declined');
