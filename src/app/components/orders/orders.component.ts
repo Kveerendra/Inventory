@@ -66,6 +66,9 @@ export class OrdersComponent implements OnInit {
         'actions'
       ];
       this.productService.getOrdersForApproval().subscribe(data => {
+        data.forEach(d => {
+          d.delivery_stauts = this.getOrderStatusText(d.delivery_stauts);
+        });
         filteredData = data;
         this.dataSource = new MatTableDataSource(filteredData);
         this.dataSource.sort = this.sort;
@@ -98,7 +101,7 @@ export class OrdersComponent implements OnInit {
       }
       this.user = this.loginService.getUser();
       this.productService.getOrders().subscribe(data => {
-        console.error(data);
+        // console.error(data);
         /* if (statusFlag !== 'all') {
           filteredData = data.filter(function(el) {
             return el.status.toLowerCase() === statusFlag; // Changed this so a home would match
