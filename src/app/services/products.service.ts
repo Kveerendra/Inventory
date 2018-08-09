@@ -14,7 +14,6 @@ import { LoginService } from './login.service';
 })
 export class ProductsService {
 
-
   private product: Product;
   private productCart: Product[];
   private favproductCart: Product[];
@@ -193,7 +192,7 @@ export class ProductsService {
     this.favproductCart = temp;
   }
   updateProduct(product: Product): Observable<Product> {
-    console.error(product);
+    // console.error(product);
     return this.http.post<Product>(
       environment.serverUrl + '/updateProduct',
       JSON.stringify({ info: product, user: this.loginService.getUser() }),
@@ -217,6 +216,27 @@ export class ProductsService {
       environment.serverUrl + '/updateOrderDetails',
       JSON.stringify({ userInfo: this.loginService.getUser(),
         productRecord: product
+       }),
+      {
+        headers: this.headers
+      }
+    );
+  }
+  getMyOutOfStockProducts(): Observable<Product[]> {
+    // console.log("hello");
+    return this.http.post<Product[]>(
+      environment.serverUrl + '/getMyOutOfStockProducts',
+      JSON.stringify({ userInfo: this.loginService.getUser()
+       }),
+      {
+        headers: this.headers
+      }
+    );
+  }
+  getAvailableSubContractorsForProduct(product: Product): Observable<Product[]> {
+    return this.http.post<Product[]>(
+      environment.serverUrl + '/getAvailableSubContractorsForProduct',
+      JSON.stringify({ userInfo: this.loginService.getUser(), product: product
        }),
       {
         headers: this.headers

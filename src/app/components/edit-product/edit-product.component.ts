@@ -56,16 +56,16 @@ export class EditProductComponent implements OnInit {
   }
 
   onSubmit() {
+    console.error(this.product);
     if (this.form.valid) {
-      const product: Product = new Product();
+      const product: Product = this.product;
       product.product_name = this.form.get('product_name').value;
       product.product_type = this.form.get('product_type').value;
       product.product_description = this.form.get('product_description').value;
       product.product_price = this.form.get('product_price').value;
 
       product.product_quantity = this.form.get('product_quantity').value;
-      product.product_delivery = this.form.get('product_delivery').value;
-      console.error(JSON.stringify(this.form.value));
+      product.product_delivery = this.form.get('delivery_day').value;
       this.productService.updateProduct(product).subscribe(res => {
         this.router.navigateByUrl('/products');
       });

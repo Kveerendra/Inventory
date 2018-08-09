@@ -1,51 +1,54 @@
 <div>
-    <mat-card>
-      <mat-card-content>
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
-            <mat-icon>ballot</mat-icon>
-            <p>Edit Product</p>
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-icon>ballot</mat-icon>
+        <p>Edit Product</p>
 
 
-          <mat-form-field class="full-width-input">
-            <input type="text" matInput placeholder="Product Name" formControlName="product_name" required>
-            </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <input type="text" matInput placeholder="Product Name" formControlName="product_name" required>
+        </mat-form-field>
 
-          <mat-form-field class="full-width-input">
-            <input matInput placeholder="Product Type" formControlName="product_type" required>
-            <!-- <mat-icon matSuffix>lock</mat-icon> -->
+        <mat-form-field class="full-width-input">
+          <input matInput placeholder="Product Type" formControlName="product_type" required>
+          <!-- <mat-icon matSuffix>lock</mat-icon> -->
 
-          </mat-form-field>
-          <mat-form-field class="full-width-input">
-            <input matInput placeholder="Description" formControlName="product_description" required>
-            <!-- <mat-icon matSuffix>lock</mat-icon> -->
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <input matInput placeholder="Description" formControlName="product_description" required>
+          <!-- <mat-icon matSuffix>lock</mat-icon> -->
 
-          </mat-form-field>
+        </mat-form-field>
 
-          <mat-form-field class="full-width-input">
-            <input type="number" matInput placeholder="Price/Quantity" formControlName="product_price" required>
-            <!-- <mat-icon matSuffix>lock</mat-icon> -->
-            <mat-error *ngIf="isFieldInvalid('product_price')">
-              Please
-            </mat-error>
-          </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <input type="number" matInput placeholder="Price/Quantity" formControlName="product_price" required>
+          <!-- <mat-icon matSuffix>lock</mat-icon> -->
+          <mat-error *ngIf="isFieldInvalid('product_price')">
+            Please
+          </mat-error>
+        </mat-form-field>
 
-          <mat-form-field class="full-width-input">
-            <input type="number" matInput placeholder="Quantity Available" formControlName="product_quantity" required>
-            <!-- <mat-icon matSuffix>lock</mat-icon> -->
-            <mat-error *ngIf="isFieldInvalid('product_quantity')">
-              Please
-            </mat-error>
-          </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <input type="number" matInput placeholder="Quantity Available" formControlName="product_quantity" required>
+          <!-- <mat-icon matSuffix>lock</mat-icon> -->
+          <mat-error *ngIf="isFieldInvalid('product_quantity')">
+            Please
+          </mat-error>
+        </mat-form-field>
 
-          <mat-form-field class="full-width-input">
-            <input type="text" matInput placeholder="Delivery Within" formControlName="delivery_day" required>
-            <!-- <mat-icon matSuffix>lock</mat-icon> -->
-            <mat-error *ngIf="isFieldInvalid('delivery_day')">
-              Please
-            </mat-error>
-          </mat-form-field>
-          <button mat-raised-button color="primary" (click)="onSubmit()"><mat-icon>edit</mat-icon>&nbsp;&nbsp;Edit Product</button>&nbsp;&nbsp;
-          <button mat-raised-button color="warn" (click)="onCancel()"><mat-icon>cancel</mat-icon>&nbsp;&nbsp;Cancel</button>
-        </form>
-      </mat-card-content>
-    </mat-card>
+        <mat-form-field class="full-width-input">
+          <input type="text" matInput placeholder="Delivery Within" formControlName="delivery_day" required>
+          <!-- <mat-icon matSuffix>lock</mat-icon> -->
+          <mat-error *ngIf="isFieldInvalid('delivery_day')">
+            Please
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">
+          <mat-icon>edit</mat-icon>&nbsp;&nbsp;Edit Product</button>&nbsp;&nbsp;
+        <button mat-raised-button color="warn" (click)="onCancel()">
+          <mat-icon>cancel</mat-icon>&nbsp;&nbsp;Cancel</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  </div>

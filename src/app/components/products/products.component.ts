@@ -81,7 +81,7 @@ export class ProductsComponent implements OnInit {
   }
 
   isSellersProduct(product: Product): boolean {
-    console.error(product);
+    // console.error(product);
     if (product !== undefined) {
       return this.loginService.getUser().username === product.s_user_name;
     } else { return false; }
