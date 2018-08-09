@@ -62,12 +62,22 @@ export class OrdersComponent implements OnInit {
         'product_price',
         'quantity_ordered',
         'order_date',
-        'delivery_stauts',
+        'status_flag',
         'actions'
       ];
       this.productService.getOrdersForApproval().subscribe(data => {
         data.forEach(d => {
-          d.delivery_stauts = this.getOrderStatusText(d.delivery_stauts);
+          d.status_flag = this.getOrderStatusText(d.delivery_stauts);
+          if(d.status_flag === 'Pending')
+          {
+              d.show_approval_flag = true;
+              d.show_decline_flag = true;
+          }
+          else
+          {
+            d.show_approval_flag = false;
+            d.show_decline_flag = false;
+          }
         });
         filteredData = data;
         this.dataSource = new MatTableDataSource(filteredData);
@@ -83,7 +93,7 @@ export class OrdersComponent implements OnInit {
         'product_price',
         'quantity_ordered',
         'order_date',
-        'delivery_stauts'
+        'status_flag'
       ];
       switch (this.routeParam) {
         case 'pendingOrders':
@@ -108,7 +118,17 @@ export class OrdersComponent implements OnInit {
           });
         } else { */
         data.forEach(d => {
-          d.delivery_stauts = this.getOrderStatusText(d.delivery_stauts);
+          d.status_flag = this.getOrderStatusText(d.delivery_stauts);
+          if(d.status_flag === 'Pending')
+          {
+              d.show_approval_flag = true;
+              d.show_decline_flag = true;
+          }
+          else
+          {
+            d.show_approval_flag = false;
+            d.show_decline_flag = false;
+          }
         });
         filteredData = data;
         this.dataSource = new MatTableDataSource(filteredData);
@@ -126,16 +146,22 @@ export class OrdersComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
   approveOrder(product: Product) {
-    product.delivery_stauts = 'CO';
+    
     this.productService.approveOrDeclineOrder(product).subscribe(data => {
       console.log('Order Approved');
+      product.status_flag = 'Completed';
+      product.show_approval_flag = false;
+      product.show_decline_flag = false;
     });
   }
   declineOrder(product: Product) {
-    product.delivery_stauts = 'DE';
+    //product.delivery_stauts = 'DE';
 
     this.productService.approveOrDeclineOrder(product).subscribe(data => {
       console.log('Order Declined');
+      product.status_flag = 'Rejected';
+      product.show_approval_flag = false;
+      product.show_decline_flag = false;
     });
   }
   getOrderStatusText(statusCode: String): String {

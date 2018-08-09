@@ -23,4 +23,7 @@ export class Product {
   sub_product_id: String;
   sup_product_id: String;
   supplier_id: String;
+  status_flag: String;
+  show_approval_flag: boolean;
+  show_decline_flag:boolean;
 }

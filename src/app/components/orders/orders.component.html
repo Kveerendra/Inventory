@@ -10,7 +10,7 @@
     <!--- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->
 
-    <ng-container matColumnDef="order_id">
+    <ng-container style="word-wrap: break-word; white-space: 'normal'; width:500px" matColumnDef="order_id">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Order Id</mat-header-cell>
       <mat-cell *matCellDef="let row">{{row.order_id}}</mat-cell>
     </ng-container>
@@ -35,9 +35,9 @@
       <mat-cell *matCellDef="let row"> {{row.quantity_ordered}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="delivery_stauts">
+    <ng-container matColumnDef="status_flag">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.delivery_stauts}}</mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.status_flag}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="order_date">
@@ -68,11 +68,18 @@
       <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
       <mat-cell *matCellDef="let row">
         <!-- <button mat-button (click)="showDetails(row)">DETAILS</button> -->
-        <button mat-icon-button (click)="approveOrder(row)">
+        <button mat-icon-button *ngIf="row.show_approval_flag" (click)="approveOrder(row)">
           <mat-icon class="approve-class">cloud_done</mat-icon>
-        </button> &nbsp;&nbsp;
-        <button mat-icon-button (click)="declineOrder(row)">
+        </button>
+        <button mat-icon-button *ngIf="!row.show_approval_flag" (click)="approveOrder(row)" color="accent" disabled="true">
+          <mat-icon >cloud_done</mat-icon>
+        </button>
+        &nbsp;&nbsp;
+        <button mat-icon-button *ngIf="row.show_decline_flag" (click)="declineOrder(row)">
           <mat-icon class="decline-class">clear</mat-icon>
+        </button>
+        <button *ngIf="!row.show_decline_flag" mat-icon-button (click)="declineOrder(row)" color="accent" disabled="true">
+          <mat-icon >clear</mat-icon>
         </button>
         <!-- <button mat-button (click)="deleteItem(row)">DELETE</button> -->
       </mat-cell>
