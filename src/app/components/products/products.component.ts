@@ -23,15 +23,7 @@ import {
 })
 export class ProductsComponent implements OnInit {
   user: User;
-  displayedColumns = [
-    'product_id',
-    'product_name',
-    'product_description',
-    'product_price',
-    'product_quantity',
-    'delivery_day',
-    'actions'
-  ];
+  displayedColumns;
   dataSource: MatTableDataSource<Product>;
   version = VERSION;
   editProductDialogRef: MatDialogRef<EditProductComponent>;
@@ -48,6 +40,30 @@ export class ProductsComponent implements OnInit {
     private loginService: LoginService,
     private modalService: BsModalService
   ) {
+    if(this.isSupplier())
+    {
+      this.displayedColumns = [
+        'product_id',
+        'product_name',
+        'product_description',
+        'product_price',
+        'product_quantity',
+        'delivery_day',
+        'actions'
+      ];
+    }
+    else{
+      this.displayedColumns = [
+        'product_id',
+        'product_name',
+        'product_description',
+        'product_price',
+        'product_quantity',
+        'delivery_day'
+      ];
+    }
+    
+
     this.user = loginService.getUser();
     this.productService.getProducts().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
@@ -81,9 +97,16 @@ export class ProductsComponent implements OnInit {
   }
 
   isSellersProduct(product: Product): boolean {
-    console.error(product);
+    //console.error(product);
     if (product !== undefined) {
       return this.loginService.getUser().username === product.s_user_name;
     } else { return false; }
+  }
+
+  isSupplier(): boolean {
+    return this.isAuthenticated() && this.loginService.isSeller();
+  }
+  isAuthenticated(): boolean {
+    return this.loginService.authenticated;
   }
 }

@@ -45,8 +45,6 @@ export class PlaceorderComponent implements OnInit {
 
   ngOnInit() {
 
-
-
   }
 
 
@@ -74,11 +72,13 @@ export class PlaceorderComponent implements OnInit {
   }
 
   placeOrder(prodObj: Product) {
+    prodObj.place_order_flag = false;
     prodObj.product_quantity = +prodObj.product_quantity - +prodObj.quantity_ordered;
     this.productService.placeOrder(prodObj).subscribe(data => {
+      debugger;
     const tempdetails = prodObj.quantity_ordered;
-    prodObj.quantity_ordered = 0;
-    prodObj.place_order_flag = false;
+    prodObj.quantity_ordered = null;
+   
     const message = 'Order for ' + prodObj.product_name + ' (Qty : ' + tempdetails + ') placed successfully.';
     this.openSnackBar(message, 'close');
   });
@@ -86,9 +86,10 @@ export class PlaceorderComponent implements OnInit {
 
   addToWishList(prodObj: Product) {
     const tempdetails = prodObj.quantity_ordered;
-    this.productService.addToWishList(prodObj).subscribe(data => {
-    prodObj.quantity_ordered = 0;
     prodObj.wish_list_flag = false;
+    this.productService.addToWishList(prodObj).subscribe(data => {
+    prodObj.quantity_ordered = null;
+    
     const message = 'Order for ' + prodObj.product_name + ' (Qty : ' + tempdetails + ') added to wishlist successfully.'
     this.openSnackBar(message, 'X');
     });
