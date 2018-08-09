@@ -37,7 +37,7 @@
 
     <ng-container matColumnDef="delivery_stauts">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{getOrderStatusText(row.delivery_stauts)}}</mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.delivery_stauts}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="order_date">
