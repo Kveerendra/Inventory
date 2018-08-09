@@ -13,6 +13,7 @@ import {
   MatDialog,
   MatDialogRef
 } from '@angular/material';
+import { Product } from '../../models/product';
 
 @Component({
   selector: 'app-orders',
@@ -58,10 +59,10 @@ export class OrdersComponent implements OnInit {
         'order_id',
         'product_id',
         'product_name',
-        'price_per_qty',
-        'product_quantity',
+        'product_price',
+        'quantity_ordered',
         'order_date',
-        'status',
+        'delivery_stauts',
         'actions'
       ];
       this.productService.getOrdersForApproval().subscribe(data => {
@@ -118,10 +119,25 @@ export class OrdersComponent implements OnInit {
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
-  approveOrder(row) {
-
+  approveOrder(product:Product) {
+product.delivery_stauts = 'Approved';
+this.productService.approveOrDeclineOrder(product).subscribe(data =>{
+  console.log('Order Approved');
+});
   }
-  declineOrder(row) {
+  declineOrder(product:Product) {
+    product.delivery_stauts = 'Decline';
 
+    this.productService.approveOrDeclineOrder(product).subscribe(data =>{
+      console.log('Order Declined');
+    });
+  }
+  getOrderStatusText(statusCode: String): String {
+    switch (statusCode) {
+      case 'OG':
+        return 'Pending';
+      default:
+        return '-----';
+    }
   }
 }

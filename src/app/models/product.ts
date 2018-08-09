@@ -19,4 +19,6 @@ export class Product {
   order_id: String;
   delivery_stauts:String;
   order_date:String;
+  wish_status:String;
+  wisher_id:String;
 }

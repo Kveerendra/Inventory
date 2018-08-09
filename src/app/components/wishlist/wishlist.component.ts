@@ -4,6 +4,7 @@ import { User } from '../../models/user';
 import { LoginService } from '../../services/login.service';
 import { ProductsService } from '../../services/products.service';
 import {MatPaginator, MatSort, MatTableDataSource,VERSION, MatDialog, MatDialogRef} from '@angular/material';
+import { Product } from '../../models/product';
 
 @Component({
   selector: 'app-wishlist',
@@ -12,8 +13,8 @@ import {MatPaginator, MatSort, MatTableDataSource,VERSION, MatDialog, MatDialogR
 })
 export class WishlistComponent implements OnInit {
   user: User;
-  displayedColumns = ['product_id', 'product_name', 'product_type', 'price_per_qty', 'product_quantity', 'status','wisher_id'];
-  dataSource: MatTableDataSource<Wishlist>;
+  displayedColumns = ['product_id', 'product_name', 'product_type', 'product_price', 'product_quantity', 'wish_status','wisher_id'];
+  dataSource: MatTableDataSource<Product>;
   version = VERSION;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -21,7 +22,7 @@ export class WishlistComponent implements OnInit {
 
     this.user = loginService.getUser();
     this.productService.getWishList().subscribe(data => {
-      
+
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
      // console.log("datasource is : "+ this.dataSource);
@@ -32,9 +33,9 @@ export class WishlistComponent implements OnInit {
 
   ngOnInit() {
   }
- 
 
-  
+
+
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
@@ -44,7 +45,7 @@ export class WishlistComponent implements OnInit {
 
 
 
-  
+
 
 
 }

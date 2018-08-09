@@ -4,7 +4,7 @@
       <mat-form-field>
           <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
         </mat-form-field>
-        <label class="tableCaption">WISH LIST DETAILS</label> 
+        <label class="tableCaption">WISH LIST DETAILS</label>
   </div>
   <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
     <!--- Note that these columns can be defined in any order.
@@ -25,9 +25,9 @@
       <mat-cell *matCellDef="let row"> {{row.product_type}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="price_per_qty">
+    <ng-container matColumnDef="product_price">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.price_per_qty}}</mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.product_price}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="product_quantity">
@@ -35,15 +35,15 @@
       <mat-cell *matCellDef="let row"> {{row.product_quantity}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="status">
+    <ng-container matColumnDef="wish_status">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.status}}</mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.wish_status}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="wisher_id">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Wisher Id</mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.wisher_id}}</mat-cell>
     </ng-container>
-    
+
 
       <!-- actions -->
       <!-- <ng-container matColumnDef="actions">
@@ -52,19 +52,19 @@
               <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
             </button>
           </mat-header-cell>
-    
+
           <mat-cell *matCellDef="let row; let i=index;">
             <button mat-icon-button color="accent" (click)="startEdit(i)">
               <mat-icon aria-label="Edit">edit</mat-icon>
             </button>
-    
+
             <button mat-icon-button color="accent" (click)="deleteItem(i)">
               <mat-icon aria-label="Delete">delete</mat-icon>
             </button>
           </mat-cell>
         </ng-container> -->
 
-       
+
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

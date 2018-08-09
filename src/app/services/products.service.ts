@@ -76,7 +76,11 @@ export class ProductsService {
 
   public getOrdersForApproval(): Observable<Order[]> {
     // console.log("hello");
-    return this.http.get<Order[]>( environment.clientUrl1 + '/orderList');
+    return this.http.post<Order[]>(
+      environment.serverUrl + '/showOrderPendingForApproval',
+      JSON.stringify({ username: this.loginService.getUser().username }),
+      { headers: this.headers }
+    );
     }
 
   public getOutOfStock(): Observable<Order[]> {
@@ -109,9 +113,13 @@ export class ProductsService {
     // console.log("hello");
     return this.http.get<Product[]>(environment.serverUrl + '/stock');
   }
-  public getWishList(): Observable<Wishlist[]> {
+  public getWishList(): Observable<Product[]> {
     // console.log("hello");
-    return this.http.get<Wishlist[]>(environment.clientUrl + '/wishList');
+    return this.http.post<Product[]>(
+      environment.serverUrl + '/getWishList',
+      JSON.stringify({ userInfo: this.loginService.getUser() }),
+      { headers: this.headers }
+    );
   }
 
   insertMasterData(product: Product): Observable<any> {
@@ -198,7 +206,18 @@ export class ProductsService {
     obj['username'] = this.loginService.getUser().username;
     return this.http.post<Product[]>(
       environment.serverUrl + '/addToWishList',
-      JSON.stringify({ info: obj }),
+      JSON.stringify({ userInfo: this.loginService.getUser(),product:product }),
+      {
+        headers: this.headers
+      }
+    );
+  }
+  approveOrDeclineOrder(product:Product){
+    return this.http.post<Product[]>(
+      environment.serverUrl + '/addToWishList',
+      JSON.stringify({ userInfo: this.loginService.getUser(),
+        productRecord: product
+       }),
       {
         headers: this.headers
       }

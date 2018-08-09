@@ -25,19 +25,19 @@
       <mat-cell *matCellDef="let row"> {{row.product_name}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="price_per_qty">
+    <ng-container matColumnDef="product_price">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.price_per_qty}}</mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.product_price}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="product_quantity">
+    <ng-container matColumnDef="quantity_ordered">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.product_quantity}}</mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.quantity_ordered}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="status">
+    <ng-container matColumnDef="delivery_stauts">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.status}}</mat-cell>
+      <mat-cell *matCellDef="let row"> {{getOrderStatusText(row.delivery_stauts)}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="order_date">
@@ -52,12 +52,12 @@
                 <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
               </button>
             </mat-header-cell>
-      
+
             <mat-cell *matCellDef="let row; let i=index;">
               <button mat-icon-button color="accent" (click)="startEdit(i)">
                 <mat-icon aria-label="Edit">edit</mat-icon>
               </button>
-      
+
               <button mat-icon-button color="accent" (click)="deleteItem(i)">
                 <mat-icon aria-label="Delete">delete</mat-icon>
               </button>

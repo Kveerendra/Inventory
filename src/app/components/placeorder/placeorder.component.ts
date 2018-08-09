@@ -16,7 +16,7 @@ export class PlaceorderComponent implements OnInit {
 
   title;
   user: User;
-  displayedColumns = ['product_id', 'product_name', 'product_type', 'product_description', 'price_per_qty', 'product_quantity', 'quantity_ordered', 'actions'];
+  displayedColumns = ['product_id', 'product_name', 'product_type', 'product_description', 'product_price', 'product_quantity', 'quantity_ordered', 'actions'];
   dataSource: MatTableDataSource<Product>;
   version = VERSION;
 
@@ -80,18 +80,19 @@ export class PlaceorderComponent implements OnInit {
     const tempdetails = prodObj.quantity_ordered;
     prodObj.quantity_ordered = '';
     prodObj.place_order_flag = false;
-    const message = 'Order for ' + prodObj.product_name + ' (Qty : ' + tempdetails + ') placed successfully.'
+    const message = 'Order for ' + prodObj.product_name + ' (Qty : ' + tempdetails + ') placed successfully.';
     this.openSnackBar(message, 'close');
   });
   }
 
   addToWishList(prodObj: Product) {
     const tempdetails = prodObj.quantity_ordered;
-    this.productService.addToWishList(prodObj);
+    this.productService.addToWishList(prodObj).subscribe(data => {
     prodObj.quantity_ordered = '';
     prodObj.wish_list_flag = false;
     const message = 'Order for ' + prodObj.product_name + ' (Qty : ' + tempdetails + ') added to wishlist successfully.'
     this.openSnackBar(message, 'X');
+    });
   }
 
   openSnackBar(message: string, action: string) {
