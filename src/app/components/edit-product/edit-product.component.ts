@@ -37,7 +37,7 @@ export class EditProductComponent implements OnInit {
         this.product.product_description,
         Validators.required
       ],
-      price_per_qty: [this.product.product_price, Validators.required],
+      product_price: [this.product.product_price, Validators.required],
       product_quantity: [this.product.product_quantity, Validators.required],
       delivery_day: [this.product.delivery_day, Validators.required],
       product_type: [this.product.product_type, Validators.required]

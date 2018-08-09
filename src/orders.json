@@ -4,7 +4,7 @@
             "order_id": "ORD_101",
             "product_id": "101",
             "product_name": "Shirts",
-            "price_per_qty": "1500",
+            "product_price": "1500",
             "product_quantity": "10",
             "order_date": "31-July-2018",
             "status": "In Progress"
@@ -13,7 +13,7 @@
             "order_id": "ORD_102",
             "product_id": "102",
             "product_name": "Texidos",
-            "price_per_qty": "10000",
+            "product_price": "10000",
             "product_quantity": "50",
             "order_date": "30-Aug-2018",
             "status": "In Progress"
@@ -22,7 +22,7 @@
             "order_id": "ORD_103",
             "product_id": "103",
             "product_name": "Shoes",
-            "price_per_qty": "4000",
+            "product_price": "4000",
             "product_quantity": "200",
             "order_date": "30-Aug-2018",
             "product_type": "Clothings",
@@ -40,7 +40,7 @@
             "order_id": "ORD_105",
             "product_id": "105",
             "product_name": "Shoes",
-            "price_per_qty": "4000",
+            "product_price": "4000",
             "product_quantity": "200",
             "order_date": "30-Aug-2018",
             "status": "Delivered"
@@ -50,7 +50,7 @@
             "product_id": "106",
             "product_name": "Shoes",
             "product_description": "By Hush Puppies",
-            "price_per_qty": "4000",
+            "product_price": "4000",
             "product_quantity": "200",
             "order_date": "30-Aug-2018",
             "status": "Delivered"
@@ -60,7 +60,7 @@
             "product_id": "107",
             "product_name": "Shoes",
             "product_description": "By Hush Puppies",
-            "price_per_qty": "4000",
+            "product_price": "4000",
             "product_quantity": "200",
             "order_date": "30-Aug-2018",
             "status": "In Progress"
@@ -70,7 +70,7 @@
             "product_id": "108",
             "product_name": "Shoes",
             "product_description": "By Hush Puppies",
-            "price_per_qty": "4000",
+            "product_price": "4000",
             "product_quantity": "200",
             "order_date": "30-Aug-2018",
             "status": "Delivered"
@@ -80,7 +80,7 @@
             "product_id": "109",
             "product_name": "Shoes",
             "product_description": "By Hush Puppies",
-            "price_per_qty": "4000",
+            "product_price": "4000",
             "product_quantity": "200",
             "order_date": "30-Aug-2018",
             "status": "Delivered"
@@ -90,7 +90,7 @@
             "product_id": "110",
             "product_name": "Shoes",
             "product_description": "By Hush Puppies",
-            "price_per_qty": "4000",
+            "product_price": "4000",
             "product_quantity": "200",
             "order_date": "30-Aug-2018",
             "status": "Delivered"
@@ -100,7 +100,7 @@
             "product_id": "111",
             "product_name": "Shoes",
             "product_description": "By Hush Puppies",
-            "price_per_qty": "4000",
+            "product_price": "4000",
             "product_quantity": "200",
             "order_date": "30-Aug-2018",
             "status": "In Progress"
@@ -110,7 +110,7 @@
             "product_id": "112",
             "product_name": "Shirts",
             "product_description": "Blue Check shirts by Philip Luis Brand",
-            "price_per_qty": "1500",
+            "product_price": "1500",
             "product_quantity": "1000",
             "order_date": "31-July-2018",
             "status": "In Progress"
@@ -120,7 +120,7 @@
             "product_id": "113",
             "product_name": "Shirts",
             "product_description": "Blue Check shirts by Philip Luis Brand",
-            "price_per_qty": "1500",
+            "product_price": "1500",
             "product_quantity": "1000",
             "order_date": "31-July-2018",
             "status": "Delivered"
@@ -130,7 +130,7 @@
             "product_id": "114",
             "product_name": "Shirts",
             "product_description": "Blue Check shirts by Philip Luis Brand",
-            "price_per_qty": "1500",
+            "product_price": "1500",
             "product_quantity": "1000",
             "order_date": "31-July-2018",
             "status": "In Progress"
@@ -140,7 +140,7 @@
             "product_id": "115",
             "product_name": "Shirts",
             "product_description": "Blue Check shirts by Philip Luis Brand",
-            "price_per_qty": "1500",
+            "product_price": "1500",
             "product_quantity": "1000",
             "order_date": "31-July-2018",
             "status": "In Progress"
@@ -150,7 +150,7 @@
             "product_id": "116",
             "product_name": "Shirts",
             "product_description": "Blue Check shirts by Philip Luis Brand",
-            "price_per_qty": "1500",
+            "product_price": "1500",
             "product_quantity": "1000",
             "order_date": "31-July-2018",
             "status": "In Progress"
@@ -160,7 +160,7 @@
             "product_id": "117",
             "product_name": "Shirts",
             "product_description": "Blue Check shirts by Philip Luis Brand",
-            "price_per_qty": "1500",
+            "product_price": "1500",
             "product_quantity": "1000",
             "order_date": "31-July-2018",
             "status": "In Progress"

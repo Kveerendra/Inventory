@@ -9,13 +9,13 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./out-of-stock-dialog.component.css']
 })
 export class OutOfStockDialogComponent implements OnInit {
-  form: FormGroup; 
+  form: FormGroup;
   subContractList : Subcontractor[];
   displayedColumns = [
     'product_id',
     'product_name',
     'sub_contractor_id',
-    'price_per_qty',
+    'product_price',
     'available_quantity',
     'quantity_ordered',
     'actions'

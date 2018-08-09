@@ -24,9 +24,9 @@
       <mat-cell *matCellDef="let row"> {{row.product_description}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="price_per_qty">
+    <ng-container matColumnDef="product_price">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Price/Quantity</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.price_per_qty}}</mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.product_price}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="product_quantity">
@@ -39,7 +39,7 @@
       <mat-cell *matCellDef="let row"> {{row.delivery_day}}</mat-cell>
     </ng-container>
 
-    
+
 
       <!-- actions -->
       <!-- <ng-container matColumnDef="actions">
@@ -48,12 +48,12 @@
               <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
             </button>
           </mat-header-cell>
-    
+
           <mat-cell *matCellDef="let row; let i=index;">
             <button mat-icon-button color="accent" (click)="startEdit(i)">
               <mat-icon aria-label="Edit">edit</mat-icon>
             </button>
-    
+
             <button mat-icon-button color="accent" (click)="deleteItem(i)">
               <mat-icon aria-label="Delete">delete</mat-icon>
             </button>

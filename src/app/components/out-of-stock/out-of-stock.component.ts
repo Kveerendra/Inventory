@@ -31,7 +31,7 @@ export class OutOfStockComponent implements OnInit {
     'product_id',
     'product_name',
     'product_description',
-    'price_per_qty',
+    'product_price',
     'product_quantity',
     'delivery_day',
     'actions'
@@ -41,42 +41,47 @@ export class OutOfStockComponent implements OnInit {
   modalRef: BsModalRef;
   product: Product;
   dialogRef;
-  @ViewChild('staticTabs') staticTabs: TabsetComponent;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild('staticTabs')
+  staticTabs: TabsetComponent;
+  @ViewChild(MatPaginator)
+  paginator: MatPaginator;
+  @ViewChild(MatSort)
+  sort: MatSort;
 
   constructor(
-    public snackBar: MatSnackBar,
+    public snackBar: MatSnackBar,
     private productService: ProductsService,
     private dialog: MatDialog,
     private loginService: LoginService,
-    private modalService: BsModalService) {
-      this.user = loginService.getUser();
-      this.productService.getProducts().subscribe(data => {/*
+    private modalService: BsModalService
+  ) {
+    this.user = loginService.getUser();
+    this.productService.getProducts().subscribe(data => {
+      /*
         let dd = [];
         data.forEach(dat => {dat.product_quantity = "0"; dd.push(dat)}); */
-        this.dataSource = new MatTableDataSource(data.filter(product => product.product_quantity === '0'));
-        this.dataSource.sort = this.sort;
+      this.dataSource = new MatTableDataSource(
+        data.filter(product => product.product_quantity === 0)
+      );
+      this.dataSource.sort = this.sort;
       //  console.log('datasource is : ' + this.dataSource);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      });
-     }
-
-  ngOnInit() {
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
   }
+
+  ngOnInit() {}
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
 
-  openDialog(prodObj : Product) {
-
-//    debugger;
+  openDialog(prodObj: Product) {
+    //    debugger;
     this.productService.getSubContractors().subscribe(data => {
-      var subContractorList = data;
-     // console.log("subContractorList -- >>"+data);
+      let subContractorList = data;
+      // console.log("subContractorList -- >>"+data);
 
       const dialogConfig = new MatDialogConfig();
 
@@ -84,37 +89,27 @@ export class OutOfStockComponent implements OnInit {
       dialogConfig.autoFocus = true;
 
       dialogConfig.data = {
-        list :  subContractorList
-    };
+        list: subContractorList
+      };
 
-     this.dialogRef =  this.dialog.open(OutOfStockDialogComponent, dialogConfig);
+      this.dialogRef = this.dialog.open(
+        OutOfStockDialogComponent,
+        dialogConfig
+      );
 
-     this.dialogRef.afterClosed().subscribe(
-      data => {
-
+      this.dialogRef.afterClosed().subscribe(data => {
         //console.log("testing"+data);
-        if(data === "orderedPlaced")
-          this.openSnackBar("Product ordered successfully.", "X"); } );
-
-
-
-
+        if (data === 'orderedPlaced')
+          this.openSnackBar('Product ordered successfully.', 'X');
+      });
     });
     //dialogConfig.data = prodObj.sub_contractors;
-
-
-
-
-
-
-}
-
-
-public openSnackBar(message: string, action: string) {
-  this.snackBar.open(message, action, {
-    panelClass: ['snack-bar-color'],
-  duration: 2000
-  });
   }
 
+  public openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      panelClass: ['snack-bar-color'],
+      duration: 2000
+    });
+  }
 }

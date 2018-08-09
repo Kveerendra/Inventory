@@ -59,7 +59,7 @@ export class PlaceorderComponent implements OnInit {
 
   invokeAction(qty: string, prod: Product) {
     // console.log('invokeActiom'+JSON.stringify(prod));
-    if (qty == null || qty === '') {
+    if (qty == null || qty === '' || qty === '0') {
       prod.wish_list_flag = false;
       prod.place_order_flag = false;
     } else if (parseInt(qty, 10) > +prod.product_quantity) {
@@ -70,15 +70,14 @@ export class PlaceorderComponent implements OnInit {
       prod.wish_list_flag = false;
     }
 
-    prod.quantity_ordered = qty;
+    prod.quantity_ordered = parseInt(qty, 10);
   }
 
   placeOrder(prodObj: Product) {
-    debugger;
-    prodObj.product_quantity = String(+prodObj.product_quantity - +prodObj.quantity_ordered);
+    prodObj.product_quantity = +prodObj.product_quantity - +prodObj.quantity_ordered;
     this.productService.placeOrder(prodObj).subscribe(data => {
     const tempdetails = prodObj.quantity_ordered;
-    prodObj.quantity_ordered = '';
+    prodObj.quantity_ordered = 0;
     prodObj.place_order_flag = false;
     const message = 'Order for ' + prodObj.product_name + ' (Qty : ' + tempdetails + ') placed successfully.';
     this.openSnackBar(message, 'close');
@@ -88,7 +87,7 @@ export class PlaceorderComponent implements OnInit {
   addToWishList(prodObj: Product) {
     const tempdetails = prodObj.quantity_ordered;
     this.productService.addToWishList(prodObj).subscribe(data => {
-    prodObj.quantity_ordered = '';
+    prodObj.quantity_ordered = 0;
     prodObj.wish_list_flag = false;
     const message = 'Order for ' + prodObj.product_name + ' (Qty : ' + tempdetails + ') added to wishlist successfully.'
     this.openSnackBar(message, 'X');

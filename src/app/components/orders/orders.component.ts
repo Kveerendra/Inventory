@@ -1,6 +1,5 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
-import { Order } from '../../models/Order';
 import { User } from '../../models/user';
 import { LoginService } from '../../services/login.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -24,9 +23,8 @@ export class OrdersComponent implements OnInit {
   user: User;
   routeParam;
   displayedColumns;
-  dataSource: MatTableDataSource<Order>;
+  dataSource: MatTableDataSource<Product>;
   version = VERSION;
-  order: Order;
   title;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -77,10 +75,10 @@ export class OrdersComponent implements OnInit {
         'order_id',
         'product_id',
         'product_name',
-        'price_per_qty',
-        'product_quantity',
+        'product_price',
+        'quantity_ordered',
         'order_date',
-        'status'
+        'delivery_stauts'
       ];
       switch (this.routeParam) {
         case 'pendingOrders':
@@ -98,20 +96,22 @@ export class OrdersComponent implements OnInit {
       }
       this.user = this.loginService.getUser();
       this.productService.getOrders().subscribe(data => {
-        if (statusFlag !== 'all') {
+        console.error(data);
+        /* if (statusFlag !== 'all') {
           filteredData = data.filter(function(el) {
             return el.status.toLowerCase() === statusFlag; // Changed this so a home would match
           });
-        } else {
+        } else { */
           filteredData = data;
-        }
-      });
-    }
-
-    this.dataSource = new MatTableDataSource(filteredData);
+          this.dataSource = new MatTableDataSource(filteredData);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+      //  }
+      });
+    }
+
+
   }
 
   applyFilter(filterValue: string) {
@@ -119,14 +119,14 @@ export class OrdersComponent implements OnInit {
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
-  approveOrder(product:Product) {
-product.delivery_stauts = 'Approved';
+  approveOrder(product: Product) {
+product.delivery_stauts = 'CO';
 this.productService.approveOrDeclineOrder(product).subscribe(data =>{
   console.log('Order Approved');
 });
   }
-  declineOrder(product:Product) {
-    product.delivery_stauts = 'Decline';
+  declineOrder(product: Product) {
+    product.delivery_stauts = 'DE';
 
     this.productService.approveOrDeclineOrder(product).subscribe(data =>{
       console.log('Order Declined');

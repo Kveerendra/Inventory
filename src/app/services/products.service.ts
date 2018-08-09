@@ -65,18 +65,18 @@ export class ProductsService {
     // console.log("hello");
     return this.http.get<Product[]>(environment.serverUrl + '/showproducts');
   }
-  public getOrders(): Observable<Order[]> {
+  public getOrders(): Observable<Product[]> {
     // console.log("hello");
-    return this.http.post<Order[]>(
+    return this.http.post<Product[]>(
       environment.serverUrl + '/showOrderDetails',
       JSON.stringify({ username: this.loginService.getUser().username }),
       { headers: this.headers }
     );
   }
 
-  public getOrdersForApproval(): Observable<Order[]> {
+  public getOrdersForApproval(): Observable<Product[]> {
     // console.log("hello");
-    return this.http.post<Order[]>(
+    return this.http.post<Product[]>(
       environment.serverUrl + '/showOrderPendingForApproval',
       JSON.stringify({ username: this.loginService.getUser().username }),
       { headers: this.headers }
@@ -214,7 +214,7 @@ export class ProductsService {
   }
   approveOrDeclineOrder(product:Product){
     return this.http.post<Product[]>(
-      environment.serverUrl + '/addToWishList',
+      environment.serverUrl + '/updateOrderDetails',
       JSON.stringify({ userInfo: this.loginService.getUser(),
         productRecord: product
        }),

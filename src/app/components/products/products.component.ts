@@ -27,7 +27,7 @@ export class ProductsComponent implements OnInit {
     'product_id',
     'product_name',
     'product_description',
-    'price_per_qty',
+    'product_price',
     'product_quantity',
     'delivery_day',
     'actions'
