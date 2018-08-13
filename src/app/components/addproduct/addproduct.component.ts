@@ -32,7 +32,13 @@ export class AddproductComponent implements OnInit {
       product_name: ['', Validators.required],
       product_description: ['', Validators.required],
       product_price: ['', Validators.required],
-      product_quantity: ['', Validators.required],
+      product_quantity: [
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.maxLength(5)
+        ])
+      ],
       product_delivery:['',Validators.compose( [ Validators.required,Validators.pattern('^(?=.*[0-9]).{5,}$')])],
       product_type: ['', Validators.required]
     });
