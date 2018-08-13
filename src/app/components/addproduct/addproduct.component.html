@@ -29,7 +29,7 @@
           <input type="number" matInput placeholder="Price/Quantity" formControlName="product_price" required>
           <!-- <mat-icon matSuffix>lock</mat-icon> -->
           <mat-error *ngIf="isFieldInvalid('product_price')">
-            Please
+            Please provide price per quantity
           </mat-error>
         </mat-form-field>
 
@@ -37,7 +37,7 @@
           <input type="number" matInput placeholder="Quantity Available" formControlName="product_quantity" required>
           <!-- <mat-icon matSuffix>lock</mat-icon> -->
           <mat-error *ngIf="isFieldInvalid('product_quantity')">
-            Please
+            Please provide available quantity
           </mat-error>
         </mat-form-field>
 
@@ -45,7 +45,7 @@
           <input type="text" matInput placeholder="Delivery Within" formControlName="product_delivery" required>
           <!-- <mat-icon matSuffix>lock</mat-icon> -->
           <mat-error *ngIf="isFieldInvalid('product_delivery')">
-            Please
+            Please provide delivery time
           </mat-error>
         </mat-form-field>
         <button mat-raised-button color="primary"><mat-icon>add_box</mat-icon>&nbsp;&nbsp;Add Product</button>

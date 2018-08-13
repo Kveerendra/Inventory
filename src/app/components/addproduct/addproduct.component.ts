@@ -33,7 +33,7 @@ export class AddproductComponent implements OnInit {
       product_description: ['', Validators.required],
       product_price: ['', Validators.required],
       product_quantity: ['', Validators.required],
-      product_delivery: ['', Validators.required],
+      product_delivery:['',Validators.compose( [ Validators.required,Validators.pattern('^(?=.*[0-9]).{5,}$')])],
       product_type: ['', Validators.required]
     });
     this.form.controls['product_description'].disable();
