@@ -80,7 +80,7 @@ export class PlaceorderComponent implements OnInit {
     prodObj.quantity_ordered = null;
    
     const message = 'Order for ' + prodObj.product_name + ' (Qty : ' + tempdetails + ') placed successfully.';
-    this.openSnackBar(message, 'close');
+    this.openSnackBar(message, 'X');
   });
   }
 
