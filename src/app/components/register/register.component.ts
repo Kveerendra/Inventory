@@ -45,8 +45,8 @@ export class RegisterComponent implements OnInit {
         '',
         Validators.compose([
           Validators.required,
-          Validators.pattern('^(?=.*[0-9]).{5,}$'),
-          Validators.maxLength(5)
+          Validators.pattern('^(?=.*[0-9]).{6,}$'),
+          Validators.maxLength(6)
         ])
       ],
       location: ['', Validators.compose([Validators.required, Validators.pattern('^[A-Za-z]+$')])],
