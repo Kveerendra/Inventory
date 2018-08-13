@@ -78,7 +78,7 @@
     </h1>
     <span class="toolbar-filler"></span>
     <!--<button id="button-login" mat-button [routerLink]="['/signupin']" *ngIf="!(user | async)">Log In</button>-->
-    <button routerLink="/login" *ngIf="isAuthenticated()" (click)="signOut()" mat-button>
+    <button matTooltip="Sign Out"  matTooltipPosition='below' routerLink="/login" *ngIf="isAuthenticated()" (click)="signOut()" mat-button>
       <mat-icon mat-list-icon>error_outline</mat-icon>
     </button>
   </mat-toolbar>
