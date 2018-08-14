@@ -39,7 +39,7 @@ export class AddproductComponent implements OnInit {
           Validators.maxLength(5)
         ])
       ],
-      product_delivery:['',Validators.compose( [ Validators.required,Validators.pattern('^(?=.*[0-9]).{5,}$')])],
+      product_delivery:['',Validators.compose( [ Validators.required,Validators.pattern('^[0-9]*$')])],
       product_type: ['', Validators.required]
     });
     this.form.controls['product_description'].disable();

@@ -34,7 +34,7 @@
         </mat-form-field>
 
         <mat-form-field class="full-width-input">
-          <input type="number" matInput placeholder="Quantity Available" formControlName="product_quantity" required>
+          <input type="number" maxlength="5" matInput placeholder="Quantity Available" formControlName="product_quantity" required>
           <!-- <mat-icon matSuffix>lock</mat-icon> -->
           <mat-error *ngIf="isFieldInvalid('product_quantity')">
             Please provide available quantity
