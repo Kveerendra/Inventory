@@ -1,7 +1,7 @@
 <div class="signin-content">
   <mat-card>
     <mat-card-content>
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
           <mat-icon>assignment_ind</mat-icon><p>Sign Up</p>
 
           <section class="example-section">
@@ -35,7 +35,7 @@
             </mat-error>
           </mat-form-field>
           <mat-form-field class="full-width-input">
-            <input matInput placeholder="Pincode" formControlName="pincode" required>
+            <input autocomplete="off" matInput placeholder="Pincode" formControlName="pincode" required>
             <!-- <mat-icon matSuffix>lock</mat-icon> -->
             <mat-error *ngIf="isFieldInvalid('pincode')">
               Please inform your pincode having 6 digits
