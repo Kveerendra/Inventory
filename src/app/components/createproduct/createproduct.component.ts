@@ -18,9 +18,9 @@ export class CreateproductComponent implements OnInit {
   isSuccess: boolean;
   ngOnInit() {
     this.form = this.fb.group({     // {5}
-      product_name: ['', Validators.compose([Validators.required, Validators.pattern('^[0-9A-Za-z]+$'), Validators.maxLength(30)])],
-      product_type: ['', Validators.compose([Validators.required, Validators.pattern('^[0-9A-Za-z]+$'), Validators.maxLength(30)])],
-      product_description: ['', Validators.compose([Validators.required, Validators.pattern('^[0-9A-Za-z]+$'), Validators.maxLength(50)])]
+      product_name: ['', Validators.compose([Validators.required, Validators.pattern('^[0-9A-Za-z ]+$'), Validators.maxLength(30)])],
+      product_type: ['', Validators.compose([Validators.required, Validators.pattern('^[0-9A-Za-z ]+$'), Validators.maxLength(30)])],
+      product_description: ['', Validators.compose([Validators.required, Validators.pattern('^[0-9A-Za-z ]+$'), Validators.maxLength(50)])]
     });
   }
 
