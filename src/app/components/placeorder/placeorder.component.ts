@@ -73,7 +73,7 @@ export class PlaceorderComponent implements OnInit {
 
   placeOrder(prodObj: Product) {
     prodObj.place_order_flag = false;
-    prodObj.product_quantity = +prodObj.product_quantity - +prodObj.quantity_ordered;
+    //prodObj.product_quantity = +prodObj.product_quantity - +prodObj.quantity_ordered;
     this.productService.placeOrder(prodObj).subscribe(data => {
       debugger;
     const tempdetails = prodObj.quantity_ordered;

@@ -22,6 +22,9 @@ export class WishlistComponent implements OnInit {
 
     this.user = loginService.getUser();
     this.productService.getWishList().subscribe(data => {
+      data.forEach(d => {
+        d.wish_status = this.getOrderStatusText(d.delivery_stauts);
+      });
 
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
@@ -40,6 +43,19 @@ export class WishlistComponent implements OnInit {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
+  }
+
+  getOrderStatusText(statusCode: String): String {
+    switch (statusCode) {
+      case 'PE':
+        return 'Pending';
+      case 'CO':
+        return 'Completed';
+      case 'DE':
+        return 'Rejected';
+      default:
+        return '-----';
+    }
   }
 
 

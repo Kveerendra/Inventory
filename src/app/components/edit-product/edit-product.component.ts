@@ -87,6 +87,7 @@ export class EditProductComponent implements OnInit {
   }
 
   onCancel(): void {
+    this.formSubmitAttempt = false; // {8}
     this.dialogRef.close();
   }
   openSnackBar(message: string, action: string) {
