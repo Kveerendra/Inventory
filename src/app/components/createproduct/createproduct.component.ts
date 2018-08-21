@@ -18,9 +18,9 @@ export class CreateproductComponent implements OnInit {
   isSuccess: boolean;
   ngOnInit() {
     this.form = this.fb.group({     // {5}
-      product_name: ['', Validators.required],
-      product_type: ['', Validators.required],
-      product_description: ['', Validators.required]
+      product_name: ['', Validators.compose([Validators.required, Validators.pattern('^[0-9A-Za-z]+$'), Validators.maxLength(30)])],
+      product_type: ['', Validators.compose([Validators.required, Validators.pattern('^[0-9A-Za-z]+$'), Validators.maxLength(30)])],
+      product_description: ['', Validators.compose([Validators.required, Validators.pattern('^[0-9A-Za-z]+$'), Validators.maxLength(50)])]
     });
   }
 
@@ -37,10 +37,10 @@ export class CreateproductComponent implements OnInit {
       this.openSnackBar(message, "X");
       this.form.reset();
       this.form.markAsUntouched();             // {8}
-     Object.keys(this.form.controls).forEach(key => {
-     this.form.controls[key].setErrors(null)
-     });
-      
+      Object.keys(this.form.controls).forEach(key => {
+        this.form.controls[key].setErrors(null)
+      });
+
     }
     this.formSubmitAttempt = true;
   }
@@ -50,6 +50,6 @@ export class CreateproductComponent implements OnInit {
       panelClass: ['snack-bar-color'],
       duration: 2000
     });
-    
+
   }
 }
