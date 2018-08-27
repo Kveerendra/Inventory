@@ -13,12 +13,12 @@ import { Product } from '../../models/product';
 })
 export class WishlistComponent implements OnInit {
   user: User;
-  displayedColumns = ['product_id', 'product_name', 'product_type', 'product_price', 'product_quantity', 'wish_status','wisher_id'];
+  displayedColumns = ['product_id', 'product_name', 'product_type', 'product_price', 'product_quantity', 'wisher_id'];
   dataSource: MatTableDataSource<Product>;
   version = VERSION;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  constructor(private productService: ProductsService,private dialog: MatDialog, private loginService: LoginService) {
+  constructor(private productService: ProductsService, private dialog: MatDialog, private loginService: LoginService) {
 
     this.user = loginService.getUser();
     this.productService.getWishList().subscribe(data => {

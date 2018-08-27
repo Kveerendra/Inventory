@@ -158,6 +158,7 @@ export class ProductsService {
     // tslint:disable-next-line:prefer-const
     let obj = product;
     obj['username'] = this.loginService.getUser().username;
+    console.warn(obj);
     return this.http.post<Product[]>(
       environment.serverUrl + '/placeOrder',
       JSON.stringify({ info: obj }),

@@ -62,7 +62,7 @@ export class ProductsComponent implements OnInit {
         'delivery_day'
       ];
     }
-    
+
 
     this.user = loginService.getUser();
     this.productService.getProducts().subscribe(data => {
@@ -72,11 +72,14 @@ export class ProductsComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
+    console.log("in constructior");
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
-  ngOnInit() {}
+  ngOnInit() {
+    console.log("in init");
+  }
   myTab() {
     return this.staticTabs.tabs[1].active !== true;
   }

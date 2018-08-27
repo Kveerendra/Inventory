@@ -65,7 +65,6 @@ export class EditProductComponent implements OnInit {
   }
 
   onSubmit() {
-    console.error(this.product);
     if (this.form.valid) {
       const product: Product = this.product;
       product.product_name = this.form.get('product_name').value;
@@ -74,7 +73,8 @@ export class EditProductComponent implements OnInit {
       product.product_price = this.form.get('product_price').value;
 
       product.product_quantity = this.form.get('product_quantity').value;
-      product.product_delivery = this.form.get('delivery_day').value;
+      product.delivery_day = this.form.get('delivery_day').value;
+      console.error(this.product);
       this.productService.updateProduct(product).subscribe(res => {
         this.router.navigateByUrl('/products');
       });
