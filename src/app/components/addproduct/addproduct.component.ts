@@ -31,18 +31,33 @@ export class AddproductComponent implements OnInit {
       // {5}
       product_name: ['', Validators.required],
       product_description: ['', Validators.required],
-      product_price: ['', Validators.compose([
-        Validators.required,
-        Validators.maxLength(5),Validators.max(99999),Validators.min(0)
-      ])],
+      product_price: [
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.maxLength(5),
+          Validators.max(99999),
+          Validators.min(0)
+        ])
+      ],
       product_quantity: [
         '',
         Validators.compose([
           Validators.required,
-          Validators.maxLength(5),Validators.max(99999),Validators.min(0)
+          Validators.maxLength(5),
+          Validators.max(99999),
+          Validators.min(0)
         ])
       ],
-      product_delivery:['',Validators.compose( [ Validators.required,Validators.pattern('^[0-9]*$')])],
+      product_delivery: [
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.pattern('^[0-9]*$'),
+          Validators.max(99999),
+          Validators.min(0)
+        ])
+      ],
       product_type: ['', Validators.required]
     });
     this.form.controls['product_description'].disable();
