@@ -37,18 +37,33 @@ export class EditProductComponent implements OnInit {
         this.product.product_description,
         Validators.required
       ],
-      product_price: [this.product.product_price, Validators.compose([
-        Validators.required,
-        Validators.maxLength(5),Validators.max(99999),Validators.min(0)
-      ])],
+      product_price: [
+        this.product.product_price,
+        Validators.compose([
+          Validators.required,
+          Validators.maxLength(5),
+          Validators.max(99999),
+          Validators.min(0)
+        ])
+      ],
       product_quantity: [
         this.product.product_quantity,
         Validators.compose([
           Validators.required,
-          Validators.maxLength(5),Validators.max(99999),Validators.min(0)
+          Validators.maxLength(5),
+          Validators.max(99999),
+          Validators.min(0)
         ])
       ],
-      delivery_day: [this.product.delivery_day, Validators.compose( [ Validators.required,Validators.pattern('^[0-9]*$')])],
+      delivery_day: [
+        this.product.delivery_day,
+        Validators.compose([
+          Validators.required,
+          Validators.pattern('^[0-9]*$'),
+          Validators.max(99999),
+          Validators.min(0)
+        ])
+      ],
       product_type: [this.product.product_type, Validators.required]
     });
     this.form.controls['product_description'].disable();
