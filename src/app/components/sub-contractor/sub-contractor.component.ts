@@ -63,6 +63,10 @@ export class SubContractorComponent implements OnInit {
     switch (statusCode) {
       case 'OG':
         return 'Pending';
+      case 'CO':
+        return 'Completed';
+      case 'DE':
+        return 'Rejected';
       default:
         return '-----';
     }
