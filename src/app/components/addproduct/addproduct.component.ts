@@ -37,7 +37,7 @@ export class AddproductComponent implements OnInit {
           Validators.required,
           Validators.maxLength(5),
           Validators.max(99999),
-          Validators.min(0)
+          Validators.min(1)
         ])
       ],
       product_quantity: [
