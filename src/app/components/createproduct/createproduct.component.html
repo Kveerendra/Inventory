@@ -7,21 +7,21 @@
           <input matInput placeholder="Product Name" formControlName="product_name" required>
           <!-- <mat-icon matSuffix>lock</mat-icon> -->
           <mat-error *ngIf="isFieldInvalid('product_name')">
-            Please inform your product name
+            Please input valid product name having length less than 30
           </mat-error>
         </mat-form-field>
         <mat-form-field class="full-width-input">
             <input matInput placeholder="Product Type" formControlName="product_type" required>
             <!-- <mat-icon matSuffix>lock</mat-icon> -->
             <mat-error *ngIf="isFieldInvalid('product_type')">
-              Please inform your product type
+              Please input valid product type having length less than 30
             </mat-error>
           </mat-form-field>
           <mat-form-field class="full-width-input">
             <input matInput placeholder="Product Description" formControlName="product_description" required>
             <!-- <mat-icon matSuffix>lock</mat-icon> -->
             <mat-error *ngIf="isFieldInvalid('product_description')">
-              Please inform your product description
+              Please input valid product description having length less than 50
             </mat-error>
           </mat-form-field>
           

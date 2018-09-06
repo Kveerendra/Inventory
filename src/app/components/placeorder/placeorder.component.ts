@@ -88,7 +88,7 @@ this.changeDetectorRefs.detectChanges();
       prod.wish_list_flag = false;
       prod.place_order_flag = false;
     } else {
-      if (qty == null || qty === '' || qty === '0') {
+      if (qty == null || qty == '' || qty == '0') {
         prod.wish_list_flag = false;
         prod.place_order_flag = false;
       } else if (parseInt(qty, 10) > +prod.product_quantity) {
