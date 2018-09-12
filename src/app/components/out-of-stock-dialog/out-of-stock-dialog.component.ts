@@ -60,9 +60,8 @@ export class OutOfStockDialogComponent implements OnInit {
   invokeAction(qty: string, prod: Product) {
     // console.log('invokeActiom'+JSON.stringify(prod));
     if (qty == null || qty === '' || qty === '0') {
-     
       prod.place_order_flag = false;
-    } else if (parseInt(qty, 10) > +prod.product_quantity) {
+    } else if (parseInt(qty,10) > 99999) {//parseInt(qty, 10) > +prod.product_quantity
      
       prod.place_order_flag = false;
     } else {
