@@ -52,7 +52,14 @@
                     <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
                     <mat-cell *matCellDef="let row">
                       <!-- <button mat-button (click)="showDetails(row)">DETAILS</button> -->
-                      <button mat-icon-button (click)="placeOrder(row)"><mat-icon >shopping_cart</mat-icon></button>
+                      
+
+                      <button *ngIf="row.place_order_flag" mat-icon-button color="warn" (click)="placeOrder(row)">
+                        <mat-icon aria-label="Edit">add_shopping_cart</mat-icon>
+                      </button>
+                      <button *ngIf="!row.place_order_flag" matTooltip="Place Order" mat-icon-button color="accent"  disabled="true">
+                        <mat-icon aria-label="Edit">add_shopping_cart</mat-icon>
+                      </button>
                       <!-- <button mat-button (click)="deleteItem(row)">DELETE</button> -->
                     </mat-cell>
                   </ng-container>
